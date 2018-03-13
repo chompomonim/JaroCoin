@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import 'font-awesome/less/font-awesome.less'
-
 // Supporters Component image import (For demo purpose). Needs webpack or related package to be installed
 import supporterDemoImage from './images/supporter-demo.jpg';
 import jaroCoinDemoImage from './images/jarocoin-demo.jpg';
