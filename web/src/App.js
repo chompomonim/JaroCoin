@@ -1,60 +1,17 @@
 import React, { Component } from 'react';
 
+import AntDMenu from './components/AntDMenu'
+import HorizontalSeparator from './components/HorizontalSeparator'
+
 // Supporters Component image import (For demo purpose). Needs webpack or related package to be installed
 import supporterDemoImage from './images/supporter-demo.jpg';
 import jaroCoinDemoImage from './images/jarocoin-demo.jpg';
+import tokenDistributionDemoImage from './images/tokendistribution-demo.jpg';
+import timelineDemoImage from './images/timeline-demo.jpg';
+import youtubeThumbnailDemoImage from './images/youtubethumbnail-demo.jpg';
 
 
-// === MENU ===
 
-// Menu Component Styles
-let menuStyle = {
-  background: '#bdbdbd80',
-  position: 'fixed',
-  width: '100%'
-}
-let menuItemStyle = {
-    display: 'inline-block',
-    padding: '20px'
-}
-class Menu extends Component {
-  render() {
-    return (
-      <nav class="navbar" style={{position: 'absolute', top: '0'}}>
-        <div style={{ ...menuStyle }}>
-          <div style={{textAlign: 'right'}}>
-            <ul>
-              <li style={{ ...menuItemStyle }} ><a href="#home">Home</a></li>
-              <li style={{ ...menuItemStyle }} ><a href="#about">About</a></li>
-              <li style={{ ...menuItemStyle }} ><a href="#services">Services</a></li>
-              <li style={{ ...menuItemStyle }} ><a href="#roadmap">Roadmap</a></li>
-              <li style={{ ...menuItemStyle }} ><a href="#blog">Blog</a></li>
-              <li style={{ ...menuItemStyle }} ><a href="#contacts">Contacts</a></li>
-            </ul>
-            <button>Mobile Menu Button</button>
-          </div>
-        </div>
-      </nav>
-    );
-  }
-}
-
-// === HORIZONTAL SEPARATOR ===
-
-// Horizontal Separator Component Styles
-let horizontalSeparatorStyle = {
-  margin: '80px auto',
-  width: '70%',
-  borderTop: 'none',
-  borderBottom: '1px solid #e7e7e7'
-}
-class HorizontalSeparator extends Component {
-  render() {
-    return (
-      <hr class="horizontal-separator" style={{ ...horizontalSeparatorStyle }} />
-    );
-  }
-}
 
 // === COUNTDOWN ===
 
@@ -84,7 +41,7 @@ class CountDown extends Component {
 // About Compoment Styles
 let aboutItemStyle = {
   content: {
-    display: 'flex', 
+    display: 'flex',
     alignItems: 'center',
     minHeight: '600px'
   },
@@ -113,17 +70,17 @@ class About extends Component {
       <div>
         <h2 style={{ ...globalStyles.h2, ...aboutItemStyle.h2 }}>Who is Jaro</h2>
         <div style={{ ...aboutItemStyle.content }}>
-          <div class="about-item" style={{ ...aboutItemStyle.item }}>
+          <div style={{ ...aboutItemStyle.item }}>
             <div style={{ ...aboutItemStyle.number, paddingLeft: '25px' }}>340+</div>
             <p style={{ ...aboutItemStyle.description }}>Projects Completed</p>
           </div>
           <div style={{ ...aboutItemStyle.separator}}>/</div>
-          <div class="about-item" style={{ ...aboutItemStyle.item }}>
+          <div style={{ ...aboutItemStyle.item }}>
             <div style={{ ...aboutItemStyle.number }}>7</div>
             <p style={{ ...aboutItemStyle.description }}>Feautred in Wired Magazine</p>
           </div>
           <div style={{ ...aboutItemStyle.separator}}>/</div>
-          <div class="about-item" style={{ ...aboutItemStyle.item }}>
+          <div style={{ ...aboutItemStyle.item }}>
             <div style={{ ...aboutItemStyle.number }}>11</div>
             <p style={{ ...aboutItemStyle.description }}>Years in Business</p>
           </div>
@@ -138,22 +95,110 @@ class About extends Component {
 
 // Timeline Component Styles
 let timelineStyle = {
-
+  image: {
+    width: '1000px',
+    display: 'block',
+    margin: '0 auto'
+  }
 }
 class Timeline extends Component {
   render() {
     return (
       <div className="timeline">
         <h3 style={{ ...globalStyles.h3 }}>Key Dates</h3>
-        <div class="key-date-item" style={{ ...timelineStyle }}>
-          <img src={supporterDemoImage} style={{ ...supporterImageStyle }} />
-          <h3>Justina Andriuškevičiutė</h3>
-          <p>Public relations and communications advisor</p>
+        <img style={{ ...timelineStyle.image }} src={timelineDemoImage} />
+        <div className="key-date-item" style={{ ...timelineStyle }}>
         </div>
       </div>
     );
   }
 }
+
+// === USECASES ===
+
+// UseCases Component Styles
+let useCasesStyle ={
+  list: {
+    display: 'flex',
+    alignContent: 'center'
+  },
+  item: {
+    width: '380px',
+    border: 'solid 1px #d0d0d0',
+    textAlign: 'right',
+    margin: '0 20px'
+  },
+  h3: {
+    fontSize: '2rem',
+    height: '112px'
+  },
+  label: {
+    fontSize: '1.2rem'
+  },
+  itemContent: {
+    padding: '0 20px 20px',
+  },
+  description: {
+    verticalAlign: 'bottom',
+    fontSize: '1.5rem',
+    height: '84px',
+    overflow: 'hidden',
+    background: 'linear - gradient(white, transparent)',
+    background: '-moz - linear - gradient(white, transparent)',
+    background: '-webkit - linear - gradient(white, transparent)'
+  },
+  image: {
+    width: '380px',
+    height: '250px',
+    display: 'block'
+  }
+}
+
+class UseCases extends Component {
+  render() {
+    return (
+      <div className="contentContainer">
+        <h2 style={{ ...globalStyles.h2, textAlign: 'center' }}>Usecases</h2>
+        <div style={{ ...useCasesStyle.list}}>
+          <div style={{ ...useCasesStyle.item }}>
+            <button style={{ ...useCasesStyle.label }}>Community Baked</button>
+            <div style={{ ...useCasesStyle.itemContent }}>
+              <h3 style={{ ...useCasesStyle.h3 }}>Ethereum Smart Contract Analysis Algorithm</h3>
+
+              <p style={{ ...useCasesStyle.description }}>This video shows how the right blockchain smart contract analysis should be made</p>
+            </div>
+            <img style={{ ...useCasesStyle.image }} src={youtubeThumbnailDemoImage} />
+          </div>
+          <div style={{ ...useCasesStyle.item }}>
+            <div style={{ ...useCasesStyle.itemContent }}>
+              <h3 style={{ ...useCasesStyle.h3 }}>WonHwaDo Trainings</h3>
+              <button style={{ ...useCasesStyle.label }}>Friends Baked</button>
+              <p style={{ ...useCasesStyle.description }}>Every Wednesday 1.5h</p>
+            </div>
+            <img style={{ ...useCasesStyle.image }} src={youtubeThumbnailDemoImage} />
+          </div>
+          <div style={{ ...useCasesStyle.item }}>
+            <div style={{ ...useCasesStyle.itemContent }}>
+              <h3 style={{ ...useCasesStyle.h3 }}>Mentorship</h3>
+              <button style={{ ...useCasesStyle.label }}>Personal Initiative</button>
+              <p style={{ ...useCasesStyle.description }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
+            </div>
+            <img style={{ ...useCasesStyle.image }} src={youtubeThumbnailDemoImage} />
+          </div>
+          <div style={{ ...useCasesStyle.item }}>
+            <div style={{ ...useCasesStyle.itemContent }}>
+              <h3 style={{ ...useCasesStyle.h3 }}>Bora Bora Vacations</h3>
+              <button style={{ ...useCasesStyle.label }}>Family Baked</button>
+              <p style={{ ...useCasesStyle.description }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
+            </div>
+            <img style={{ ...useCasesStyle.image }} src={youtubeThumbnailDemoImage} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 
 // === SUPPORTERS ===
 
@@ -161,7 +206,8 @@ class Timeline extends Component {
 let supporterStyle = {
   display: 'inline-block',
   padding: '30px',
-  verticalAlign: 'top'
+  verticalAlign: 'top',
+  width: '300px'
 }
 let supporterImageStyle = {
   width: '300px'
@@ -171,33 +217,33 @@ class Supporters extends Component {
     return (
       <div style={{textAlign: 'center'}}>
         <h2 style={{ ...globalStyles.h2 }}>Supporters</h2>
-        <div class="supporter" style={{...supporterStyle}}>
-          <img src={supporterDemoImage} style={{...supporterImageStyle}} />
+        <div className="supporter" style={{...supporterStyle}}>
+          <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
           <h3>Ignas Mikalajūnas</h3>
           <p>Senior software Engineer</p>
         </div>
-        <div class="supporter" style={{...supporterStyle}}>
-          <img src={supporterDemoImage} style={{...supporterImageStyle}} />
+        <div className="supporter" style={{...supporterStyle}}>
+          <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
           <h3>Tomas Jonušas</h3>
           <p>Teacher, profesor, management consultant</p>
         </div>
-        <div class="supporter" style={{ ...supporterStyle}}>
-          <img src={supporterDemoImage} style={{...supporterImageStyle}} />
+        <div className="supporter" style={{ ...supporterStyle}}>
+          <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
           <h3>Justina Andriuškevičiutė</h3>
           <p>Public relations and communications advisor</p>
         </div>
-        <div class="supporter" style={{...supporterStyle}}>
-          <img src={supporterDemoImage} style={{...supporterImageStyle}} />
+        <div className="supporter" style={{...supporterStyle}}>
+          <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
           <h3>Ignas Mikalajūnas</h3>
           <p>Senior software Engineer</p>
         </div>
-        <div class="supporter" style={{...supporterStyle}}>
-          <img src={supporterDemoImage} style={{...supporterImageStyle}} />
+        <div className="supporter" style={{...supporterStyle}}>
+          <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
           <h3>Tomas Jonušas</h3>
           <p>Teacher, profesor, management consultant</p>
         </div>
-        <div class="supporter" style={{...supporterStyle}}>
-          <img src={supporterDemoImage} style={{...supporterImageStyle}} />
+        <div className="supporter" style={{...supporterStyle}}>
+          <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
           <h3>Justina Andriuškevičiutė</h3>
           <p>Public relations and communications advisor</p>
         </div>
@@ -227,7 +273,9 @@ class App extends Component {
   render() {
     return (
       <div className="layout">
-        <Menu />
+       
+        <AntDMenu />
+        
         <div className="container" style={containerStyle}>
           <header style={{padding: '0 100px'}}>
             <div id="home" style={{textAlign: 'center', padding: '200px 0 100px'}}>
@@ -240,7 +288,7 @@ class App extends Component {
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
               </div>
               <div className="video-container">
-                    <iframe src="https://player.vimeo.com/video/201178499" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/201178499" width="640" height="360" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -255,10 +303,10 @@ class App extends Component {
 
           <HorizontalSeparator />
 
-          <div className="contentContainer" style={{ padding: '0 100px' }}>
+          <div className="contentContainer" style={{ padding: '0 200px' }}>
             <h2 style={{ ...globalStyles.h2, textAlign: 'center' }}>What is JaroCoin?</h2>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div className="description">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'  }}>
+              <div className="description" style={{width: '600px'}}>
                 <p>JaroCoin is crypto asset 100% backed by Jaro time.</p>
                 <p>Time is most preciouse asset we have. JaroCoin can't go to zero, you can not just trade it, hodl it or use as medium of exchange. You can withdrawal it for Jaro time and services.</p>
                 <ul>
@@ -277,27 +325,27 @@ class App extends Component {
             <h2 style={{ ...globalStyles.h2, textAlign: 'center' }}>With JaroCoin You Can</h2>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <div class="contentContainerItem" style={{width: '30%'}}>
+                <div style={{width: '30%'}}>
                   <h3>Trade</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                 </div>
-                <div class="contentContainerItem" style={{width: '30%'}}>
+                <div style={{width: '30%'}}>
                   <h3>HODL</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                 </div>
-                <div class="contentContainerItem" style={{width: '30%'}}>
+                <div style={{width: '30%'}}>
                   <h3>Ask to Code</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                 </div>
-                <div class="contentContainerItem" style={{width: '30%'}}>
+                <div style={{width: '30%'}}>
                   <h3>Get Crypto Advice</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                 </div>
-                <div class="contentContainerItem" style={{width: '30%'}}>
+                <div style={{width: '30%'}}>
                   <h3>Pay for Webinar</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                 </div>
-                <div class="contentContainerItem" style={{width: '30%'}}>
+                <div style={{width: '30%'}}>
                   <h3>Learn More</h3>
 
                 </div>
@@ -306,7 +354,29 @@ class App extends Component {
           </div>
 
           <HorizontalSeparator />
-            
+
+          <div className="contentContainer" style={{padding: '0 200px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+              <img style={{width: '500px', height: '500px'}} src={tokenDistributionDemoImage} />
+              <div style={{width: '40%'}}>
+                <h2 style={{ ...globalStyles.h2}}>Token distribution</h2>
+                <p>1 JARO = 1 Jaro second = 0.0001 bitcoin</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
+                <p>There are only 21 000 000* JARO</p>
+                icon<button> Learn more in whitepaper</button>
+              </div>
+            </div>
+
+          <Timeline />
+
+          </div>
+
+          <HorizontalSeparator />
+
+          <UseCases />
+
+          <HorizontalSeparator />
+
           <Supporters />
 
         </div>
