@@ -12,19 +12,14 @@ class AntDMenu extends Component {
         super(props)
         this.menuElements = [
             {key: 'home', value: 'Home', link: '#home'},
-            {key: 'about', value: 'About', link: '#about'}, // > Who is Jaro?; > What is JaroCoin?; > Token Distribution
-            {key: 'supporters', value: 'Supporters', link: '#supporters'},
-        /*
-        // If Component Id isn't defined in App.js => Uncaught TypeError: Cannot read property 'offsetTop' of null
-           
-            {key: 'services', value: 'Services', link: '#services'}, // > With JaroCoin you can
-            {key: 'usecases', value: 'Usecases', link: '#usecases'}, // > Community Baked; > Friends Baked; > Family Baked; > Personal Initiative
+            {key: 'about', value: 'About', link: '#about'},
+            {key: 'services', value: 'Services', link: '#services'},
+            {key: 'usecases', value: 'Usecases', link: '#usecases'},
             {key: 'supporters', value: 'Supporters', link: '#supporters'},
             {key: 'latestposts', value: 'Latest Posts', link: '#latest-posts'},
             {key: 'faq', value: 'Questions and Answers (FAQ)', link: '#faq'},
             {key: 'quotes', value: 'Quotes', link: '#quotes'},
             {key: 'getjaro', value: 'GET JARO', link: 'get-jaro'}
-        */
         ]
         this.state = {
             activeLink: 'home' // set active menu item
@@ -46,11 +41,13 @@ class AntDMenu extends Component {
         let selections = []
         
         for (let el of this.menuElements) {
-            const element = document.getElementById(el.key)
-            const elementOffset = element.offsetTop
+            if (document.getElementById(el.key)) {
+                const element = document.getElementById(el.key)
+                const elementOffset = element.offsetTop
 
-            if (elementOffset > currentOffsetTop) {
-                selections.push({key: el.key, offset: elementOffset})
+                if (elementOffset > currentOffsetTop) {
+                    selections.push({key: el.key, offset: elementOffset})
+                }
             }
         }
     
