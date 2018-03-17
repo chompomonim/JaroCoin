@@ -1,0 +1,12 @@
+.menu {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.menuWrapper {
+}
+
+.menuItem {
+
+}

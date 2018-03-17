@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import AntDMenu from './components/AntDMenu'
+import AntDAnchorMenu from './components/AntDAnchorMenu'
 import HorizontalSeparator from './components/HorizontalSeparator'
 
 // Supporters Component image import (For demo purpose). Needs webpack or related package to be installed
@@ -68,7 +69,7 @@ class About extends Component {
   render() {
     return (
       <div>
-        <h2 style={{ ...globalStyles.h2, ...aboutItemStyle.h2 }}>Who is Jaro</h2>
+        <h2 id="about" style={{ ...globalStyles.h2, ...aboutItemStyle.h2 }}>Who is Jaro</h2>
         <div style={{ ...aboutItemStyle.content }}>
           <div style={{ ...aboutItemStyle.item }}>
             <div style={{ ...aboutItemStyle.number, paddingLeft: '25px' }}>340+</div>
@@ -158,7 +159,7 @@ class UseCases extends Component {
   render() {
     return (
       <div className="contentContainer">
-        <h2 style={{ ...globalStyles.h2, textAlign: 'center' }}>Usecases</h2>
+        <h2 id="usecases" style={{ ...globalStyles.h2, textAlign: 'center' }}>Usecases</h2>
         <div style={{ ...useCasesStyle.list}}>
           <div style={{ ...useCasesStyle.item }}>
             <button style={{ ...useCasesStyle.label }}>Community Baked</button>
@@ -215,7 +216,7 @@ let supporterImageStyle = {
 class Supporters extends Component {
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
+      <div id="supporters" style={{textAlign: 'center'}}>
         <h2 style={{ ...globalStyles.h2 }}>Supporters</h2>
         <div className="supporter" style={{...supporterStyle}}>
           <img style={{ ...supporterImageStyle }} src={supporterDemoImage} />
@@ -274,6 +275,8 @@ class App extends Component {
     return (
       <div className="layout">
        
+       
+
         <AntDMenu />
         
         <div className="container" style={containerStyle}>
