@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 
 import { Menu } from 'antd'
+import { Button } from 'antd'
 import 'antd/dist/antd.css'
 
 import styles from './antDMenu.module.css'
@@ -17,9 +18,8 @@ class AntDMenu extends Component {
             {key: 'usecases', value: 'Usecases', link: '#usecases'},
             {key: 'supporters', value: 'Supporters', link: '#supporters'},
             {key: 'latestposts', value: 'Latest Posts', link: '#latest-posts'},
-            {key: 'faq', value: 'Questions and Answers (FAQ)', link: '#faq'},
+            {key: 'faq', value: 'FAQ', link: '#faq'},
             {key: 'quotes', value: 'Quotes', link: '#quotes'},
-            {key: 'getjaro', value: 'GET JARO', link: 'get-jaro'}
         ]
         this.state = {
             activeLink: 'home' // set active menu item
@@ -64,6 +64,9 @@ class AntDMenu extends Component {
                 defaultSelectedKeys={[this.state.activeLink]}
             >
                 {this.menuElements.map(el => <Menu.Item className={styles.menuItem} key={el.key}><a href={el.link}>{el.value}</a></Menu.Item>)}
+                <Menu.Item className={styles.menuItem}>
+                    <Button type="primary" className={styles.button}><a href="#get-jaro">GET JARO</a></Button>
+                    </Menu.Item>
             </Menu>
         );
     }

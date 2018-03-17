@@ -4,9 +4,20 @@
     display: flex;
     justify-content: flex-end;
 }
+
 .menuWrapper {
+
 }
 
 .menuItem {
+    float: none;
+    /* border-bottom: 2px solid transparent !important; */
+}
 
+.menuItem:hover {
+   border-bottom: 2px solid transparent !important;
+}
+
+.button {
+    border-bottom: 2px solid transparent !important;
 }
