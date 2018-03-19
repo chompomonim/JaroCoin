@@ -1,0 +1,40 @@
+.heading {
+    composes: h1 from "./globalStyles.module.css";
+    margin: 100px 0 10px;
+}
+
+.headline {
+    margin: 0 0 100px;
+    composes: h2 from "./globalStyles.module.css";
+}
+
+.title {
+    composes: h3 from "./globalStyles.module.css";
+}
+
+.description {
+    font-size: 1.2rem;
+}
+
+.row {
+    padding: 0 20px;
+}
+
+.columnLeft {
+    text-align: left;
+    padding: 0 25px;
+}
+.columnRight {
+
+}
+
+.button {
+    margin: 40px 25px 0;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+.divider {
+    width: 60%;
+    margin: 80px auto;
+}

@@ -1,0 +1,39 @@
+.heading {
+    composes: h2 from "./globalStyles.module.css";
+}
+
+.carousel {
+    text-align: center;
+    /* height: 650px; */
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.card {
+    text-align: right;
+    padding: 0 !important;
+}
+
+.button {
+
+}
+
+.title {
+    text-align: left;
+    width: 110%;
+    font-size: 1.6rem;
+    height: 76px;
+    overflow: hidden;
+}
+
+.description {
+    font-size: 1.2rem;
+    text-align: left;
+    padding: 20px 0;
+    height: 110px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+}

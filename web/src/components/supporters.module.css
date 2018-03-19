@@ -1,0 +1,31 @@
+.h2 {
+    composes: h2 from './globalStyles.module.css';
+}
+
+.h4 {
+    composes: h2 from './globalStyles.module.css';
+}
+
+.title {
+    font-size: 1.6rem;
+}
+
+.description {
+    font-size: 1rem;
+}
+
+.row {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.column {
+    font-size: 1.5rem;
+}
+
+.image {
+    width: 250px;
+    height: 250px;
+}

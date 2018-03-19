@@ -1,8 +1,10 @@
 .menu {
     position: fixed;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
 
 .menuWrapper {
@@ -15,9 +17,9 @@
 }
 
 .menuItem:hover {
-   border-bottom: 2px solid transparent !important;
+   /* border-bottom: 2px solid transparent !important; */
 }
 
 .button {
-    border-bottom: 2px solid transparent !important;
+    /* border-bottom: 2px solid transparent !important; */
 }

@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.3.0",
     "react": "^16.2.0",
+    "react-countdown-now": "^1.3.0",
     "react-dom": "^16.2.0",
     "react-scripts-cssmodules": "^1.0.171"
   },

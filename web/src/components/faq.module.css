@@ -1,0 +1,30 @@
+.h2 {
+    composes: h2 from './globalStyles.module.css';
+}
+
+.row {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.column {
+    margin: 0 0 50px;
+    font-size: 1.5rem;
+}
+
+.title {
+    text-transform: uppercase;
+}
+
+.button {
+    text-align: center;
+}
+
+.buttonInstance {
+    font-size: 2rem;
+    padding: 0 20px 0 40px;
+    height: 60px;
+    vertical-align: middle;
+}

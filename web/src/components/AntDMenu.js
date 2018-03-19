@@ -16,8 +16,8 @@ class AntDMenu extends Component {
             {key: 'about', value: 'About', link: '#about'},
             {key: 'services', value: 'Services', link: '#services'},
             {key: 'usecases', value: 'Usecases', link: '#usecases'},
+            {key: 'latestposts', value: 'Latest Posts', link: '#latest_posts'},
             {key: 'supporters', value: 'Supporters', link: '#supporters'},
-            {key: 'latestposts', value: 'Latest Posts', link: '#latest-posts'},
             {key: 'faq', value: 'FAQ', link: '#faq'},
             {key: 'quotes', value: 'Quotes', link: '#quotes'},
         ]
@@ -58,16 +58,18 @@ class AntDMenu extends Component {
 
     render() {
         return (
-            <Menu className={styles.menu}
-                theme="light"
-                mode="horizontal"
-                defaultSelectedKeys={[this.state.activeLink]}
-            >
-                {this.menuElements.map(el => <Menu.Item className={styles.menuItem} key={el.key}><a href={el.link}>{el.value}</a></Menu.Item>)}
-                <Menu.Item className={styles.menuItem}>
-                    <Button type="primary" className={styles.button}><a href="#get-jaro">GET JARO</a></Button>
-                    </Menu.Item>
-            </Menu>
+            <header>
+                <Menu className={styles.menu}
+                    theme="light"
+                    mode="horizontal"
+                    defaultSelectedKeys={[this.state.activeLink]}
+                >
+                    {this.menuElements.map(el => <Menu.Item className={styles.menuItem} key={el.key}><a href={el.link}>{el.value}</a></Menu.Item>)}
+                    <Menu.Item className={styles.menuItem}>
+                        <Button type="primary" className={styles.button}><a href="#get-jaro">GET JARO</a></Button>
+                        </Menu.Item>
+                </Menu>
+            </header>
         );
     }
 
