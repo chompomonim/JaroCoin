@@ -1,0 +1,25 @@
+.menu {
+    position: fixed;
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.menuWrapper {
+
+}
+
+.menuItem {
+    float: none;
+    /* border-bottom: 2px solid transparent !important; */
+}
+
+.menuItem:hover {
+   /* border-bottom: 2px solid transparent !important; */
+}
+
+.button {
+    /* border-bottom: 2px solid transparent !important; */
+}

@@ -1,0 +1,35 @@
+.timer {
+    padding: 20px;
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+.title {
+    /* composes: h3 from './globalStyles.module.css'; */
+    font-size: 2.2rem;
+    text-transform: uppercase;
+}
+
+.titleFeatured {
+    color: #ea4c4c;
+}
+
+.timeElement {
+    display: inline-block;
+    font-size: 1.2vw;
+    padding: 0 4vw;
+    text-transform: uppercase;
+}
+
+.timeTitle {
+
+}
+
+.timeNumber {
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.timeSeparator {
+    font-size: 5vw;
+}

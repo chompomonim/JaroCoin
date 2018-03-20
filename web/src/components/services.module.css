@@ -1,0 +1,24 @@
+.h2 {
+    composes: h2 from './globalStyles.module.css';
+}
+
+.h3 {
+    composes: h3 from './globalStyles.module.css';
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.column {
+    margin: 0 0 50px;
+    font-size: 1.5rem;
+}
+
+.columnLast {
+    float: none;
+}

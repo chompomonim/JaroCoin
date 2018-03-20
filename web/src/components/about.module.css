@@ -1,0 +1,93 @@
+.h2 {
+    composes: h2 from './globalStyles.module.css';
+}
+
+.h3 {
+    composes: h3 from './globalStyles.module.css';
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+}
+
+.title {
+    text-align: center;
+}
+
+.item {
+    display: 'inline-block';
+    width: 30%;
+    text-align: center;
+}
+
+.number {
+    font-size: 6rem;
+}
+
+.description {
+    font-size: 1.5rem;
+}
+
+.separator {
+    display: inline-block;
+    font-size: 8rem;
+}
+
+.buttonSkills {
+    text-align: center;
+}
+
+.buttonLearnMore {
+    text-align: left;
+}
+
+.divider {
+    width: 60%;
+    margin: 80px auto;
+}
+
+.row {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.column {
+    margin: 0 0 50px;
+    font-size: 1.5rem;
+}
+
+.columnLeft {
+    font-size: 1.2rem;
+    text-align: left;
+    padding: 0 25px;
+    width: 40%;
+}
+
+.columnRight {
+    width: 40%;
+}
+
+.timeline {
+    margin: 80px 25px 0;
+}
+
+.stepsContent {
+    margin: 15px auto;
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    background-color: #fafafa;
+    width: 80%;
+    min-height: 100px;
+    text-align: left;
+    padding: 15px;
+}
+
+.stepsAction {
+    text-align: center;
+}
