@@ -80,8 +80,8 @@ class About extends Component {
 
                 <h3 className = { styles.h3 }>What is JaroCoin?</h3>
                 <Row className={styles.row} gutter={20} type="flex">
-                    <Col className={styles.columnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
-                        <div className="description" style={{ width: '600px' }}>
+                    <Col className={styles.columnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 14 }} lg={{ span: 14 }}>
+                        <div className={styles.description}>
                             <p>JaroCoin is crypto asset 100% backed by Jaro time.</p>
                             <p>Time is most preciouse asset we have. JaroCoin can't go to zero, you can not just trade it, hodl it or use as medium of exchange. You can withdrawal it for Jaro time and services.</p>
                             <ul>
@@ -91,22 +91,28 @@ class About extends Component {
                             </ul>
                         </div>
                     </Col>
-                    <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-                        <img src={jaroCoinDemoImage} alt="" />
+                    <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
+                        <div className={styles.imageWrapper}>
+                            <img className={styles.image} src={jaroCoinDemoImage} alt="" />
+                        </div>
                     </Col>
                 </Row>
 
                 <Divider className={styles.divider} />
 
                 <Row className={styles.row} gutter={20} type="flex">
-                    <Col className={styles.columnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
-                        <img style={{ width: '500px', height: '500px' }} src={tokenDistributionDemoImage} alt="" />
+                    <Col className={styles.columnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 10 }} lg={{ span: 10 }}>
+                        <div className={styles.imageWrapper}>
+                            <img className={styles.image} src={tokenDistributionDemoImage} alt="" />
+                        </div>
                     </Col>
-                    <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                    <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 14 }} lg={{ span: 14}}>
                         <h2 className={styles.h2 }>Token distribution</h2>
-                        <p>1 JARO = 1 Jaro second = 0.0001 bitcoin</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
-                        <p>There are only 21 000 000* JARO</p>
+                        <div className={styles.description}>
+                            <p>1 JARO = 1 Jaro second = 0.0001 bitcoin</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
+                            <p>There are only 21 000 000* JARO</p>
+                        </div>
                         <div className={styles.buttonLearnMore}>
                             <Button type="primary" size="large" icon="book">Learn more in whitepaper</Button>
                         </div>

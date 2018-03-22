@@ -25,8 +25,8 @@ class HeaderContent extends Component {
                         </div>
                     </Col>
                     <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}> 
-                        <div className="video-container">
-                            <iframe src="https://player.vimeo.com/video/201178499" width="640" height="360" frameBorder="0"></iframe>
+                        <div className={styles.videoContainer}>
+                            <iframe className={styles.videoIframe} src="https://player.vimeo.com/video/201178499" frameBorder="0"></iframe>
                         </div>
                     </Col>
                 </Row>

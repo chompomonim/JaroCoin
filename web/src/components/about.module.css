@@ -24,6 +24,15 @@
     text-align: center;
 }
 
+.imageWrapper {
+    text-align: center;
+}
+
+.image {
+    width: 90%;
+    height: auto;
+}
+
 .number {
     font-size: 6rem;
 }
@@ -66,11 +75,9 @@
     font-size: 1.2rem;
     text-align: left;
     padding: 0 25px;
-    width: 40%;
 }
 
 .columnRight {
-    width: 40%;
 }
 
 .timeline {
