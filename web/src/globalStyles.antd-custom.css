@@ -19335,7 +19335,10 @@ textarea.ant-mention-wrapper .ant-mention-editor {
 }
 
 .ant-menu-inline-collapsed {
-    width: 80px;
+    width: 0 !important;
+    min-width: 0;
+    border-left: none;
+    border-right: none;
 }
 
 .ant-menu-inline-collapsed>.ant-menu-item,
