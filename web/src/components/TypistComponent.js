@@ -5,7 +5,8 @@ import 'babel-polyfill' // resolving Internet Explorer Compatability
 
 import { Button } from 'antd'
 
-import 'react-typist/dist/Typist.css'
+// import 'react-typist/dist/Typist.css'
+import './typist-custom.css'
 
 
 class TypistComponent extends Component {
