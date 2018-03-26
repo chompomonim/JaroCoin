@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "antd": "^3.3.0",
+    "babel-polyfill": "^6.26.0",
     "react": "^16.2.0",
     "react-countdown-now": "^1.3.0",
     "react-dom": "^16.2.0",
     "react-responsive": "^4.0.5",
-    "react-scripts-cssmodules": "^1.0.171"
+    "react-scripts-cssmodules": "^1.0.171",
+    "react-typist": "^2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
