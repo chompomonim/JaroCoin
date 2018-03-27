@@ -1,5 +1,6 @@
 .Typist .Cursor {
-    display: inline-block;
+    /* display: inline-block; */
+    display: inline;
 }
 
 .Typist .Cursor--blinking {

@@ -3,7 +3,7 @@
     z-index: 1;
     height: 50px;
     width: 100%;
-    border-bottom: solid 1px gainsboro;
+    /* border-bottom: solid 1px gainsboro; */
 }
 
 .menu {
@@ -17,7 +17,7 @@
 }
 
 .menuWrapper {
-
+    z-index: 10;
 }
 
 .menuItem {

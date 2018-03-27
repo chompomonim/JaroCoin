@@ -7,6 +7,7 @@ import { Button } from 'antd'
 
 // import 'react-typist/dist/Typist.css'
 import './typist-custom.css'
+import styles from './typistComponent.module.css'
 
 
 class TypistComponent extends Component {
@@ -23,25 +24,26 @@ class TypistComponent extends Component {
         return(
             <div>
                 <Typist
-                    className="typistList"
-                    avgTypingSpeed={20}
+                    className={styles.typistList}
+                    avgTypingSpeed={10}
                     startDelay={2000}
-                    cursor={{ element: '《𝕁𝔸ℝ𝕆 is writing..', blink: true, }} //hideWhenDone: true
+                    cursor={{ element: ' |𝕁𝔸ℝ𝕆 is typing..', blink: true, hideWhenDone: true }}
                     onTypingDone={this.onHeaderTyped}
                 >
-                    <span className="typistSentence">JaroCoin is a token fully backed by my most precious asset – <strong>Time</strong>.</span>
-                    <br />
-                    <span className="typistSentence">JaroCoin is the only way to <strong>get my attention, advice or service.</strong></span>
-                    <br />
-                    <span className="typistSentence">Humanity changes. Money too.</span>
-                    <br />
-                    <Typist.Delay ms={1250} />
+                    {/* <Typist.Delay ms={1250} /> */}
+                    <span className={styles.typistSentence}>JaroCoin is a token fully backed by my most precious asset – <strong>Time</strong>.</span>
+                    <p />
+                    {/* <Typist.Delay ms={1250} /> */}
+                    <span className={styles.typistSentence}>JaroCoin is the only way to <strong>get my attention, advice or service.</strong></span>
+                    <p />
+                    {/* <Typist.Delay ms={1250} /> */}
+                    <span className={styles.typistSentence}>Humanity changes. Money Too.</span>
+                    <p />
                     {''}
                 </Typist>
                 {this.state.renderMsg ? (
                         <div>
-                            <br />
-                            <br />
+                            <p />
                             <Button type="primary" size="large"><a href="#about">TELL ME MORE</a></Button>
                         </div>
                     ) : null
@@ -55,7 +57,7 @@ class TypistComponent extends Component {
 export default TypistComponent
 
 
-{/* {this.state.renderMsg ? (
+/* {this.state.renderMsg ? (
     <Typist
         className="typistList"
         avgTypingSpeed={40}
@@ -84,4 +86,4 @@ export default TypistComponent
         * Its my coin;
         <br />
         {''}
-    </Typist> */}
+    </Typist> */

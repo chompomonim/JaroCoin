@@ -6,6 +6,7 @@ import { Divider } from 'antd'
 import AntDMenu from './components/AntDMenu'
 import HeaderContent from './components/HeaderContent'
 import About from './components/About'
+import Timeline from './components/Timeline'
 import Services from './components/Services'
 import Usecases from './components/Usecases'
 import LatestPosts from './components/LatestPosts'
@@ -24,13 +25,16 @@ class App extends Component {
 
         <AntDMenu />
 
-        <Layout style={{maxWidth: '1280px', margin: '0 auto', background: 'white', overflow: 'hidden'}}>
+        {/* <Layout style={{maxWidth: '1280px', margin: '0 auto', overflow: 'hidden'}}> */}
+        <Layout style={{overflow: 'hidden'}}>
 
           <HeaderContent />
 
           <Divider style={{ width: '90%', margin: '80px auto' }} />
 
           <About />
+
+          <Timeline />
 
           <Divider style={{ width: '90%', margin: '80px auto' }} />
 

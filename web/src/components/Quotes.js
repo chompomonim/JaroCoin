@@ -9,15 +9,14 @@ import styles from './quotes.module.css'
 class Quotes extends Component {
     render() {
         return (
-            <div id="quotes" style={{ maxWidth: '1260px' }}>
-                <h2 className={styles.h2}>Quotes</h2>
+            <div id="quotes" className={styles.quotesWrapper}>
+                <h2 className={styles.quotesHeading}>Quotes</h2>
 
                 <Carousel
                     // Props: https://github.com/akiran/react-slick
                     autoplay
                     className={styles.carousel}
-                    // adaptiveHeight={true}
-                    arrows={true}
+                    // arrows={true}
                     autoplaySpeed={'3000'}
                     draggable={true}
                     pauseOnHover={true}

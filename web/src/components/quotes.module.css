@@ -1,5 +1,13 @@
-.h2 {
-    composes: h2 from "./globalStyles.module.css";
+.quotesHeading {
+    font-size: 2.1rem;
+    text-align: center;
+    margin: 0 0 80px;
+}
+
+.quotesWrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1280px;
 }
 
 .carousel {

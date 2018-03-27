@@ -1,19 +1,60 @@
-.h2 {
-    composes: h2 from './globalStyles.module.css';
+.latestPostsHeading {
+    font-size: 2.1rem;
+    text-align: center;
+    margin: 0 0 80px;
 }
 
-.row {
+.latestPostsWrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1280px;
+}
+
+
+.latestPostsItemListWrapper {
     display: flex;
     padding: 0 20px;
     align-items: center;
     justify-content: space-between;
 }
 
-.column {
+.latestPostsItemWrapper {
     margin: 0 0 50px;
     font-size: 1.5rem;
+    text-align: left;
 }
 
-.title {
+.latestPostsItemTitle {
+    font-size: 1.9rem;
+    margin: 14px;
+    text-align: left;
     text-transform: uppercase;
+    height: 85px;
+}
+
+.latestPostsItemImage {
+    width: 100%;
+}
+
+.latestPostsItemDescription {
+    text-align: right;
+}
+
+.latestPostsLastItemWrapper {
+    text-align: center;
+}
+
+.latestPostsMorePostsButton {
+    height: 94px !important;
+    font-size: 1.5rem !important;
+    text-transform: uppercase;
+}
+
+.latestPostsModalHeading {
+    font-size: 1.7rem;
+}
+.latestPostsModalItem {
+    font-size: 1.6rem;
+    display: inline-block;
+    padding: 10px;
 }
