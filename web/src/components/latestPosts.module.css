@@ -53,8 +53,13 @@
 .latestPostsModalHeading {
     font-size: 1.7rem;
 }
+
 .latestPostsModalItem {
     font-size: 1.6rem;
     display: inline-block;
     padding: 10px;
+}
+
+.latestPostsModalItemsWrapper {
+    text-align: center;
 }

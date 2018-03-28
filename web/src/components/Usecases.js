@@ -11,7 +11,7 @@ import youtubeThumbnailDemoImage from '../images/youtubethumbnail-demo.jpg'
 class Usecases extends Component {
     render() {
         return (
-            <div id="usecases" className={styles.usecasesWrapper}>
+            <div className={styles.usecasesWrapper}>
                 <h2 className={styles.usecasesHeading}>Usecases</h2>
                 <div className={styles.usecasesCarouselWrapper}>
                     <Carousel

@@ -11,7 +11,7 @@ import supporterDemosupportersItemImage from '../images/supporter-demo.jpg';
 class Supporters extends Component {
     render() {
         return (
-            <div id="supporters" className={styles.supportersWrapper}>
+            <div className={styles.supportersWrapper}>
                 <h2 className={styles.supportersHeading}>Supporters</h2>
                 <Row className={styles.supportersItemListWrapper} gutter={48} type="flex">
                     <Col className={styles.supportersItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }} lg={{ span: 6 }}>

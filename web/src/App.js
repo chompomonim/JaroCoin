@@ -13,10 +13,11 @@ import LatestPosts from './components/LatestPosts'
 import Supporters from './components/Supporters'
 import Faq from './components/Faq'
 import Quotes from './components/Quotes'
+import Footer from './components/Footer'
 
 import './globalStyles.antd-custom.css'
 
-const { Footer } = Layout;
+//const { Footer } = Layout;
 
 class App extends Component {
   render() {
@@ -30,39 +31,40 @@ class App extends Component {
 
           <HeaderContent />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="about" style={{ width: '90%', margin: '80px auto' }} />
 
           <About />
 
           <Timeline />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="services" style={{ width: '90%', margin: '80px auto' }} />
 
           <Services />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="usecases" style={{ width: '90%', margin: '80px auto' }} />
 
           <Usecases />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="latest-posts" style={{ width: '90%', margin: '80px auto' }} />
 
           <LatestPosts />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="supporters" style={{ width: '90%', margin: '80px auto' }} />
 
           <Supporters />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="faq" style={{ width: '90%', margin: '80px auto' }} />
 
           <Faq />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="quotes" style={{ width: '90%', margin: '80px auto' }} />
 
           <Quotes />
 
-          <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="contact" style={{ width: '90%', margin: '80px auto' }} />
 
-          <Footer style={{ textAlign: 'center'}}>JaroCoin ©2018</Footer>
+          {/* <Footer style={{ textAlign: 'center'}}>JaroCoin ©2018</Footer> */}
+          <Footer />
 
         </Layout>
       </div>

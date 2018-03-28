@@ -14,7 +14,7 @@ class About extends Component {
     render() {
 
         return (
-            <div id="about">
+            <div>
                 {/* <h2 className={styles.h2}>About</h2> */}
                 <h2 className={styles.whoIsJaroTitle}>Who is Jaro?</h2>
                 <div className={styles.whoIsJaroWrapper}>

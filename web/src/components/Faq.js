@@ -17,7 +17,7 @@ class Faq extends Component {
 
     render() {
         return (
-            <div id="faq" className={styles.faqWrapper}>
+            <div className={styles.faqWrapper}>
                 <h2 className={styles.faqHeading}>Questions and Answers (FAQ)</h2>
                 <Row className={styles.faqItemListWrapper} gutter={48} type="flex">
                     <Col className={styles.faqItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
@@ -42,7 +42,7 @@ class Faq extends Component {
                     </Col>
                     <Col className={styles.faqLastItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
                         <div className={styles.faqMoreQuestionsButtonWrapper}>
-                            <Button className={styles.faqMoreQuestionsButton} type="primary" size="large" onClick={() => this.setModalVisible(true)}>More Questions <Icon type="question" /></Button>
+                            <Button className={styles.faqMoreQuestionsButton} type="primary" size="large" onClick={() => this.setModalVisible(true)}>More Questions?</Button>
                         </div>
                     </Col>
                 </Row>
@@ -55,14 +55,16 @@ class Faq extends Component {
                     onCancel={() => this.setModalVisible(false)}
                 >
                     <h3 className={styles.faqModalHeading}>Feel Free to Contact Me:</h3>
-                    <div className={styles.faqModalItem}>
-                        <a style={{ color: '#37c6f5' }} href="https://twitter.com/chompomonim" target="_blank" rel="noopener noreferrer"><Icon type="twitter" />Twitter</a>
-                    </div>
-                    <div className={styles.faqModalItem}>
-                        <a style={{ color: '#0077b5' }} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer"><Icon type="linkedin" /> LinkedIn</a>
-                    </div>
-                    <div className={styles.faqModalItem}>
-                        <a style={{ color: '#767676' }} href="https://plus.google.com/+JaroSatkevic" target="_blank" rel="noopener noreferrer"><Icon type="google-plus" /> Google+</a>
+                    <div className={styles.faqModalItemsWrapper}>
+                        <div className={styles.faqModalItem}>
+                            <a style={{ color: '#37c6f5' }} href="https://twitter.com/chompomonim" target="_blank" rel="noopener noreferrer"><Icon type="twitter" /> Twitter</a>
+                        </div>
+                        <div className={styles.faqModalItem}>
+                            <a style={{ color: '#0077b5' }} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer"><Icon type="linkedin" /> LinkedIn</a>
+                        </div>
+                        <div className={styles.faqModalItem}>
+                            <a style={{ color: '#dd4d42' }} href="https://plus.google.com/+JaroSatkevic" target="_blank" rel="noopener noreferrer">{/*<Icon type="google-plus" />*/} Google+</a>
+                        </div>
                     </div>
                 </Modal>
 

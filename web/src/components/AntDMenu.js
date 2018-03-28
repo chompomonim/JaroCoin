@@ -18,7 +18,7 @@ class AntDMenu extends Component {
             {key: 'about', value: 'About', link: '#about', icon: 'info-circle-o'},
             {key: 'services', value: 'Services', link: '#services', icon: 'tool'},
             {key: 'usecases', value: 'Usecases', link: '#usecases', icon: 'rocket'},
-            {key: 'latestposts', value: 'Latest Posts', link: '#latest_posts', icon: 'bars'},
+            {key: 'latestposts', value: 'Latest Posts', link: '#latest-posts', icon: 'bars'},
             {key: 'supporters', value: 'Supporters', link: '#supporters', icon: 'like-o'},
             {key: 'faq', value: 'FAQ', link: '#faq', icon: 'question-circle-o'},
             {key: 'quotes', value: 'Quotes', link: '#quotes', icon: 'heart-o'},

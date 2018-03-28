@@ -17,7 +17,7 @@ class Services extends Component {
 
     render() {
         return (
-            <div id="services" className={styles.servicesWrapper}>
+            <div className={styles.servicesWrapper}>
                 <h2 className={styles.servicesHeading}>Services</h2>
                 <h3 className={styles.servicesSubtitle}>With JaroCoin You Can</h3>
                 <Row className={styles.servicesItemListWrapper} gutter={48} type="flex">

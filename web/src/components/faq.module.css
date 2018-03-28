@@ -39,31 +39,25 @@
 }
 
 .faqMoreQuestionsButtonWrapper {
-    text-align: left;
+    text-align: center;
 }
 
 .faqMoreQuestionsButton {
-    height: 94px !important;
+    height: 79px !important;
     font-size: 1.5rem !important;
-    text-transform: uppercase;
-}
-
-.faqModalHeading {
-    font-size: 1.7rem;
+    /* text-transform: uppercase; */
 }
 
 .faqModalItem {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     display: inline-block;
     padding: 10px;
 }
 
 .faqModalHeading {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 
-.faqModalItem {
-    font-size: 1.6rem;
-    display: inline-block;
-    padding: 10px;
+.faqModalItemsWrapper {
+    text-align: center;
 }
