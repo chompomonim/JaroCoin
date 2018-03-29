@@ -16,16 +16,17 @@
 
 .timeElement {
     display: inline-block;
-    padding: 0 2.8vw;
+    padding: 0 2vw;
     text-transform: uppercase;
 }
 
 .timeTitle {
-    padding: 0 5px;
+    padding: 0 7px;
     font-size: 1.2vw;
 }
 
 .timeNumber {
+    font-family: 'Proza Libre';
     font-size: 5.25rem;
     font-weight: bold;
 }

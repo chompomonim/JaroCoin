@@ -19,21 +19,40 @@ class About extends Component {
                 <h2 className={styles.whoIsJaroTitle}>Who is Jaro?</h2>
                 <div className={styles.whoIsJaroWrapper}>
                     <div className={styles.whoIsJaroGradientOverlay}></div>
-                        <div className={styles.whoIsJaroBackground}></div>
-                        <div className={styles.whoIsJaroItem}>
-                            <div className={styles.whoIsJaroNumber}>340+</div>
-                            <p className={styles.whoIsJaroDescription}>Projects Completed</p>
-                        </div>
-                        <div className={styles.whoIsJaroItemSeparator}>/</div>
-                        <div className={styles.whoIsJaroItem}>
-                            <div className={styles.whoIsJaroNumber}>7</div>
-                            <p className={styles.whoIsJaroDescription}>Startups</p>
-                        </div>
-                        <div className={styles.whoIsJaroItemSeparator}>/</div>
-                        <div className={styles.whoIsJaroItem}>
-                            <div className={styles.whoIsJaroNumber}>11</div>
-                            <p className={styles.whoIsJaroDescription}>Years in Business</p>
-                    </div>
+                    <div className={styles.whoIsJaroBackground}></div>
+                    <Row className={styles.whoIsJaroWrapper} gutter={20} type="flex">
+                        <Col className={styles.whoIsJaroColumnLeft} xs={{ span: 20 }} sm={{ span: 24 }} md={{ span: 9 }} lg={{ span: 9 }}>
+                            <div className={styles.whoIsJaroTextItem}>
+                                Jaro is experienced software engineer, <br />
+                                IT expert, inovator,  blockchain advisor <br />
+                                and visionary.
+                            </div>
+                            <div className={styles.whoIsJaroTextItem}>
+                                Jaro is as well certificated instructor<br />
+                                of Korean martial art WonHwaDo and practitionair of Chinease martial art Iliqchuan.
+                            </div>
+                            <div className={styles.whoIsJaroTextItem}>
+                                Jaro is in Bitcoin since 2012, <br /> 
+                                he’s also early Ethereum
+                            </div>
+                        </Col>
+                        <Col className={styles.whoIsJaroColumnRight} xs={{ span: 22 }} sm={{ span: 24 }} md={{ span: 13 }} lg={{ span: 13 }}>
+                            <div className={styles.whoIsJaroNumbersItem}>
+                                <div className={styles.whoIsJaroNumber}>15</div>
+                                <p className={styles.whoIsJaroNumberDescription}>years in <br />Martial Arts</p>
+                            </div>
+                            <div className={styles.whoIsJaroItemSeparator}>/</div>
+                            <div className={styles.whoIsJaroNumbersItem}>
+                                <div className={styles.whoIsJaroNumber}>20+</div>
+                                <p className={styles.whoIsJaroNumberDescription}>years of coding <br />experience</p>
+                            </div>
+                            <div className={styles.whoIsJaroItemSeparator}>/</div>
+                            <div className={styles.whoIsJaroNumbersItem}>
+                                <div className={styles.whoIsJaroNumber}>7</div>
+                                <p className={styles.whoIsJaroNumberDescription}>startups <br />co-founded</p>
+                            </div>
+                        </Col>
+                    </Row>
                     <div id="what-is-jarocoin" className={styles.whatIsJaroCoinAnchor}></div>
                 </div>
                 {/* <div className={styles.buttonSkills}>
@@ -44,22 +63,17 @@ class About extends Component {
 
                 <h2 className={styles.whatIsJaroCoinTitle}>What is JaroCoin?</h2>
                 <Row className={styles.whatIsJaroCoinWrapper} gutter={20} type="flex">
-                    <Col className={styles.whatIsJaroCoinColumnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 16 }} lg={{ span: 16 }}>
-                        <div className={styles.whatIsJaroCoinDescription}>
-                            <p>JARO is ticker for crypto token called JaroCoin, the only coin which is 100% backed by Jaro time!</p>
-                            <p>I am selling my time for the better, more technologically advanced and more educated world.</p>
-                            <p>It’s my life. It’s my coin.<br /> JARO Coin is the only way to get my attention, advice and services.</p>
-                            <ul>
-                                <li>Higly valuble investment (? - you can Hodl them because my time is running and becomming more and more expensive).</li>
-                                <li>True utility coin (? - after using your JAROs they will be destroyed and not available to anyone anymore, as my time was).</li>
-                                <li>Truely limited supply - (? - JARO supply is limited as time is)</li>
-                            </ul>
-                        </div>
+                    <p className={styles.whatIsJaroCoinIntro}>JaroCoin (JARO) is ERC777 token on Rootstock (bitcoin sidechain) an is 100% backed by Jaro Time! </p>
+                    <p className={styles.whatIsJaroCoinQuote}>“I am selling my time for the better, more technologically advanced <br />
+                    and more educated world. This coin is the only way to get my attention, advice and services.” <br />
+                    - Jaro Šatkevič, founder of JaroCoin</p>
+                    <Col className={styles.whatIsJaroCoinColumnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <div><Icon type="plus-circle-o" /> Higly valuble investment (?)</div>
+                        <div><Icon type="plus-circle-o" /> True utility coin (?)</div>
                     </Col>
-                    <Col className={styles.whatIsJaroCoinColumnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
-                        <div className={styles.imageWrapper}>
-                            <img className={styles.image} src={jaroCoinDemoImage} alt="" />
-                        </div>
+                    <Col className={styles.whatIsJaroCoinColumnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <div><Icon type="plus-circle-o" /> Real limited supply (?)</div>
+                        <div><Icon type="plus-circle-o" /> Coin value is 100% baked (?)</div>
                     </Col>
                 </Row>
 

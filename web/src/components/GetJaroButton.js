@@ -9,7 +9,6 @@ class GetJaroButton extends Component {
 
     render() {
         return (
-
             <div className={styles.getJaroButtonWrapper}>
                 <Button className={styles.getJaroButton} type="primary" size="large">GET JARO</Button>
             </div>
