@@ -13,6 +13,7 @@ import LatestPosts from './components/LatestPosts'
 import Supporters from './components/Supporters'
 import Faq from './components/Faq'
 import Quotes from './components/Quotes'
+import GetJaroButton from './components/GetJaroButton'
 import Footer from './components/Footer'
 
 import './globalStyles.antd-custom.css'
@@ -61,9 +62,10 @@ class App extends Component {
 
           <Quotes />
 
-          <Divider id="contact" style={{ width: '90%', margin: '80px auto' }} />
+          <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
 
-          {/* <Footer style={{ textAlign: 'center'}}>JaroCoin ©2018</Footer> */}
+          <GetJaroButton />
+
           <Footer />
 
         </Layout>
