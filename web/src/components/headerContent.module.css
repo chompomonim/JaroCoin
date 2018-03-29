@@ -90,10 +90,14 @@
 
 }
 
-.button {
+.buttonWrapper {
     margin: 40px 25px 0;
     text-transform: uppercase;
     text-align: right;
+}
+
+.button {
+    height: 55px !important;
 }
 
 .videoContainer {

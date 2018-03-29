@@ -41,8 +41,8 @@ class HeaderContent extends Component {
                 </Row>
                 <Row className={styles.introButtonWrapper} gutter={20} type="flex">
                     <Col className={styles.columnCenter} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 5 }} lg={{ span: 5 }}> 
-                        <div className={styles.button}>
-                            <Button type="primary" size="large" icon="book">Download White Paper</Button>
+                        <div className={styles.buttonWrapper}>
+                            <Button className={styles.button} type="primary" size="large" icon="book">Download White Paper</Button>
                         </div>
                     </Col>
                 </Row>
