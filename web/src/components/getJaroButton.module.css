@@ -1,0 +1,10 @@
+.getJaroButtonWrapper {
+    margin: 0 auto 80px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+.getJaroButton {
+    height: 55px !important;
+    font-size: 1.3rem !important;
+}
