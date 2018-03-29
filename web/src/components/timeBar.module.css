@@ -1,0 +1,24 @@
+.timeBarWrapper {
+    width: 100%;
+    margin: 40px 0px;
+}
+
+.timeBarTitle {
+    display: inline-block;
+    font-size: 2.2rem;
+}
+
+.timeBarNumber {
+    display: inline-block;
+    font-size: 2.2rem;
+    font-family: 'Proza Libre';
+    min-width: 270px;
+}
+
+.timeBar {
+
+}
+
+.progressBar {
+
+}
