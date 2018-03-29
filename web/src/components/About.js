@@ -34,6 +34,7 @@ class About extends Component {
                             <div className={styles.whoIsJaroNumber}>11</div>
                             <p className={styles.whoIsJaroDescription}>Years in Business</p>
                     </div>
+                    <div id="what-is-jarocoin" className={styles.whatIsJaroCoinAnchor}></div>
                 </div>
                 {/* <div className={styles.buttonSkills}>
                     <Button type="primary" size="large" icon="pie-chart" href="https://linkedin.com/in/jarolt" target="_blank">
@@ -62,7 +63,7 @@ class About extends Component {
                     </Col>
                 </Row>
 
-                <Divider className={styles.divider} />
+                <Divider id="token-distribution-model" className={styles.divider} />
 
                 <h2 className={styles.tokenDistributionTitle}>Token distribution</h2>
                 <Row className={styles.tokenDistributionWrapper} gutter={20} type="flex">
