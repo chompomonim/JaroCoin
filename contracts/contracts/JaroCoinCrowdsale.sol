@@ -19,8 +19,8 @@ contract JaroCoinCrowdsale is Ownable {
     uint256 public constant PRE_SALE_AMOUNT = 840000; // 4% of first 21 000 000 tokens
 
     // Max tokens which can be in circulation
-    uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
-    uint256 public price = 1000;                      // in satoshi => 0.0001 BTC
+    uint256 public constant MAX_AMOUNT = 21000000e8;  // 21 000 000
+    uint256 public rate = 100000;                     // number of tokens buyer gets per satoshi
     uint256 public conversionRate = 17e10;            // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
 
     JaroCoinToken public token;
@@ -71,34 +71,36 @@ contract JaroCoinCrowdsale is Ownable {
     function buyTokens(address _beneficiary) public payable {
         require(_beneficiary != address(0));
         require(isActive);
+        require (msg.value > 0);
+        require (saleStartTime > getNow());
 
         uint256 weiAmount = msg.value;
-        uint256 nowTime = getNow();
-
-        uint256 tokens = weiAmount.div(conversionRate.mul(price));
+        uint256 satoshiAmount = weiAmount.div(conversionRate);
+        uint256 tokens = satoshiAmount.mul(rate);
 
         // Mint tokens and refund not used ethers in case when max amount reached during this minting
         uint256 excess = appendContribution(_beneficiary, tokens);
-        uint256 refund = (excess > 0 ? excess.mul(conversionRate.mul(price)) : 0);
+        uint256 refund = (excess > 0 ? excess.div(rate).mul(conversionRate) : 0);
         weiAmount = weiAmount.sub(refund);
         satoshiRaised = satoshiRaised.add(weiAmount.mul(conversionRate));
 
-        // if hard cap reached, no more tokens to mint, refund sender not used ethers
+        // // if hard cap reached, no more tokens to mint, refund sender not used ethers
         if (refund > 0) {
             msg.sender.transfer(refund);
         }
 
         TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens.sub(excess));
 
-        // Send ethers into WALLET
+        // // Send ethers into WALLET
         WALLET.transfer(weiAmount);
     }
 
     function appendContribution(address _beneficiary, uint256 _tokens) internal returns (uint256) {
         if (_tokens >= tokensToMint) {
             mint(_beneficiary, tokensToMint);
-            closeSale(); // Last tokens minted, lets close token sale
-            return _tokens.sub(tokensToMint);
+            uint256 excededTokens = _tokens.sub(tokensToMint);
+            _closeSale(); // Last tokens minted, lets close token sale
+            return excededTokens;
         }
 
         tokensToMint = tokensToMint.sub(_tokens);
@@ -114,17 +116,21 @@ contract JaroCoinCrowdsale is Ownable {
     function startSale(uint256 _startTime) public onlyOwner {
         require (!isActive);
         require (_startTime > getNow());
-        require (_startTime - saleStartTime > ONE_MONTH); // Minimum one month between token sales
-        tokensToMint = MAX_AMOUNT - token.totalSupply();
+        require (_startTime.sub(saleStartTime) > ONE_MONTH); // Minimum one month between token sales
+        tokensToMint = MAX_AMOUNT.sub(token.totalSupply());
         saleStartTime = _startTime;
         isActive = true;
         SaleActivated(_startTime, tokensToMint);
     }
 
-    function closeSale() public onlyOwner {
+    function _closeSale() internal {
         tokensToMint = 0;
         isActive = false;
         SaleClosed();
+    }
+
+    function closeSale() public onlyOwner {
+        _closeSale();
     }
 
     function updateConvertionRate(uint256 _rate) public onlyOwner {

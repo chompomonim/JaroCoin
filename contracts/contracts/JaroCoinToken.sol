@@ -165,6 +165,7 @@ contract JaroCoinToken is Ownable {
     * @return A boolean that indicates if the operation was successful.
     */
     function mint(address _to, uint256 _amount) public onlyOwner returns (bool) {
+        require (totalSupply.add(_amount) <= maxSupply);
         totalSupply = totalSupply.add(_amount);
         balanceOf[_to] = balanceOf[_to].add(_amount);
         Mint(_to, _amount);
