@@ -30,7 +30,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    max-height: 844px;
+    height: 844px;
     background: url(../images/HeaderClock.jpg) no-repeat;
     background-position: 45% 17%;
     background-size: auto;
@@ -134,7 +134,8 @@
 
 .headlineMobileXS {
     font-size: 1.8rem;
-    padding: 45px 35px 50px 95px;
+    /* padding: 45px 35px 50px 95px; */
+    padding: 45px 35px 50px 50px;
     max-width: 800px;
 }
 
