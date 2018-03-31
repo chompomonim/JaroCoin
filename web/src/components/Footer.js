@@ -94,14 +94,13 @@ class Footer extends Component {
                         </Col>
                     </Row>
                 </MediaQuery>
-                <Row className={styles.footerToolbarWrapper} type="flex">
-                    <Col className={styles.footerTermsWrappper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                <Row className={styles.footerToolbarWrapper} type="flex" justify="space-between">
+                    <Col className={styles.footerTermsWrapper} xs={{ span: 24 }} sm={{ span: 11 }} md={{ span: 8, push: 1 }} lg={{ span: 8 }}>
                         <a className={styles.footerTermsItem} onClick={termsOfUseModal}>Terms of Use</a> 
                         <span className={styles.footerTermsItemSeparator}> | </span>
                         <a className={styles.footerTermsItem} onClick={disclaimerModal}>Disclaimer</a> 
                     </Col>
-                    <Col className={styles.footerSocialWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-                        {/* ICON: <a className={styles.footerSocialItem} href="" target="_blank" rel="noopener noreferrer">Email</a>  */}
+                    <Col className={styles.footerSocialWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 10, pull: 1 }} lg={{ span: 8}}>
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="mailto:jaro@jarocoin.com?Subject=JaroCoin%20Web%20Contact" target="_top" rel="noopener noreferrer">
                             <Icon type="mail" />
                         </a>
@@ -123,6 +122,9 @@ class Footer extends Component {
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
                             <Icon type="youtube" /> {/* color: '#ff0000' */}
                         </a>
+                    </Col>
+                    <Col className={styles.footerCopyrightWrapper} span={24}>
+                        <div>All Right Reserved - ©JaroCoin</div>
                     </Col>
                 </Row>
             </div>
