@@ -23,7 +23,7 @@ const CompletionMessage = () => (
 // Renderer callback with condition
 const desktopSizeCountdown = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-        return <CompletionMessage />;
+        return <CompletionMessage />
     } else {
         // Render a countdown
         return (
