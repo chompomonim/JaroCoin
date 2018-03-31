@@ -29,6 +29,10 @@
    /* border-bottom: 2px solid transparent !important; */
 }
 
+.menuButton {
+    font-family: 'Work Sans', sans-serif !important;
+}
+
 .mobileMenuItem {
     float: none;
 }

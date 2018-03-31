@@ -1,4 +1,6 @@
 .footerWrapper {
+    font-family: 'Proza Libre', sans-serif;
+    font-size: 1.2rem;
     padding: 50px 0 30px;
     margin: 80px 0 0;
     background: #f3f3f3;
@@ -22,21 +24,22 @@
     justify-content: space-between;
 }
 
+.footerItemLink {
+        color: #1d1d1d;
+}
+
 .footerFirstColumn {
     margin: 0 0 30px;
-    font-size: 1.5rem;
     text-align: left;
 }
 
 .footerCenterColumn {
     margin: 0 0 30px;
-    font-size: 1.5rem;
     text-align: center;
 }
 
 .footerLastColumn {
     margin: 0 0 30px;
-    font-size: 1.5rem;
     text-align: right;
 }
 
@@ -44,32 +47,6 @@
     margin: 0 0 30px;
     font-size: 1.5rem;
     text-align: left;
-}
-
-.footerItemIcon {
-    font-size: 120px;
-    color: grey;
-}
-
-.footerItemTitle {
-    font-size: 2.4rem;
-    margin: 14px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.footerItemDescription {
-    text-align: center;
-}
-
-.footerLastItemWrapper {
-    text-align: center;
-}
-
-.footerLearnMoreButton {
-    height: 94px !important;
-    font-size: 1.5rem !important;
-    text-transform: uppercase;
 }
 
 .footerToolbarWrapper {

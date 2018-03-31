@@ -415,8 +415,8 @@ mark {
 }
 
 ::selection {
-    background: #f5415e;
-    color: #fff;
+    background: #CDDC39;
+    color: #000;
 }
 
 .clearfix {
@@ -5056,6 +5056,7 @@ textarea.ant-input {
     line-height: 1.5;
     display: inline-block;
     font-weight: 400;
+    font-family: 'Proza Libre', sans-serif;
     text-align: center;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
@@ -20665,7 +20666,7 @@ a.ant-notification-notice-close:focus {
 .ant-progress-inner {
     display: inline-block;
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #b1b1b1;
     border-radius: 3px;
     vertical-align: middle;
     position: relative;
@@ -20684,7 +20685,7 @@ a.ant-notification-notice-close:focus {
 .ant-progress-success-bg,
 .ant-progress-bg {
     border-radius: 3px;
-    background-color: #00BCD4;
+    background-color: #404040;
     -webkit-transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
     transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
     position: relative;

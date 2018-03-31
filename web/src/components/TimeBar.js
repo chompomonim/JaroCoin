@@ -18,9 +18,9 @@ const renderer = ({ total, completed }) => {
         // 10 Years = 315619200000 Miliseconds
         return (
             <div className={styles.timeBarWrapper}>
-                <div className={styles.timeBarNumber}>{total}</div>
-                <div className={styles.timeBarTitle}> miliseconds left</div><br />
-                <Progress className={styles.progressBar} percent={Math.floor((total / 325619200000) * 100)} showInfo={true} strokeWidth="90px" />
+                <div className={styles.timeBarNumber}>{ Math.floor(total / 1000) }</div>
+                <div className={styles.timeBarTitle}> seconds left</div><br />
+                <Progress className={styles.progressBar} percent={Math.floor((total / 325619200000) * 100)} showInfo={true} strokeWidth={68} />
             </div>
             
         );

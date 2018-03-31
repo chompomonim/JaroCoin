@@ -1,10 +1,11 @@
 .headerContentBackground {
     position: absolute;
-    left: -12%;
-    top: -5%;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: url(../images/HeaderClock.jpg) no-repeat;
+    background-position: -100% -28%;
     background-size: 89%;
     z-index: 1;
 }
@@ -16,17 +17,21 @@
 .headingWrapper {
     flex-flow: row-reverse !important;
     text-align: left;
-    min-height: 843px;
+    min-height: 844px;
+    position: relative;
+    z-index: 2;
 }
 
 .headlineColumn {
+    z-index: 2;
+    user-select: none;
     /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
     background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
     /* background: linear-gradient(to right, rgba(255, 255, 255, 0), white 90px); */
-    z-index: 2;
+
 }
 
 .heading {
@@ -51,12 +56,6 @@
 
 .countDownWrapper {
     position: relative;
-    /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
-    background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 12%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 12%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 12%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
-    margin-top: -80px;
     z-index: 3;
 }
 
@@ -66,7 +65,7 @@
 
 .introWrapper {
     max-width: 1280px;
-    margin: 0 auto 40px !important;
+    margin: 0 auto !important;
     justify-content: center;
 }
 
@@ -102,13 +101,19 @@
 }
 
 .buttonWrapper {
-    margin: 40px 0;
+    margin: 40px 0 0;
     text-transform: uppercase;
     text-align: left;
 }
 
 .button {
 
+}
+
+.videoWrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 40%;
 }
 
 .videoContainer {
@@ -127,11 +132,14 @@
 }
 
 .divider {
-    width: 75% !important;
+    width: 47% !important;
     margin: 80px auto !important;
     max-width: 1280px;
 }
 
+.dividerTransparent {
+    margin: 80px auto !important;
+}
 .getJaroButtonContainer {
     margin: 55px 0 0 0;
 }

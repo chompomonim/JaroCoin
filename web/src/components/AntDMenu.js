@@ -79,7 +79,7 @@ class AntDMenu extends Component {
                         >
                             {this.menuElements.map(el => <Menu.Item className={styles.menuItem} key={el.key}><a href={el.link}>{el.value}</a></Menu.Item>)}
                             <Menu.Item className={styles.menuItem}>
-                                <Button type="primary" className={styles.button}><a href="#get-jaro" target="_blank">GET JARO</a></Button>
+                                <Button type="primary" className={styles.menuButton}><a href="#get-jaro" target="_blank">GET JARO</a></Button>
                             </Menu.Item>
                         </Menu>
                     </nav>

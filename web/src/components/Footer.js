@@ -102,26 +102,26 @@ class Footer extends Component {
                     </Col>
                     <Col className={styles.footerSocialWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
                         {/* ICON: <a className={styles.footerSocialItem} href="" target="_blank" rel="noopener noreferrer">Email</a>  */}
-                        <a className={styles.footerSocialItem} style={{ color: 'white', textShadow: '0px 1px 4px #444444' }} href="mailto:jaro@jarocoin.com?Subject=JaroCoin%20Web%20Contact" target="_top" rel="noopener noreferrer">
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="mailto:jaro@jarocoin.com?Subject=JaroCoin%20Web%20Contact" target="_top" rel="noopener noreferrer">
                             <Icon type="mail" />
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#37c6f5' }} href="https://twitter.com/chompomonim" target="_blank" rel="noopener noreferrer">
-                            <Icon type="twitter" />
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://twitter.com/chompomonim" target="_blank" rel="noopener noreferrer">
+                            <Icon type="twitter" /> {/*color: '#37c6f5'*/}
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#dd4d42' }} href="https://plus.google.com/+JaroSatkevic" target="_blank" rel="noopener noreferrer">
-                            <Icon type="google-plus" />
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://plus.google.com/+JaroSatkevic" target="_blank" rel="noopener noreferrer">
+                            <Icon type="google-plus" /> {/* color: '#dd4d42' */}
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#000000' }} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">
-                            <Icon type="medium" />
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">
+                            <Icon type="medium" /> {/* color: '#000000' */}
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#4767aa' }} href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                            <Icon type="facebook" />
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                            <Icon type="facebook" /> {/* color: '#4767aa' */}
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#0077b5' }} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer">
-                            <Icon type="linkedin" />
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer">
+                            <Icon type="linkedin" /> {/* color: '#0077b5 */}
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#ff0000' }} href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
-                            <Icon type="youtube" />
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
+                            <Icon type="youtube" /> {/* color: '#ff0000' */}
                         </a>
                     </Col>
                 </Row>
