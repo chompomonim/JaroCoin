@@ -18,7 +18,7 @@ class Services extends Component {
     render() {
         return (
             <div>
-                <Row className={styles.servicesWrapper} gutter={48} type="flex" justify="center" align="center">
+                <Row className={styles.servicesWrapper} gutter={48} type="flex" justify="center" align="middle">
                     <Col className={styles.servicesHeading} span={24}>
                         <h2>Services</h2>
                     </Col>
