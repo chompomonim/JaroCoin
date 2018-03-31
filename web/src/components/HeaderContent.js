@@ -21,15 +21,43 @@ class HeaderContent extends Component {
     render() {
         return(
             <div className={styles.headerContentWrapper}>
-            <div className={styles.headerContentBackground}></div>
+
+            <MediaQuery query="(min-width: 1200px)">
+                <div className={styles.headerContentBackground}></div>
+            </MediaQuery>
+            <MediaQuery query="(min-width: 992px) and (max-width: 1199px)">
+                <div className={styles.headerContentBackgroundLG}></div>
+            </MediaQuery>
+            <MediaQuery query="(min-width: 768px) and (max-width: 991px)">
+                <div className={styles.headerContentBackgroundMD}></div>
+            </MediaQuery>
+            <MediaQuery query="(min-width: 577px) and (max-width: 767px)">
+                <div className={styles.headerContentBackgroundSM}></div>
+            </MediaQuery>
+
+            <MediaQuery query="(min-width: 577px)">
                 <Row className={styles.headingWrapper} gutter={20} type="flex">
-                    <Col className={styles.headlineColumn} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 10 }} lg={{ span: 10 }}>
+                    <Col className={styles.headlineColumn} sm={{ span: 19 }} md={{ span: 15 }} lg={{ span: 14 }} xl={{ span: 10 }} xxl={{ span: 9 }}>
+                        <h1 className={styles.heading}>Jaro Coin</h1>
+                            <div className={styles.headlineMobileXS}>
+                                <TypistComponent />
+                            </div>
+                    </Col>
+                </Row>
+            </MediaQuery>
+            <MediaQuery query="(max-width: 576px)">
+                <Row className={styles.headingWrapper} gutter={20} type="flex">
+                    <Col className={styles.headlineColumn} xs={{ span: 24 }}>
                         <h1 className={styles.heading}>Jaro Coin</h1>
                             <div className={styles.headline}>
                                 <TypistComponent />
                             </div>
-                        </Col>
+                    </Col>
                 </Row>
+            </MediaQuery>
+
+
+                <div className={styles.transparentBottomOverlay}></div>
                 <Row className={styles.countDownWrapper} gutter={20} type="flex">
                     <Col className={styles.countDownColumn} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                          <CountdownTimer />               
