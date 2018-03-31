@@ -17,6 +17,7 @@ class Usecases extends Component {
                     <Carousel
                         // Props: https://github.com/akiran/react-slick
                         autoplay
+                        //adaptiveHeight={true} // Problem with low carousel height on page load
                         className={styles.usecasesCarousel}
                         // arrows={true}
                         autoplaySpeed={'3000'}
