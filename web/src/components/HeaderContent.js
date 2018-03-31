@@ -66,8 +66,10 @@ class HeaderContent extends Component {
                 </Row>
             </MediaQuery>
 
-
+            <MediaQuery query="(min-width: 577px)">
                 <div className={styles.transparentBottomOverlay}></div>
+            </MediaQuery>
+
                 <Row className={styles.countDownWrapper} gutter={20} type="flex">
                     <Col className={styles.countDownColumn} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                          <CountdownTimer />               
