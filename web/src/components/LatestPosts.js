@@ -21,33 +21,33 @@ class LatestPosts extends Component {
         return (
             <div className={styles.latestPostsWrapper}>
                 <h2 className={styles.latestPostsHeading}>Latest Posts</h2>
-                <Row className={styles.latestPostsItemListWrapper} gutter={48} type="flex">
-                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                <Row className={styles.latestPostsListWrapper} gutter={58} type="flex" justify="center" align="middle">
+                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 22 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 7 }}>
                         <img className={styles.latestPostsItemImage} alt="latestPostsItemTitle" src={youtubeThumbnailDemolatestPostsItemImage} />
                         <h3 className={styles.latestPostsItemTitle}>Crypto Wallet Platform</h3>
                         <p className={styles.latestPostsItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 22 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 7 }}>
                         <img className={styles.latestPostsItemImage} alt="latestPostsItemTitle" src={youtubeThumbnailDemolatestPostsItemImage} />
                         <h3 className={styles.latestPostsItemTitle}>Getting Things Done</h3>
                         <p className={styles.latestPostsItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 22 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 7 }}>
                         <img className={styles.latestPostsItemImage} alt="latestPostsItemTitle" src={youtubeThumbnailDemolatestPostsItemImage} />
                         <h3 className={styles.latestPostsItemTitle}>Blockchain Coding Tools</h3>
                         <p className={styles.latestPostsItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 22 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 7 }}>
                         <h3 className={styles.latestPostsItemTitle}>React.js Workflow</h3>
                         <img className={styles.latestPostsItemImage} alt="latestPostsItemTitle" src={youtubeThumbnailDemolatestPostsItemImage} />
                         <p className={styles.latestPostsItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                    <Col className={styles.latestPostsItemWrapper} xs={{ span: 22 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 7 }}>
                         <h3 className={styles.latestPostsItemTitle}>Webinar: Crypto Currency Trading Platform</h3>
                         <img className={styles.latestPostsItemImage} alt="latestPostsItemTitle" src={youtubeThumbnailDemolatestPostsItemImage} />
                         <p className={styles.latestPostsItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.latestPostsLastItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                    <Col className={styles.latestPostsLastItemWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 7 }}>
                         <Button className={styles.latestPostsMorePostsButton} type="dashed" size="large" onClick={() => this.setModalVisible(true)}>
                             More Posts
                         </Button>

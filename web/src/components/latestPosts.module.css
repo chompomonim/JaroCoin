@@ -5,17 +5,14 @@
 }
 
 .latestPostsWrapper {
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding: 0 20px;
-    max-width: 1280px;
+    /* max-width: 1280px; */
 }
 
 
 .latestPostsItemListWrapper {
-    display: flex;
     padding: 0 20px;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .latestPostsItemWrapper {
@@ -25,11 +22,12 @@
 }
 
 .latestPostsItemTitle {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     margin: 14px;
     text-align: left;
     text-transform: uppercase;
     height: 85px;
+    overflow: hidden;
 }
 
 .latestPostsItemImage {
