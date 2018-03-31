@@ -48,7 +48,7 @@ contract JaroCoinToken is Ownable {
     event Transfer(address indexed from, address indexed to, uint value, bytes data);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    uint256 public totalSupply;
+    uint256 public totalSupply = 0;
     uint256 public constant maxSupply = 21000000e8;
 
     /**

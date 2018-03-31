@@ -5,12 +5,52 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "./JaroCoinToken.sol";
 
+contract JaroSleep is Ownable{
+    using SafeMath for uint256;
+
+    uint256 public lastBurn;                         // Time of last sleep token burn
+    uint256 public dailyTime;                        // Tokens to burn per day
+    JaroCoinToken public token;
+
+    function JaroSleep(address _token, uint256 _dailyTime) public {
+        token = JaroCoinToken(_token);
+        lastBurn = getNow();
+        dailyTime = _dailyTime;
+    }
+
+    // Reject any ethers send to this address
+    function () external payable {
+        revert();
+    }
+
+    function burnTokens() public {
+        // Burn tokens only once per day
+        if (getNow().sub(lastBurn) > 1 days) {
+            // TODO convert into uint8 for saving gas purposes
+            uint256 sec = getNow() - lastBurn;
+            uint256 d =  sec.div(1 days);
+            uint256 tokensToBurn = d.mul(dailyTime);
+            lastBurn = getNow();
+            token.burn(tokensToBurn);
+        }
+    }
+
+    function transfer(address _to, uint256 _value) public onlyOwner {
+        token.transfer(_to, _value);
+    }
+
+    // Function needed for automated testing purposes
+    function getNow() internal view returns (uint256) {
+        return now;
+    }
+}
+
 contract JaroCoinCrowdsale is Ownable {
     using SafeMath for uint256;
 
-    address public constant WALLET = 0x349250f2ef90c60d0f8773f64bd8a9cdffb9e3cc;
-    address public constant SLEEP_TOKENS = 0x349250f2ef90c60d0f8773f64bd8a9cdffb9e3cc;
-    address public constant FAMILY_TOKENS = 0x349250f2ef90c60d0f8773f64bd8a9cdffb9e3cc;
+    address public constant WALLET = 0x349250F2ef90C60d0F8773f64bd8a9CdFfB9e3Cc;
+    // address public constant SLEEP_TOKENS = 0x349250f2ef90c60d0f8773f64bd8a9cdffb9e3cc;
+    // address public constant FAMILY_TOKENS = 0x349250f2ef90c60d0f8773f64bd8a9cdffb9e3cc;
 
     uint256 public constant START_TIME = 1522584000;  // Time for first token sale - 2018/04/01 12:00 UTC +0
     uint256 public constant ONE_MONTH = 2592000;      // One month
@@ -24,6 +64,10 @@ contract JaroCoinCrowdsale is Ownable {
     uint256 public conversionRate = 17e10;            // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
 
     JaroCoinToken public token;
+    JaroSleep public sleepContract;
+    JaroSleep public familyContract;
+    JaroSleep public personalContract;
+
     uint256 public tokensToMint;                      // Amount of tokens left to mint in this sale
     uint256 public saleStartTime;                     // Start time of recent token sale
 
@@ -57,8 +101,17 @@ contract JaroCoinCrowdsale is Ownable {
     event SaleActivated(uint256 startTime, uint256 amount);
     event SaleClosed();
 
+    modifier canMint() {
+        require (isActive);
+        require (getNow() > saleStartTime);
+        _;
+    }
+
     function JaroCoinCrowdsale(address _owner) public {
         token = new JaroCoinToken();
+        sleepContract = new JaroSleep(address(token), 34560e8);    // 9.6 hours per day
+        familyContract = new JaroSleep(address(token), 21600e8);   // 6 hours per day
+        personalContract = new JaroSleep(address(token), 12960e8); // 3.6 hours per day
         startSale(START_TIME);
         transferOwnership(_owner);
     }
@@ -68,11 +121,10 @@ contract JaroCoinCrowdsale is Ownable {
         buyTokens(msg.sender);
     }
 
-    function buyTokens(address _beneficiary) public payable {
+    function buyTokens(address _beneficiary) public canMint payable {
         require(_beneficiary != address(0));
-        require(isActive);
         require (msg.value > 0);
-        require (saleStartTime > getNow());
+        require (saleStartTime < getNow());
 
         uint256 weiAmount = msg.value;
         uint256 satoshiAmount = weiAmount.div(conversionRate);
@@ -116,7 +168,25 @@ contract JaroCoinCrowdsale is Ownable {
     function startSale(uint256 _startTime) public onlyOwner {
         require (!isActive);
         require (_startTime > getNow());
-        require (_startTime.sub(saleStartTime) > ONE_MONTH); // Minimum one month between token sales
+        require (saleStartTime == 0 || _startTime.sub(saleStartTime) > 30 days);   // Minimum one month between token sales
+
+        // TODO Burn unburned sleep, family and personal time.
+        // Burn
+        sleepContract.burnTokens();
+        familyContract.burnTokens();
+        personalContract.burnTokens();
+
+        uint256 totalSupply = token.totalSupply();
+        uint256 missingTokens = totalSupply > 0 ? MAX_AMOUNT.div(totalSupply) : MAX_AMOUNT;
+
+        uint256 sleepTokens = missingTokens.div(100).mul(40);       // sleep and stuff takes 40% of Jaro time
+        uint256 familyTokens = missingTokens.div(100).mul(25);      // 25% for family
+        uint256 personalTokens = missingTokens.div(100).mul(15);    // 15% is Jaro personal time
+
+        mint(address(sleepContract), sleepTokens);
+        mint(address(familyContract), familyTokens);
+        mint(address(personalContract), personalTokens);
+
         tokensToMint = MAX_AMOUNT.sub(token.totalSupply());
         saleStartTime = _startTime;
         isActive = true;

@@ -20,9 +20,14 @@ contract('JaroCoinCrowdsale', async (accounts) => {
     const conversionRate = new BigNumber("5882e3")                   // Satoshi per Ethereum = 0.0582 BTC/ETH
     const weiPrice = OneEther.div(conversionRate).mul(satoshiPrice)       // wei per token
     const tokensPerSatoshi = new BigNumber("100000")
+    const owner = accounts[2]
+
     before(async () => {
         crowdsale = await Crowdsale.new(accounts[2])
         token = await JaroCoin.at(await crowdsale.token())
+
+        // Set time after ICO start
+        await crowdsale.setNow(1522585000)
     })
 
     it('should always work', () => {})
@@ -32,8 +37,7 @@ contract('JaroCoinCrowdsale', async (accounts) => {
     })
 
     it('should have account 3 as owner', async () => {
-        const owner = await crowdsale.owner()
-        expect(owner).to.be.equal(accounts[2])
+        expect(await crowdsale.owner()).to.be.equal(accounts[2])
     })
 
     it('should accept funds and mint 5882 tokens for 1 eth', async () => {
@@ -42,7 +46,6 @@ contract('JaroCoinCrowdsale', async (accounts) => {
             value: OneEther,
             gas: 2000000
         })
-
         expect(await token.balanceOf(accounts[0])).to.be.bignumber.equal(new BigNumber('5882.352e8'))
     })
 
@@ -71,10 +74,10 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         expect(await crowdsale.isActive()).to.be.false
     })
 
-    it('should start new period when token sale is active', async () => {
+    it('should start new period when token sale is not active', async () => {
         const start = await crowdsale.saleStartTime()
         const oneDay = new BigNumber(60 * 60 * 24)
-        await crowdsale.setNow(start.add(oneDay))
+        await crowdsale.setNow(start.add(oneDay.mul(31)))
 
         const startTime = start.add(oneDay.mul(40))
         await crowdsale.startSale(startTime, {from : accounts[2]})
@@ -86,6 +89,8 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         const gas = 2000000
         const initialAccountBalance = web3.eth.getBalance(accounts[3])
 
+        const start = await crowdsale.saleStartTime()
+        await crowdsale.setNow(start.add(1))
         await crowdsale.sendTransaction({
             from: accounts[3],
             value: amount,
@@ -93,7 +98,7 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         })
 
         const currentAccountBalance = web3.eth.getBalance(accounts[3])
-        const expectedTokens = new BigNumber('20987117.648e8')
+        const expectedTokens = new BigNumber('4187117.648e8')
         const actualConversionRate = new BigNumber("7000e3")
         const spendForTokens = expectedTokens.div(tokensPerSatoshi).mul(OneEther.div(actualConversionRate))
         const expectedRefund = amount.sub(spendForTokens)
