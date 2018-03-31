@@ -2,6 +2,7 @@
     padding: 20px;
     margin: 40px 0 0;
     text-align: center;
+    user-select: none;
 }
 
 .title {
@@ -16,20 +17,29 @@
 
 .timeElement {
     display: inline-block;
-    font-size: 1.2vw;
-    padding: 0 4vw;
+    padding: 0 2vw;
     text-transform: uppercase;
 }
 
 .timeTitle {
-
+    padding: 0 7px;
+    font-size: 1.2vw;
 }
 
 .timeNumber {
-    font-size: 5vw;
+    font-family: 'Proza Libre';
+    font-size: 5.25rem;
     font-weight: bold;
 }
 
 .timeSeparator {
     font-size: 5vw;
+}
+
+.timeTitleMobile {
+    font-size: 3.7vw;
+}
+
+.timeNumberMobile {
+    font-size: 14vw;
 }

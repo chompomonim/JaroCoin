@@ -1,146 +1,203 @@
 import React, { Component } from 'react'
 
 import { Col, Row } from 'antd'
-import { Steps, message } from 'antd';
-
 import { Divider } from 'antd'
 import { Button, Icon } from 'antd'
 
+import MediaQuery from 'react-responsive'
+
 import styles from './about.module.css'
 
-import jaroCoinDemoImage from '../images/jarocoin-demo.jpg'
-import tokenDistributionDemoImage from '../images/tokendistribution-demo.jpg'
-
-const steps = [{
-    title: '1st of April',
-    description: 'Start token sale',
-    content: 'Initial coin release',
-}, {
-    title: '10th of April',
-    description: 'Smart contracts to accept JARO',
-    content: 'Second-content',
-}, {
-    title: '1st of July',
-    description: 'First token rebalance',
-    content: 'Last-content',
-}, {
-    title: '2028.04.01',
-    description: 'Final Burn of JaroCoins',
-    content: 'Final Burn of JaroCoins',
-}];
-
+// import jaroCoinLogo from '../images/JaroCoinLogoGold.png'
+import jaroCoinLogo from '../images/JaroCoinCoin.jpg'
+import whoIsJaroBackground from '../images/WhoIsJaro.jpg'
+import tokenDistributionInfographic from '../images/TokenDistributionInfographics.jpg'
 
 class About extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            current: 0,
-        };
-    }
-    next() {
-        const current = this.state.current + 1;
-        this.setState({ current });
-    }
-    prev() {
-        const current = this.state.current - 1;
-        this.setState({ current });
-    }
-
-
     render() {
 
-        const { current } = this.state;
-
         return (
-            <div id="about">
-                <h2 className={styles.h2}>About</h2>
-                <h3 className={styles.h3}>Who is Jaro?</h3>
-                <div className={styles.container}>
-                    <div className={styles.item}>
-                        <div className={styles.number}>340+</div>
-                        <p className={styles.description}>Projects Completed</p>
-                    </div>
-                    <div className={styles.separator}>/</div>
-                    <div className={styles.item}>
-                        <div className={styles.number}>7</div>
-                        <p className={styles.description}>Feautred in Wired Magazine</p>
-                    </div>
-                    <div className={styles.separator}>/</div>
-                    <div className={styles.item}>
-                        <div className={styles.number}>11</div>
-                        <p className={styles.description}>Years in Business</p>
-                    </div>
+            <div>
+                <MediaQuery query="(min-width: 768px)">
+                    {/* <h2 className={styles.h2}>About</h2> */}
+                    <Row type="flex" justify="space-around" align="top">
+                        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                            <h2 className={styles.whoIsJaroTitle}>Who is Jaro?</h2>
+                        </Col>
+                    </Row>
+                    <Row className={styles.whoIsJaroWrapper} gutter={20} type="flex" justify="center" align="middle">
+                        <div className={styles.whoIsJaroBackground}></div>
+                        <Col className={styles.whoIsJaroColumnLeft} md={{ span: 10 }} lg={{ span: 10 }}>
+                            <div className={styles.whoIsJaroTextItem}>
+                                Jaro is experienced software engineer, <br />
+                                IT expert, inovator,  blockchain advisor <br />
+                                and visionary.
+                            </div>
+                            <div className={styles.whoIsJaroTextItem}>
+                                Jaro is as well certificated instructor<br />
+                                of Korean martial art WonHwaDo <br />
+                                and practitionair of Chinease<br />
+                                martial art Iliqchuan.
+                            </div>
+                            <div className={styles.whoIsJaroTextItem}>
+                                Jaro is in Bitcoin since 2012, <br /> 
+                                he’s also early Ethereum
+                            </div>
+                        </Col>
+                        <Col className={styles.whoIsJaroColumnRight} md={{ span: 12 }} lg={{ span: 11 }}>
+                            <div className={styles.whoIsJaroNumbersItem}>
+                                <div className={styles.whoIsJaroNumber}>15</div>
+                                <p className={styles.whoIsJaroNumberDescription}>years in <br />Martial Arts</p>
+                            </div>
+                            <div className={styles.whoIsJaroItemSeparator}>/</div>
+                            <div className={styles.whoIsJaroNumbersItem}>
+                                <div className={styles.whoIsJaroNumber}>20+</div>
+                                <p className={styles.whoIsJaroNumberDescription}>years of coding <br />experience</p>
+                            </div>
+                            <div className={styles.whoIsJaroItemSeparator}>/</div>
+                            <div className={styles.whoIsJaroNumbersItem}>
+                                <div className={styles.whoIsJaroNumber}>7</div>
+                                <p className={styles.whoIsJaroNumberDescription}>startups <br />co-founded</p>
+                            </div>
+                        </Col>
+                    </Row>
+                        <div id="what-is-jarocoin" className={styles.whatIsJaroCoinAnchor}></div>
+                    {/* <div className={styles.buttonSkills}>
+                        <Button type="primary" size="large" icon="pie-chart" href="https://linkedin.com/in/jarolt" target="_blank">
+                            Skills
+                        </Button>
+                    </div> */}
+                </MediaQuery>
+                <MediaQuery query="(max-width: 767px)">
+                    {/* <h2 className={styles.h2}>About</h2> */}
+                    <Row type="flex" justify="space-around" align="middle">
+                        <Col xs={{ span: 24 }} sm={{ span: 24 }}>
+                            <h2 className={styles.whoIsJaroTitle}>Who is Jaro?</h2>
+                        </Col>
+                    </Row>
+                    <Row gutter={20} type="flex" justify="center" align="top">
+                        <Col className={styles.whoIsJaroBackgroundMobile} xs={{ span: 24 }} sm={{ span: 24 }}>
+                            <img src={whoIsJaroBackground} alt="" />
+                        </Col>
+                        <Col className={styles.whoIsJaroTextItemMobile} xs={{ span: 21, offset: 1 }} sm={{ span: 20 }}>
+                                Jaro is experienced software engineer, IT expert, inovator,  blockchain advisor and visionary.
+                        </Col>
+                        <Col className={styles.whoIsJaroTextItemMobile} xs={{ span: 21, offset: 1 }} sm={{ span: 20 }}>
+                                Jaro is as well certificated instructor of Korean martial art WonHwaDo and practitionair of Chinease martial art Iliqchuan.
+                        </Col>
+                        <Col className={styles.whoIsJaroTextItemMobile} xs={{ span: 21, offset: 1 }} sm={{ span: 20 }}>
+                                Jaro is in Bitcoin since 2012, he’s also early Ethereum
+                        </Col>
+                    </Row>
+                    <Row gutter={20} type="flex" justify="center" align="top">
+                        <Col className={styles.whoIsJaroNumbersItemMobile} xs={{ span: 9 }} sm={{ span: 7 }}>
+                            <div className={styles.whoIsJaroNumberMobile}>15</div>
+                            <p className={styles.whoIsJaroNumberDescriptionMobile}>years in <br />Martial <br />Arts</p>
+                        </Col>
+                        <Col className={styles.whoIsJaroNumbersItemMobile} xs={{ span: 12 }} sm={{ span: 7 }}>
+                            <div className={styles.whoIsJaroNumberMobile}>20+</div>
+                            <p className={styles.whoIsJaroNumberDescriptionMobile}>years of coding <br />experience</p>
+                        </Col>
+                        <Col className={styles.whoIsJaroNumbersLastItemMobile} xs={{ span: 10 }} sm={{ span: 7 }}>
+                            <div className={styles.whoIsJaroNumberMobile}>7</div>
+                            <div className={styles.whoIsJaroNumberDescriptionMobile}>startups <br />co-founded</div>
+                        </Col>
+                    </Row>
+                    <div id="what-is-jarocoin" className={styles.whatIsJaroCoinAnchor}></div>
+                    {/* <div className={styles.buttonSkills}>
+                        <Button type="primary" size="large" icon="pie-chart" href="https://linkedin.com/in/jarolt" target="_blank">
+                            Skills
+                        </Button>
+                    </div> */}
+                </MediaQuery>
+
+                
+                <div className={styles.whatIsJaroCoinWrapper}>
+                    <Row type="flex" justify="space-around" align="top">
+                        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                            <h2 className={styles.whatIsJaroCoinTitle}>What is JaroCoin?</h2>
+                        </Col>
+                    </Row>
+                    <Row className={styles.whatIsJaroCoin1stRow} gutter={50} type="flex" justify="center" align="middle">
+                        <Col className={styles.whatIsJaroCoin1stRowColumnLeft} xs={{ span: 20 }} sm={{ span: 22 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                            <p className={styles.whatIsJaroCoinIntro}>JaroCoin (JARO) is ERC777 token on Rootstock (bitcoin sidechain) an is 100% backed by Jaro Time! </p>
+                            <p className={styles.whatIsJaroCoinQuote}>“I am selling my time for the better, more technologically advanced <br />
+                            and more educated world. This coin is the only way to get my attention, advice and services.” <br />
+                            - Jaro Šatkevič, founder of JaroCoin</p>
+                        </Col>
+                        <Col className={styles.whatIsJaroCoin1stRowColumnRight} xs={{ span: 18 }} sm={{ span: 10 }} md={{ span: 6 }} lg={{ span: 5 }}>
+                            <img className={styles.whatIsJaroCoinImage} src={jaroCoinLogo} alt="" />
+                        </Col>
+                    </Row>
+                    <Row className={styles.whatIsJaroCoin2ndRow} type="flex" justify="center" align="middle">
+                        <Col className={styles.whatIsJaroCoin2ndRowColumnLeft} xs={{ span: 23, offset: 2 }} sm={{ span: 12 }} md={{ span: 10 }} lg={{ span: 8, offset: 2}}>
+                            <div><Icon type="plus-circle-o" /> Higly valuble investment (?)</div>
+                            <div><Icon type="plus-circle-o" /> True utility coin (?)</div>
+                        </Col>
+                        <Col className={styles.whatIsJaroCoin2ndRowColumnRight} xs={{ span: 23, offset: 2 }} sm={{ span: 12 }} md={{ span: 10 }} lg={{ span: 8 }}>
+                            <div><Icon type="plus-circle-o" /> Real limited supply (?)</div>
+                            <div><Icon type="plus-circle-o" /> Coin value is 100% baked (?)</div>
+                        </Col>
+                    </Row>
                 </div>
-                <div className={styles.buttonSkills}>
-                    <Button type="primary" size="large" icon="pie-chart">Skills</Button>
+
+                <Divider id="token-distribution-model" className={styles.divider} />
+                
+                <div className={styles.tokenDistributionWrapper}>
+                    <Row justify="center" align="center" type="flex">
+                        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                            <h2 className={styles.tokenDistributionTitle}>Token distribution</h2>
+                        </Col>
+                    </Row>
+                    <Row justify="center" align="center" gutter={20} type="flex">
+                        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 18 }} className={styles.tokenDistributionInfographic}>
+                            <div className={styles.tokenDistributionInfographicWrapper}>
+                                <div className={styles.tokenDistributionText1stItem}>
+                                    <div className={styles.tokenDistributionTextItemTitle}>20% ICO</div>
+                                    <div className={styles.tokenDistributionTextItemDescription}>
+                                        it's part of Jaro time<br />
+                                        whith you can get!
+                                    </div>
+                                </div>
+                                <div className={styles.tokenDistributionText2ndItem}>
+                                    <div className={styles.tokenDistributionTextItemTitle}>11% personal time</div>
+                                    <div className={styles.tokenDistributionTextItemDescription}>
+                                        each person needs time for<br />
+                                        self education, hobby and<br />
+                                        meeting friends
+                                    </div>
+                                </div>
+
+                                <img className={styles.tokenDistributionImage} src={tokenDistributionInfographic} alt="" />
+
+                                <div className={styles.tokenDistributionText3rdItem}>
+                                    <div className={styles.tokenDistributionTextItemTitle}>4% pre-ico</div>
+                                    <div className={styles.tokenDistributionTextItemDescription}>
+                                        tokens reserved for my pre ico<br />
+                                        liabilities and for early supporters<br />
+                                        of this project
+                                    </div>
+                                </div>
+                                <div className={styles.tokenDistributionText4thItem}>
+                                    <div className={styles.tokenDistributionTextItemTitle}>25% family time</div>
+                                    <div className={styles.tokenDistributionTextItemDescription}>
+                                        family is important part of my<br />
+                                        live, I'd like give my family at<br />
+                                        least 1/4 of all my time
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 14 }} lg={{ span: 14 }} className={styles.tokenDistributionDescription}>
+                                1 JARO = 1 second of Jaro time = 0.00001 Bitcoin<br />
+                                There are only 21 000 000* JARO
+                            <div className={styles.buttonLearnMoreWhitepaper}>
+                                <Button type="primary" size="large" icon="book" href="#" target="_blank">Learn more in Whitepaper</Button>
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
-
-                <Divider className={styles.divider} />
-
-                <h3 className = { styles.h3 }>What is JaroCoin?</h3>
-                <Row className={styles.row} gutter={20} type="flex">
-                    <Col className={styles.columnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
-                        <div className="description" style={{ width: '600px' }}>
-                            <p>JaroCoin is crypto asset 100% backed by Jaro time.</p>
-                            <p>Time is most preciouse asset we have. JaroCoin can't go to zero, you can not just trade it, hodl it or use as medium of exchange. You can withdrawal it for Jaro time and services.</p>
-                            <ul>
-                                <li>It's higly valuble investment.</li>
-                                <li>True utility coin.</li>
-                                <li>Truely limited suply > JARO suply is limited as time is.</li>
-                            </ul>
-                        </div>
-                    </Col>
-                    <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-                        <img src={jaroCoinDemoImage} alt="" />
-                    </Col>
-                </Row>
-
-                <Divider className={styles.divider} />
-
-                <Row className={styles.row} gutter={20} type="flex">
-                    <Col className={styles.columnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
-                        <img style={{ width: '500px', height: '500px' }} src={tokenDistributionDemoImage} alt="" />
-                    </Col>
-                    <Col className={styles.columnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-                        <h2 className={styles.h2 }>Token distribution</h2>
-                        <p>1 JARO = 1 Jaro second = 0.0001 bitcoin</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.  Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.</p>
-                        <p>There are only 21 000 000* JARO</p>
-                        <div className={styles.buttonLearnMore}>
-                            <Button type="primary" size="large" icon="book">Learn more in whitepaper</Button>
-                        </div>
-                    </Col>
-
-                </Row>
-
-                <Divider className={styles.divider} />
-
-                <div className={styles.timeline}>
-                    <h3 className={styles.h3} >Timeline</h3>
-                    <Steps current={current}>
-                        {steps.map(item => <Steps.Step key={item.title} title={item.title} description={item.description} />)}
-                    </Steps>
-                    <div className={styles.stepsContent}>{steps[this.state.current].content}</div>
-                    <div className={styles.stepsAction}>
-                        {
-                            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-                                Previous
-                            </Button>
-                        }
-                        {
-                            this.state.current < steps.length - 1
-                            &&
-                            <Button type="primary" onClick={() => this.next()}>Next</Button>
-                        }
-                        {
-                            this.state.current === steps.length - 1
-                            &&
-                            <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
-                        }
-                    </div>
-                </div>
-
             </div>
         );
     }

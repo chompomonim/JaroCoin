@@ -1,0 +1,77 @@
+.footerWrapper {
+    font-family: 'Proza Libre', sans-serif;
+    font-size: 1.2rem;
+    padding: 50px 0 30px;
+    margin: 80px 0 0;
+    background: #f3f3f3;
+}
+
+.footerItemListWrapper {
+    margin: 0 auto !important;
+    padding: 0 20px;
+    max-width: 1160px;
+}
+
+.footerItemListMobileWrapper {
+    margin: 0 auto !important;
+    padding: 0 0 0 25px;
+    max-width: 768px;
+}
+
+.footerItemListWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerItemLink {
+        color: #1d1d1d;
+}
+
+.footerFirstColumn {
+    margin: 0 0 30px;
+    text-align: left;
+}
+
+.footerCenterColumn {
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.footerLastColumn {
+    margin: 0 0 30px;
+    text-align: right;
+}
+
+.footerMobileColumn {
+    margin: 0 0 30px;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.footerToolbarWrapper {
+    margin: 20px auto 0 !important;
+    padding: 0 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 3.6rem;
+}
+
+.footerTermsWrapper {
+    text-align: center !important;
+}
+
+.footerSocialWrapper {
+    text-align: center !important;
+}
+
+.footerSocialItem {
+    font-size: 1.4rem;
+    padding: 0 5px;
+}
+
+.footerCopyrightWrapper {
+    font-family: 'Proza Libre';
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}

@@ -1,31 +1,39 @@
-.h2 {
-    composes: h2 from './globalStyles.module.css';
+.supportersHeading {
+    font-size: 2.1rem;
+    text-align: center;
+    margin: 0 0 60px;
 }
 
-.h4 {
-    composes: h2 from './globalStyles.module.css';
+.supportersWrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1280px;
 }
 
-.title {
-    font-size: 1.6rem;
-}
-
-.description {
-    font-size: 1rem;
-}
-
-.row {
+.supportersItemListWrapper {
     display: flex;
     padding: 0 20px;
     align-items: center;
     justify-content: space-between;
 }
 
-.column {
-    font-size: 1.5rem;
+.supportersItemWrapper {
+   font-size: 1.5rem;
+   padding-top: 40px;
 }
 
-.image {
-    width: 250px;
-    height: 250px;
+.supportersItemTitle {
+    font-size: 1.6rem;
+    padding: 10px 20px;
+    text-align: center
+}
+
+.supportersItemImage {
+    width: 100%;
+}
+
+.supportersItemDescription {
+    font-size: 1rem;
+    padding: 0 20px 20px;
+    text-align: center;
 }

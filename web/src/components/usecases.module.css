@@ -1,17 +1,35 @@
-.heading {
-    composes: h2 from "./globalStyles.module.css";
+.usecasesWrapper {
+    margin: 0 auto !important;
+    padding: 0 20px;
+    max-width: 1600px;
+    width: 100%;
 }
 
-.carousel {
+.usecasesCarouselWrapper {
+
+}
+
+.usecasesHeading {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0 0 80px;
+}
+
+.ucecasesCarousel {
     text-align: center;
     /* height: 650px; */
     overflow: hidden;
     margin: 0 auto;
 }
 
+.usecasesCarouselRow {
+    margin: 0 0 50px 18px !important;
+}
+
 .card {
     text-align: right;
     padding: 0 !important;
+    margin: 15px 0 !important;
 }
 
 .button {
@@ -20,20 +38,22 @@
 
 .title {
     text-align: left;
-    width: 110%;
+    width: 100%;
     font-size: 1.6rem;
     height: 76px;
+    padding: 0 20px;
     overflow: hidden;
 }
 
 .description {
     font-size: 1.2rem;
     text-align: left;
-    padding: 20px 0;
+    padding: 20px 20px;
     height: 110px;
     overflow: hidden;
 }
 
 .image {
     width: 100%;
+    margin-top: 10px;
 }

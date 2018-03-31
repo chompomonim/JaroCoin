@@ -1,6 +1,15 @@
-.menu {
+.menuWrapper {
     position: fixed;
-    /* width: 100%; */
+    z-index: 1;
+    height: 50px;
+    width: 100%;
+    /* border-bottom: solid 1px gainsboro; */
+}
+
+.menu {
+    background: #fffffff2;
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +17,7 @@
 }
 
 .menuWrapper {
-
+    z-index: 10;
 }
 
 .menuItem {
@@ -20,6 +29,54 @@
    /* border-bottom: 2px solid transparent !important; */
 }
 
-.button {
-    /* border-bottom: 2px solid transparent !important; */
+.menuButton {
+    font-family: 'Work Sans', sans-serif !important;
+}
+
+.mobileMenuItem {
+    float: none;
+}
+
+.mobileMenuItemButton {
+    composes: menuItem;
+        margin-top: 15px !important;
+        padding: 0 !important;
+        text-align: center;
+}
+
+.navMobile {
+    width: 100%;
+    height: 50px;
+    background: #fffffffa !important; /* adding slightly transparent background */
+    border-bottom: solid 1px gainsboro;
+    z-index: 1;
+    position: fixed;
+}
+
+.mobileMenu {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: 40% !important; /* remove for 100% */
+    min-width: 165px;
+    border-left: solid 1px gainsboro;
+    border-bottom: solid 1px gainsboro;
+    max-height: calc(100% - 50px);
+    overflow-y: auto;
+    background: #fffffffa !important; /* adding slightly transparent background */
+}
+
+.mobileToggleButton {
+   position: fixed !important;
+   right: 0;
+   margin: 8px 20px 0 0;
+}
+
+.mobileLogo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    position: fixed;
+    top: 12px;
+    left: 25px;
+    text-transform: uppercase;
 }

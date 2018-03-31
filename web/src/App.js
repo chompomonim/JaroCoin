@@ -1,62 +1,77 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import { Layout } from 'antd';
-import { Divider } from 'antd';
+import { Layout } from 'antd'
+import { Divider } from 'antd'
 
 import AntDMenu from './components/AntDMenu'
 import HeaderContent from './components/HeaderContent'
 import About from './components/About'
+import Timeline from './components/Timeline'
 import Services from './components/Services'
 import Usecases from './components/Usecases'
 import LatestPosts from './components/LatestPosts'
 import Supporters from './components/Supporters'
 import Faq from './components/Faq'
 import Quotes from './components/Quotes'
+import GetJaroButton from './components/GetJaroButton'
+import Footer from './components/Footer'
 
+import './globalStyles.antd-custom.css'
 
-const { Footer } = Layout;
+//const { Footer } = Layout;
 
 class App extends Component {
   render() {
     return (
-      <Layout style={{maxWidth: '1280px', margin: '0 auto', background: 'white'}}>
+      <div>
 
         <AntDMenu />
 
-        <HeaderContent />
+        {/* <Layout style={{maxWidth: '1280px', margin: '0 auto', overflow: 'hidden'}}> */}
+        <Layout style={{overflow: 'hidden'}}>
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <HeaderContent />
 
-        <About />
+          <Divider id="about" style={{ width: '90%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <About />
 
-        <Services />
+          <Divider id="timeline" style={{ width: '40%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Timeline />
 
-        <Usecases />
+          <Divider id="services" style={{ width: '90%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Services />
 
-        <LatestPosts />
+          <Divider id="usecases" style={{ width: '90%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Usecases />
 
-        <Supporters />
+          <Divider id="latest-posts" style={{ width: '90%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <LatestPosts />
 
-        <Faq />
+          <Divider id="supporters" style={{ width: '90%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Supporters />
 
-        <Quotes />
+          <Divider id="faq" style={{ width: '90%', margin: '80px auto' }} />
 
-        <Divider style={{ width: '90%', margin: '80px auto' }} />
+          <Faq />
 
-        <Footer style={{ textAlign: 'center'}}>JaroCoin ©2018</Footer>
-      </Layout>
+          <Divider id="quotes" style={{ width: '90%', margin: '80px auto' }} />
+
+          <Quotes />
+
+          <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
+
+          <GetJaroButton />
+
+          <Footer />
+
+        </Layout>
+      </div>
     );
   }
 }

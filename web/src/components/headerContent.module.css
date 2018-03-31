@@ -1,40 +1,145 @@
+.headerContentBackground {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/HeaderClock.jpg) no-repeat;
+    background-position: -100% -28%;
+    background-size: 89%;
+    z-index: 1;
+}
+
+.headerContentWrapper {
+
+}
+
+.headingWrapper {
+    flex-flow: row-reverse !important;
+    text-align: left;
+    min-height: 844px;
+    position: relative;
+    z-index: 2;
+}
+
+.headlineColumn {
+    z-index: 2;
+    user-select: none;
+    /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
+    /* background: linear-gradient(to right, rgba(255, 255, 255, 0), white 90px); */
+
+}
+
 .heading {
-    composes: h1 from "./globalStyles.module.css";
-    margin: 100px 0 10px;
+    font-size: 3.5rem;
+    color: #4c4b4b;
+    margin-top: 140px;
+    padding-left: 45px;
 }
 
 .headline {
-    margin: 0 0 100px;
-    composes: h2 from "./globalStyles.module.css";
+    font-size: 1.8rem;
+    padding: 45px 25px 25px 45px;
 }
 
-.title {
-    composes: h3 from "./globalStyles.module.css";
+.introSectionTitle {
+    font-size: 1.8rem;
 }
 
-.description {
+.introDescription {
     font-size: 1.2rem;
 }
 
-.row {
-    padding: 0 20px;
+.countDownWrapper {
+    position: relative;
+    z-index: 3;
 }
 
-.columnLeft {
+.countDownColumn {
+    padding: 80px;
+}
+
+.introWrapper {
+    max-width: 1280px;
+    margin: 0 auto !important;
+    justify-content: center;
+}
+
+.timeBarElementsWrapper {
+    max-width: 1180px;
+    margin: 0 auto !important;
+    justify-content: flex-start;
+} 
+
+.timeBarColumnLeft {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 0 25px;
+
+}
+
+.timeBarColumnRight {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px;
+}
+
+.introColumnLeft {
     text-align: left;
     padding: 0 25px;
 }
+
 .columnRight {
 
 }
 
-.button {
-    margin: 40px 25px 0;
+.buttonWrapper {
+    margin: 40px 0 0;
     text-transform: uppercase;
-    text-align: right;
+    text-align: left;
+}
+
+.button {
+
+}
+
+.videoWrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 40%;
+}
+
+.videoContainer {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+.videoIframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .divider {
-    width: 60%;
-    margin: 80px auto;
+    width: 47% !important;
+    margin: 80px auto !important;
+    max-width: 1280px;
+}
+
+.dividerTransparent {
+    margin: 80px auto !important;
+}
+.getJaroButtonContainer {
+    margin: 55px 0 0 0;
 }

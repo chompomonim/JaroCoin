@@ -6,7 +6,6 @@ import styles from './countdownTimer.module.css'
 
 
 const Completionist = () => <span>You are good to go!</span>
-const Separator = ':'
 
 // Renderer callback with condition
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
