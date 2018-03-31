@@ -21235,6 +21235,7 @@ a.ant-notification-notice-close:focus {
 .ant-steps-item-description {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.45);
+    white-space: normal;
 }
 
 .ant-steps-item-wait .ant-steps-item-icon {

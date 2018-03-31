@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 
 import { Steps } from 'antd'
+import { Row, Col } from 'antd'
 import { message } from 'antd'
 import { Button } from 'antd'
+import { Divider } from 'antd'
+
+import MediaQuery from 'react-responsive'
 
 import styles from './timeline.module.css'
 
@@ -39,13 +43,27 @@ class Timeline extends Component {
         const { current } = this.state;
 
         return (
-            <div className={styles.timelineWrapper}>
-                <h3 className={styles.h3} >Timeline</h3>
-                <Steps current={current}>
-                    {steps.map(item => <Steps.Step key={item.title} title={item.title} description={item.description} />)}
-                </Steps>
-                {/* <div className={styles.stepsContent}>{steps[this.state.current].content}</div> */}
-            </div>
+            <Row justify="space-around" align="center" gutter={20} type="flex" className={styles.timelineWrapper}>
+                <Col span={24} className={styles.timelineTitle}>
+                    <h3 className={styles.h3} >Timeline</h3>
+                </Col>
+                <MediaQuery query="(min-width: 576px)">
+                    <Col sm={{ span: 22 }} md={{ span: 22 }} lg={{ span: 18 }}>
+                        <Steps current={current}>
+                            {steps.map(item => <Steps.Step key={item.title} title={item.title} description={item.description} />)}
+                        </Steps>
+                        {/* <div className={styles.stepsContent}>{steps[this.state.current].content}</div> */}
+                    </Col>
+                </MediaQuery>
+                <MediaQuery query="(max-width: 575px)">
+                    <Col xs={{ span: 18, offset: 2 }}>
+                        <Steps direction="vertical" current={current} >
+                            {steps.map(item => <Steps.Step key={item.title} title={item.title} description={item.description} />)}
+                        </Steps>
+                        {/* <div className={styles.stepsContent}>{steps[this.state.current].content}</div> */}
+                    </Col>
+                </MediaQuery>
+            </Row>
         );
     }
 }

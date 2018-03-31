@@ -36,6 +36,8 @@ class App extends Component {
 
           <About />
 
+          <Divider id="timeline" style={{ width: '40%', margin: '80px auto' }} />
+
           <Timeline />
 
           <Divider id="services" style={{ width: '90%', margin: '80px auto' }} />
