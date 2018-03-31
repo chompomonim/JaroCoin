@@ -87,7 +87,7 @@ class HeaderContent extends Component {
                     </Col>
                 </Row>
 
-                <Divider className={styles.divider} />
+                <Divider id="intro" className={styles.divider} />
 
                 <Row className={styles.introWrapper} gutter={40} type="flex">
                     <Col className={styles.videoWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 18 }} lg={{ span: 14 }}>

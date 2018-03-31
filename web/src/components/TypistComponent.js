@@ -44,7 +44,7 @@ class TypistComponent extends Component {
                 {this.state.renderMsg ? (
                         <div>
                             <p />
-                            <Button type="primary" size="large"><a href="#about">TELL ME MORE</a></Button>
+                            <Button type="primary" size="large"><a href="#intro">TELL ME MORE</a></Button>
                         </div>
                     ) : null
                 }
