@@ -19,28 +19,28 @@ class Faq extends Component {
         return (
             <div className={styles.faqWrapper}>
                 <h2 className={styles.faqHeading}>Questions and Answers (FAQ)</h2>
-                <Row className={styles.faqItemListWrapper} gutter={48} type="flex">
-                    <Col className={styles.faqItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                <Row className={styles.faqItemListWrapper} gutter={48} type="flex" justify="center" align="middle">
+                    <Col className={styles.faqItemWrapper} xs={{ span: 23 }} sm={{ span: 18, offset: 1 }} md={{ span: 11 }} lg={{ span: 11 }}>
                         <h3 className={styles.faqItemTitle}>Is JaroCoin just one more ICO?</h3>
                         <p className={styles.faqItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.faqItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                    <Col className={styles.faqItemWrapper} xs={{ span: 23 }} sm={{ span: 18, offset: 1 }} md={{ span: 11 }} lg={{ span: 11 }}>
                         <h3 className={styles.faqItemTitle}>Are you really will sell all of your time?</h3>
                         <p className={styles.faqItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.faqItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                    <Col className={styles.faqItemWrapper} xs={{ span: 23 }} sm={{ span: 18, offset: 1 }} md={{ span: 11 }} lg={{ span: 11 }}>
                         <h3 className={styles.faqItemTitle}>How whole process look like?</h3>
                         <p className={styles.faqItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.faqItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                    <Col className={styles.faqItemWrapper} xs={{ span: 23 }} sm={{ span: 18, offset: 1 }} md={{ span: 11 }} lg={{ span: 11 }}>
                         <h3 className={styles.faqItemTitle}>How can I buy JaroCoin</h3>
                         <p className={styles.faqItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.faqItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                    <Col className={styles.faqItemWrapper} xs={{ span: 23 }} sm={{ span: 18, offset: 1 }} md={{ span: 11 }} lg={{ span: 11 }}>
                         <h3 className={styles.faqItemTitle}>What is the Price of JaroCoin</h3>
                         <p className={styles.faqItemDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. </p>
                     </Col>
-                    <Col className={styles.faqLastItemWrapper} xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                    <Col className={styles.faqLastItemWrapper} xs={{ span: 23 }} sm={{ span: 18, offset: 1 }} md={{ span: 11 }} lg={{ span: 11 }}>
                         <div className={styles.faqMoreQuestionsButtonWrapper}>
                             <Button className={styles.faqMoreQuestionsButton} type="primary" size="large" onClick={() => this.setModalVisible(true)}>More Questions?</Button>
                         </div>
