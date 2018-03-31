@@ -67,6 +67,7 @@
 
 .whoIsJaroNumbersItemMobile {
     font-family: 'Proza Libre';
+    text-align: center;
 }
 
 .whoIsJaroNumbersLastItemMobile {
@@ -99,9 +100,9 @@
 
 /* WHAT IS JARO COIN? */
 .whatIsJaroCoinWrapper {
-    padding: 0 20px;
+    /* padding: 0 20px;
     margin: 0 auto !important;
-    max-width: 1280px;
+    max-width: 1280px; */
 }
 
 .whatIsJaroCoinTitle {
@@ -113,9 +114,14 @@
 .whatIsJaroCoin1ndRow {
 
 }
-.whatIsJaroCoinColumnLeft {
+.whatIsJaroCoin1stRowColumnLeft {
     font-size: 1.2rem;
     padding: 0 25px;
+}
+.whatIsJaroCoin1stRowColumnRight {
+    font-size: 1.2rem;
+    padding: 0 25px;
+    text-align: center;
 }
 
 .whatIsJaroCoinIntro {
@@ -127,17 +133,22 @@
 }
 
 .whatIsJaroCoinImage {
-    width: 90%;
+    width: 80%;
     height: auto;
-}
-
-.whatIsJaroCoinColumnRight {
-    font-size: 1.2rem;
-    padding: 0 25px;
 }
 
 .whatIsJaroCoin2ndRow {
     margin-top: 25px;
+}
+
+.whatIsJaroCoin2ndRowColumnRight {
+    font-size: 1.2rem;
+    padding: 0 25px;
+}
+
+.whatIsJaroCoin2ndRowColumnLeft {
+    font-size: 1.15rem;
+    padding: 0 25px;
 }
 
 /* TOKEN DISTRIBUTION */
