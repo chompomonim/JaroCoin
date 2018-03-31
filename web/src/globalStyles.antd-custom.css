@@ -8432,7 +8432,8 @@ span.ant-radio+* {
 }
 
 .ant-carousel .slick-dots {
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     bottom: 12px;
     list-style: none;
     display: block;
