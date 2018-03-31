@@ -23,7 +23,7 @@ class HeaderContent extends Component {
             <div className={styles.headerContentWrapper}>
 
             <MediaQuery query="(min-width: 1200px)">
-                <div className={styles.headerContentBackground}></div>
+                <div className={styles.headerContentBackgroundXL}></div>
             </MediaQuery>
             <MediaQuery query="(min-width: 992px) and (max-width: 1199px)">
                 <div className={styles.headerContentBackgroundLG}></div>
@@ -35,11 +35,21 @@ class HeaderContent extends Component {
                 <div className={styles.headerContentBackgroundSM}></div>
             </MediaQuery>
 
-            <MediaQuery query="(min-width: 577px)">
+            <MediaQuery query="(min-width: 1200px)">
                 <Row className={styles.headingWrapper} gutter={20} type="flex">
                     <Col className={styles.headlineColumn} sm={{ span: 19 }} md={{ span: 15 }} lg={{ span: 14 }} xl={{ span: 10 }} xxl={{ span: 9 }}>
                         <h1 className={styles.heading}>Jaro Coin</h1>
-                            <div className={styles.headlineMobileXS}>
+                            <div className={styles.headline}>
+                                <TypistComponent />
+                            </div>
+                    </Col>
+                </Row>
+            </MediaQuery>
+                <MediaQuery query="(min-width: 577px) and (max-width: 1199px)">
+                <Row className={styles.headingWrapper} gutter={20} type="flex">
+                        <Col className={styles.headlineColumn} md={{ span: 15 }} lg={{ span: 14 }}>
+                        <h1 className={styles.headingMobileLG}>Jaro Coin</h1>
+                            <div className={styles.headlineMobileLG}>
                                 <TypistComponent />
                             </div>
                     </Col>
@@ -48,8 +58,8 @@ class HeaderContent extends Component {
             <MediaQuery query="(max-width: 576px)">
                 <Row className={styles.headingWrapper} gutter={20} type="flex">
                     <Col className={styles.headlineColumn} xs={{ span: 24 }}>
-                        <h1 className={styles.heading}>Jaro Coin</h1>
-                            <div className={styles.headline}>
+                        <h1 className={styles.headingMobileXS}>Jaro Coin</h1>
+                            <div className={styles.headlineMobileXS}>
                                 <TypistComponent />
                             </div>
                     </Col>
