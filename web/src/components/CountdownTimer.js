@@ -87,8 +87,8 @@ class CountdownTimer extends Component {
                         <span className={styles.desktopSizeTitleFeatured}> Countdown</span>
                     </h3>
                         <Countdown
-                            // date={Date.now() + 5000} // Quick test
-                            date={'Sat, 04 Apr 2018 12:00:00'}
+                            date={Date.now() + 5000} // Quick test
+                            // date={'Sat, 04 Apr 2018 12:00:00'}
                             renderer={desktopSizeCountdown}
                         />
                 </MediaQuery>
@@ -98,8 +98,8 @@ class CountdownTimer extends Component {
                         <span className={styles.mobileSizeTitleFeatured}> Countdown</span>
                     </h3>
                         <Countdown
-                            // date={Date.now() + 5000} // Quick test
-                            date={'Sat, 04 Apr 2018 12:00:00'}
+                            date={Date.now() + 5000} // Quick test
+                            // date={'Sat, 04 Apr 2018 12:00:00'}
                             renderer={mobileSizeCountdown}
                         />
                 </MediaQuery>
