@@ -6,7 +6,8 @@ import { Divider } from 'antd'
 import AntDMenu from './components/AntDMenu'
 import HeaderContent from './components/Header'
 import About from './components/About'
-import Timeline from './components/Timeline'
+import TokenDistributionModel from './components/TokenDistributionModel'
+
 import Services from './components/Services'
 import Usecases from './components/Usecases'
 import LatestPosts from './components/LatestPosts'
@@ -36,9 +37,9 @@ class App extends Component {
 
           <About />
 
-          <Divider id="timeline" style={{ width: '40%', margin: '80px auto' }} />
+          <Divider id="token-distribution-model" className="divider" />
 
-          <Timeline />
+          <TokenDistributionModel />
 
           <Divider id="services" style={{ width: '90%', margin: '80px auto' }} />
 

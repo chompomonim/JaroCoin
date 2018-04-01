@@ -3,7 +3,7 @@ import React from 'react'
 import MediaQuery from 'react-responsive'
 import { Col, Row } from 'antd'
 
-import whoIsJaroBackground from '../../images/WhoIsJaro.png'
+import whoIsJaroBackground from '../../images/WhoIsJaro.jpg'
 import styles from './about.module.css'
 import './who-is-jaro.css'
 
