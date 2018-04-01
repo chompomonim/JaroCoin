@@ -88,7 +88,11 @@ class HeaderContent extends Component {
                         </div>
                     </Col>
                     <Col className={styles.introColumnCenter} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 18 }} lg={{ span: 10 }}>
-                        <h3 className={styles.introSectionTitle}>INTRO</h3>
+                        
+                        <MediaQuery query="(min-width: 992px)">
+                            <h3 className={styles.introSectionTitle}>INTRO</h3>
+                        </MediaQuery>
+
                         <p className={styles.introDescription}>JaroCoin is a token fully backed by my most precious asset – time. JaroCoin is the only way to get my attention, advice or service.</p>
                         <p className={styles.introDescription}>Private crypto currency (token) is a model to play for majority future – oriented professionals from attorneys at law to house – keepers. This project is fully open source, so you can create yours as well!</p>
                         <p className={styles.introDescription}>Humanity changes. Money too.</p>
