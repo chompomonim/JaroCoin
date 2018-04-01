@@ -5,25 +5,20 @@
     user-select: none;
 }
 
-.whoIsJaroTitle {
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 15px 0 85px;
-}
-
 .whoIsJaroBackground {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: url(../images/WhoIsJaro.jpg) no-repeat;
+    background: url(../../images/WhoIsJaro.png) no-repeat;
     background-size: 100%;
     z-index: 1;
 }
 
 .whoIsJaroBackgroundMobile {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: -250px;
     z-index: 1;
     width: auto !important;
 }
@@ -48,6 +43,7 @@
     font-size: 1.15rem;
     text-align: left;
     padding: 0 20px 15px 20px;
+    z-index: 2;
 }
 
 .whoIsJaroColumnRight {
@@ -107,7 +103,7 @@
 
 .whatIsJaroCoinTitle {
     font-size: 2.5rem;
-    margin: 90px 0;
+    margin: 70px 0;
     text-align: center;
 }
 
