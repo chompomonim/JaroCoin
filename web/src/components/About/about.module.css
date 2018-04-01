@@ -107,7 +107,7 @@
     text-align: center;
 }
 
-.whatIsJaroCoin1ndRow {
+.whatIsJaroCoin1stRow {
 
 }
 .whatIsJaroCoin1stRowColumnLeft {
@@ -126,6 +126,7 @@
 
 .whatIsJaroCoinQuote {
     font-style: italic;
+    padding-left: 40px
 }
 
 .whatIsJaroCoinImage {
@@ -139,12 +140,16 @@
 
 .whatIsJaroCoin2ndRowColumnRight {
     font-size: 1.2rem;
-    padding: 0 25px;
+    padding: 0 20px;
 }
 
 .whatIsJaroCoin2ndRowColumnLeft {
     font-size: 1.15rem;
-    padding: 0 25px;
+    padding: 0 20px;
+}
+
+.whatIsJaroCoinItem {
+    margin: 10px 0;
 }
 
 /* TOKEN DISTRIBUTION */
@@ -269,4 +274,10 @@
 .whatIsJaroCoinAnchor {
     position: absolute;
     bottom: 0;
+}
+
+.underline {
+    text-decoration: none;
+    border-bottom: 1px dashed #000;
+    cursor: default;
 }

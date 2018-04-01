@@ -1,14 +1,11 @@
 import React from 'react'
 
-import { Col, Row, Divider, Button, Icon } from 'antd'
-
-import MediaQuery from 'react-responsive'
+import { Col, Row, Divider, Button } from 'antd'
 
 import WhoIsJaro from './WhoIsJaro'
+import WhatIsJaroCoin from './WhatIsJaro'
 import styles from './about.module.css'
 
-// import jaroCoinLogo from '../images/JaroCoinLogoGold.png'
-import jaroCoinLogo from '../../images/JaroCoinCoin.jpg'
 import tokenDistributionInfographic from '../../images/TokenDistributionInfographics.jpg'
 
 function About() {
@@ -16,35 +13,7 @@ function About() {
         <div>
             <WhoIsJaro />
 
-
-            <div className={styles.whatIsJaroCoinWrapper}>
-                <Row type="flex" justify="space-around" align="top">
-                    <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-                        <h2 className={styles.whatIsJaroCoinTitle}>What is JaroCoin?</h2>
-                    </Col>
-                </Row>
-                <Row className={styles.whatIsJaroCoin1stRow} gutter={50} type="flex" justify="center" align="middle">
-                    <Col className={styles.whatIsJaroCoin1stRowColumnLeft} xs={{ span: 20 }} sm={{ span: 22 }} md={{ span: 12 }} lg={{ span: 12 }}>
-                        <p className={styles.whatIsJaroCoinIntro}>JaroCoin (JARO) is ERC777 token on Rootstock (bitcoin sidechain) an is 100% backed by Jaro Time! </p>
-                        <p className={styles.whatIsJaroCoinQuote}>“I am selling my time for the better, more technologically advanced <br />
-                        and more educated world. This coin is the only way to get my attention, advice and services.” <br />
-                        - Jaro Šatkevič, founder of JaroCoin</p>
-                    </Col>
-                    <Col className={styles.whatIsJaroCoin1stRowColumnRight} xs={{ span: 18 }} sm={{ span: 10 }} md={{ span: 6 }} lg={{ span: 5 }}>
-                        <img className={styles.whatIsJaroCoinImage} src={jaroCoinLogo} alt="" />
-                    </Col>
-                </Row>
-                <Row className={styles.whatIsJaroCoin2ndRow} type="flex" justify="center" align="middle">
-                    <Col className={styles.whatIsJaroCoin2ndRowColumnLeft} xs={{ span: 23, offset: 2 }} sm={{ span: 12 }} md={{ span: 10 }} lg={{ span: 8, offset: 2}}>
-                        <div><Icon type="plus-circle-o" /> Higly valuble investment (?)</div>
-                        <div><Icon type="plus-circle-o" /> True utility coin (?)</div>
-                    </Col>
-                    <Col className={styles.whatIsJaroCoin2ndRowColumnRight} xs={{ span: 23, offset: 2 }} sm={{ span: 12 }} md={{ span: 10 }} lg={{ span: 8 }}>
-                        <div><Icon type="plus-circle-o" /> Real limited supply (?)</div>
-                        <div><Icon type="plus-circle-o" /> Coin value is 100% baked (?)</div>
-                    </Col>
-                </Row>
-            </div>
+            <WhatIsJaroCoin />
 
             <Divider id="token-distribution-model" className={styles.divider} />
 

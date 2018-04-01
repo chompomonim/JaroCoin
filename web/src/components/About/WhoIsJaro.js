@@ -1,7 +1,7 @@
 import React from 'react'
 
 import MediaQuery from 'react-responsive'
-import { Col, Row, Divider, Button, Icon } from 'antd'
+import { Col, Row } from 'antd'
 
 import whoIsJaroBackground from '../../images/WhoIsJaro.png'
 import styles from './about.module.css'
