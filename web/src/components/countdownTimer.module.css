@@ -2,34 +2,62 @@
     padding: 20px;
     margin: 40px 0 0;
     text-align: center;
-}
-
-.title {
-    /* composes: h3 from './globalStyles.module.css'; */
-    font-size: 2.2rem;
-    text-transform: uppercase;
-}
-
-.titleFeatured {
-    color: #ea4c4c;
+    user-select: none;
 }
 
 .timeElement {
     display: inline-block;
-    font-size: 1.2vw;
-    padding: 0 4vw;
+    padding: 0 2vw;
     text-transform: uppercase;
 }
 
-.timeTitle {
+.completionMessage {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.buyJaroButton {
 
 }
 
-.timeNumber {
-    font-size: 5vw;
+/* Countdown elemtents */ 
+.desktopSizeTitle {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+}
+
+.desktopSizeTitleFeatured {
+    color: #ea4c4c;
+}
+
+.desktopSizeTimeTitle {
+    padding: 0 7px;
+    font-size: 1.2rem;
+}
+
+.desktopSizeTimeNumber {
+    font-family: 'Proza Libre';
+    font-size: 5.25rem;
     font-weight: bold;
 }
 
-.timeSeparator {
-    font-size: 5vw;
+.mobileSizeTitle {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.mobileSizeTitleFeatured {
+    color: #ea4c4c;
+}
+
+.mobileSizeTimeTitle {
+    padding: 0px 6px;
+    font-size: 0.9rem;
+}
+
+.mobileSizeTimeNumber {
+    font-family: 'Proza Libre';
+    font-size: 3.35rem;
+    font-weight: bold;
 }
