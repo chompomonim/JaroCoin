@@ -9,25 +9,18 @@ import { Icon } from 'antd'
 import Countdown from 'react-countdown-now';
 
 import GetJaroButton from './GetJaroButton'
+import CountdownCompletionMessage from './CountdownCompletionMessage'
 
 import styles from './timeBar.module.css'
 
 
-const CompletionMessage = () => (
-    <div className={styles.completionMessage}>
-        All JARO coins were used <br />
-        <br />
-        <Button className={styles.buyJaroButton} size="large" onClick={() => this.setModalVisible(true)}>
-            Contact Jaro
-        </Button>
-    </div>
-)
+
 
 // Renderer callback with condition
 const renderer = ({ total, completed }) => {
 
     if (completed) {
-        return <CompletionMessage />
+        return <CountdownCompletionMessage />
     } else {
         // Render a countdown
         // 10 Years = 315619200000 Miliseconds
@@ -57,47 +50,17 @@ const renderer = ({ total, completed }) => {
     }
 };
 
-
 class TimeBar extends Component {
-
-    state = {
-        modalVisible: false,
-    }
-
-    setModalVisible(modalVisible) {
-        this.setState({ modalVisible });
-    }
-
     render() {
         return (
             <div>
                 <Countdown
                     intervalDelay={50}
                     precision={3}
-                    // date={Date.now() + 8000} // Quick test
-                    date={'Sat, 04 Apr 2028 12:00:00'}
+                    date={Date.now() + 8000} // Quick test
+                    // date={'Sat, 04 Apr 2028 12:00:00'}
                     renderer={renderer}
                 />
-
-                <Modal
-                    wrapClassName="vertical-center-modal"
-                    visible={this.state.modalVisible}
-                    onOk={() => this.setModalVisible(false)}
-                    onCancel={() => this.setModalVisible(false)}
-                >
-                    <h3 className={styles.faqModalHeading}>Contact Jaro with:</h3>
-                    <div className={styles.faqModalItemsWrapper}>
-                        <div className={styles.faqModalItem}>
-                            <a style={{ color: '#37c6f5' }} href="https://twitter.com/chompomonim" target="_blank" rel="noopener noreferrer"><Icon type="twitter" /> Twitter</a>
-                        </div>
-                        <div className={styles.faqModalItem}>
-                            <a style={{ color: '#0077b5' }} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer"><Icon type="linkedin" /> LinkedIn</a>
-                        </div>
-                        <div className={styles.faqModalItem}>
-                            <a style={{ color: '#dd4d42' }} href="https://plus.google.com/+JaroSatkevic" target="_blank" rel="noopener noreferrer">{/*<Icon type="google-plus" />*/} Google+</a>
-                        </div>
-                    </div>
-                </Modal>
             </div>
         );
     }

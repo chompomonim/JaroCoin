@@ -1,0 +1,33 @@
+.countdownCompletionMessageWrapper {
+    text-align: center;
+}
+
+.countdownCompletionMessage {
+    
+}
+
+.countdownCompletionMessageTitle {
+
+}
+
+.countdownCompletionMessageDescription {
+    font-size: 1rem;
+}
+
+.buyJaroButton {
+    margin-top: 20px;
+}
+
+.countdownCompletionModalItem {
+    font-size: 1.4rem;
+    display: inline-block;
+    padding: 10px;
+}
+
+.countdownCompletionModalHeading {
+    font-size: 1.6rem;
+}
+
+.countdownCompletionModalItemsWrapper {
+    text-align: center;
+}
