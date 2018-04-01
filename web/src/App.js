@@ -45,10 +45,6 @@ class App extends Component {
 
           <Services />
 
-          <Divider id="faq" style={{ width: '90%', margin: '80px auto' }} />
-
-          <Faq />
-
           <Divider id="quotes" style={{ width: '90%', margin: '80px auto' }} />
 
           <Quotes />
