@@ -11,27 +11,31 @@ import styles from './about.module.css'
 // import jaroCoinLogo from '../images/JaroCoinLogoGold.png'
 import jaroCoinLogo from '../images/JaroCoinCoin.jpg'
 import whoIsJaroBackground from '../images/WhoIsJaro.jpg'
+import whoIsJaroLinkedInButton from '../images/LinkedInLogo.svg'
 import tokenDistributionInfographic from '../images/TokenDistributionInfographics.jpg'
 
 class About extends Component {
 
     render() {
-
         return (
             <div>
                 <MediaQuery query="(min-width: 768px)">
                     {/* <h2 className={styles.h2}>About</h2> */}
                     <Row type="flex" justify="space-around" align="top">
-                        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                        <Col md={{ span: 24 }} lg={{ span: 24 }}>
                             <h2 className={styles.whoIsJaroTitle}>Who is Jaro?</h2>
                         </Col>
                     </Row>
                     <Row className={styles.whoIsJaroWrapper} gutter={20} type="flex" justify="center" align="middle">
                         <div className={styles.whoIsJaroBackground}></div>
+                        <a className={styles.whoIsJaroLinkedInButtonWrapper} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer">
+                            <div className={styles.whoIsJaroLinkedInButtonText}>Learn More</div>
+                            <img className={styles.whoIsJaroLinkedInButtonImage} src={whoIsJaroLinkedInButton} alt="" />
+                        </a>
                         <Col className={styles.whoIsJaroColumnLeft} md={{ span: 10 }} lg={{ span: 10 }}>
                             <div className={styles.whoIsJaroTextItem}>
                                 Jaro is experienced software engineer, <br />
-                                IT expert, inovator,  blockchain advisor <br />
+                                IT expert, inovator, blockchain advisor <br />
                                 and visionary.
                             </div>
                             <div className={styles.whoIsJaroTextItem}>

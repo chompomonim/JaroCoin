@@ -1,6 +1,7 @@
 /* WHO IS JARO? */
 .whoIsJaroWrapper {
-    padding-bottom: 9.8%;
+    height: 35.2vw;
+    /* padding-bottom: 8.8%; */
     position: relative;
     user-select: none;
 }
@@ -22,6 +23,22 @@
     z-index: 1;
 }
 
+.whoIsJaroLinkedInButtonWrapper {
+    position: absolute;
+    right: 3.6%;
+    bottom: 8%;
+    z-index: 3;
+}
+
+.whoIsJaroLinkedInButtonText {
+    color: #3a3a3a;
+    font-size: 1.35vw;
+}
+
+.whoIsJaroLinkedInButtonImage {
+    width: 16.6vw;
+}
+
 .whoIsJaroBackgroundMobile {
     margin-bottom: 20px;
     z-index: 1;
@@ -30,7 +47,7 @@
 
 .whoIsJaroColumnLeft {
     z-index: 2;
-    padding-top: 3%;
+    padding-top: 0.5%;
 }
 
 .whoIsJaroTextItem {
