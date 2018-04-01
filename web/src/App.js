@@ -45,18 +45,6 @@ class App extends Component {
 
           <Services />
 
-          <Divider id="usecases" style={{ width: '90%', margin: '80px auto' }} />
-
-          <Usecases />
-
-          <Divider id="latest-posts" style={{ width: '90%', margin: '80px auto' }} />
-
-          <LatestPosts />
-
-          <Divider id="supporters" style={{ width: '90%', margin: '80px auto' }} />
-
-          <Supporters />
-
           <Divider id="faq" style={{ width: '90%', margin: '80px auto' }} />
 
           <Faq />
