@@ -55,8 +55,6 @@ class App extends Component {
 
           <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
 
-          <GetJaroButton />
-
           <Footer />
 
         </Layout>
