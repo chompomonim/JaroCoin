@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { Col, Row, Button, Icon, Modal } from 'antd'
-// 
+//
 import MediaQuery from 'react-responsive'
 
 import styles from './footer.module.css'
@@ -12,7 +12,7 @@ function disclaimerModal() {
         maskClosable: true,
         content: (
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem....</p>
+                <p>I'm not giving any finantial advice or promices about future JaroCoin price. Buy it at your own risk.</p>
             </div>
         ),
         onOk() { },
@@ -24,7 +24,9 @@ function termsOfUseModal() {
         title: 'TERMS OF USE',
         content: (
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem....</p>
+                <p>With JaroCoin you can order Jaro Satkevic time. But he can reject delivering services you're asking
+                if they are not according Republic of Lithuania law, are agains Jaro's morality or damaging his or
+                other people honor and dignity.</p>
             </div>
         ),
         onOk() { },
@@ -59,7 +61,7 @@ class Footer extends Component {
                             <a className={styles.footerItemLink} href="#token-distribution-model" rel="noopener noreferrer">Token distribution model</a><br />
                         </Col>
                         <Col className={styles.footerCenterColumn} md={{ span: 8 }} lg={{ span: 8 }}>
-                            <a className={styles.footerItemLink} href="#about" rel="noopener noreferrer">Jaro Skills</a><br />
+                            <a className={styles.footerItemLink} href="https://linkedin.com/in/jarolt" rel="noopener noreferrer" target="_blank">Jaro Skills</a><br />
                             <a className={styles.footerItemLink} href="#services" rel="noopener noreferrer">Services</a><br />
                             <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">Calendar</a><br />
                             <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">WhitePaper</a><br />
@@ -74,7 +76,7 @@ class Footer extends Component {
                 </MediaQuery>
                 <MediaQuery query="(max-width: 991px)">
                     <Row className={styles.footerItemListMobileWrapper} gutter={48} type="flex">
-                        <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 16 }}>                            
+                        <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 16 }}>
                             <a className={styles.footerItemLink} href="#about" rel="noopener noreferrer">Who Is Jaro?</a><br />
                             <a className={styles.footerItemLink} href="#what-is-jarocoin" rel="noopener noreferrer">What Is JaroCoin?</a><br />
                             <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">How to use JARO?</a><br />
@@ -89,16 +91,16 @@ class Footer extends Component {
                         <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 12 }}>
                             <a className={styles.footerItemLink} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">Blog</a><br />
                             <a className={styles.footerItemLink} href="#faq" target="_blank" rel="noopener noreferrer">FAQ</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">Telegram group</a><br />
+                            <a className={styles.footerItemLink} href="https://t.me/JaroCoin" target="_blank" rel="noopener noreferrer">Telegram group</a><br />
                             <a className={styles.footerItemLink} href="https://youtube.com/" target="_blank" rel="noopener noreferrer">Youtube Channel</a><br />
                         </Col>
                     </Row>
                 </MediaQuery>
                 <Row className={styles.footerToolbarWrapper} type="flex" justify="space-between">
                     <Col className={styles.footerTermsWrapper} xs={{ span: 24 }} sm={{ span: 11 }} md={{ span: 8, push: 1 }} lg={{ span: 8 }}>
-                        <a className={styles.footerTermsItem} onClick={termsOfUseModal}>Terms of Use</a> 
+                        <a className={styles.footerTermsItem} onClick={termsOfUseModal}>Terms of Use</a>
                         <span className={styles.footerTermsItemSeparator}> | </span>
-                        <a className={styles.footerTermsItem} onClick={disclaimerModal}>Disclaimer</a> 
+                        <a className={styles.footerTermsItem} onClick={disclaimerModal}>Disclaimer</a>
                     </Col>
                     <Col className={styles.footerSocialWrapper} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 10, pull: 1 }} lg={{ span: 8}}>
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="mailto:jaro@jarocoin.com?Subject=JaroCoin%20Web%20Contact" target="_top" rel="noopener noreferrer">
@@ -113,7 +115,7 @@ class Footer extends Component {
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">
                             <Icon type="medium" /> {/* color: '#000000' */}
                         </a>
-                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.facebook.com/chompomonim" target="_blank" rel="noopener noreferrer">
                             <Icon type="facebook" /> {/* color: '#4767aa' */}
                         </a>
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer">
