@@ -1,13 +1,79 @@
-.headerContentBackground {
+.headerContentBackgroundXL {
     position: absolute;
-    left: 0;
+    left: -10%;
     top: 0;
     width: 100%;
     height: 100%;
+    max-height: 910px;
     background: url(../images/HeaderClock.jpg) no-repeat;
-    background-position: -100% -28%;
-    background-size: 89%;
+    background-position: left 0;
+    background-size: contain;
     z-index: 1;
+}
+
+.headerContentBackgroundLG {
+    position: absolute;
+    left: -35%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 910px;
+    background: url(../images/HeaderClock.jpg) no-repeat;
+    background-position: 3% 17%;
+    background-size: auto;
+    z-index: 1;
+}
+
+.headerContentBackgroundMD {
+    position: absolute;
+    left: -35%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    height: 844px;
+    background: url(../images/HeaderClock.jpg) no-repeat;
+    background-position: 45% 17%;
+    background-size: auto;
+    z-index: 1;
+}
+
+.headerContentBackgroundSM {
+    position: absolute;
+    left: -35%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 844px;
+    background: url(../images/HeaderClock.jpg) no-repeat;
+    background-position: 44% 17%;
+    background-size: auto;
+    z-index: 1;
+}
+
+.transparentBottomOverlay {
+    height: 250px;
+    margin-top: -184px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
+    background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
+}
+
+.transparentBottomOverlayMobile {
+    height: 257px;
+    margin-top: -257px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
+    background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 88%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 88%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 88%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
 }
 
 .headerContentWrapper {
@@ -17,7 +83,7 @@
 .headingWrapper {
     flex-flow: row-reverse !important;
     text-align: left;
-    min-height: 844px;
+    min-height: 845px;
     position: relative;
     z-index: 2;
 }
@@ -26,9 +92,9 @@
     z-index: 2;
     user-select: none;
     /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
-    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
     /* background: linear-gradient(to right, rgba(255, 255, 255, 0), white 90px); */
 
@@ -38,12 +104,39 @@
     font-size: 3.5rem;
     color: #4c4b4b;
     margin-top: 140px;
-    padding-left: 45px;
+    padding-left: 87px;
 }
 
 .headline {
     font-size: 1.8rem;
-    padding: 45px 25px 25px 45px;
+    padding: 20px 40px 0 88px;
+}
+
+.headingMobileLG {
+    font-size: 3.5rem;
+    color: #4c4b4b;
+    margin-top: 140px;
+    padding-left: 116px;
+}
+
+.headlineMobileLG {
+    font-size: 1.8rem;
+    padding: 45px 35px 50px 117px;
+    max-width: 800px;
+}
+
+.headingMobileXS {
+    font-size: 3.5rem;
+    color: #4c4b4b;
+    margin-top: 140px;
+    padding-left: 95px;
+}
+
+.headlineMobileXS {
+    font-size: 1.8rem;
+    /* padding: 45px 35px 50px 95px; */
+    padding: 45px 35px 50px 50px;
+    max-width: 800px;
 }
 
 .introSectionTitle {
@@ -60,7 +153,7 @@
 }
 
 .countDownColumn {
-    padding: 80px;
+    padding: 0 0 80px;
 }
 
 .introWrapper {
@@ -74,22 +167,6 @@
     margin: 0 auto !important;
     justify-content: flex-start;
 } 
-
-.timeBarColumnLeft {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    padding: 0 25px;
-
-}
-
-.timeBarColumnRight {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 0 25px;
-}
 
 .introColumnLeft {
     text-align: left;
@@ -112,7 +189,7 @@
 
 .videoWrapper {
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px 25px;
     width: 40%;
 }
 
