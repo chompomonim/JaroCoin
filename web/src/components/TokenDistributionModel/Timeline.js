@@ -11,17 +11,17 @@ import MediaQuery from 'react-responsive'
 import styles from './timeline.module.css'
 
 const steps = [{
-    title: '1st of April',
+    title: '5th of April',
     description: 'Start token sale',
     content: 'Initial coin release',
 }, {
-    title: '10th of April',
+    title: '14th of April',
     description: 'Activate Smart Contracts to accept JARO',
     content: 'Second Content',
 }, {
     title: '1st of July',
     description: 'First token rebalance',
-    content: 'Third Content',
+    content: 'Once in a while I will put more tokens into circulation, but never more that 21 million',
 }, {
     title: '2028.04.01',
     description: 'Final Burn of JaroCoins',
