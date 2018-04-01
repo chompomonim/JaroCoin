@@ -9,12 +9,7 @@ import About from './components/About'
 import TokenDistributionModel from './components/TokenDistributionModel'
 
 import Services from './components/Services'
-import Usecases from './components/Usecases'
-import LatestPosts from './components/LatestPosts'
-import Supporters from './components/Supporters'
-import Faq from './components/Faq'
 import Quotes from './components/Quotes'
-import GetJaroButton from './components/GetJaroButton'
 import Footer from './components/Footer'
 
 import './globalStyles.antd-custom.css'
