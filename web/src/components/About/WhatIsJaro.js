@@ -12,7 +12,7 @@ import styles from './about.module.css'
 function WhatIsJaroCoin() {
     const TooltipText = 'New advanced token standart. ERC20 compatible but much better.'
     return (
-        <div className={styles.whatIsJaroCoinWrapper}>
+        <div className={styles.whatIsJaroCoinWrapper} id="what-is-jaro">
             <Row type="flex" justify="space-around" align="top">
                 <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
                     <h2 className={styles.whatIsJaroCoinTitle}>What is JaroCoin?</h2>

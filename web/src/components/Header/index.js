@@ -10,7 +10,7 @@ import styles from './headerContent.module.css'
 
 function HeaderContent() {
     return (
-        <div className={styles.headerContentWrapper}>
+        <div className={styles.headerContentWrapper} id="home">
             <MediaQuery query="(min-width: 1200px)">
                 <div className={styles.headerContentBackgroundXL}></div>
             </MediaQuery>
