@@ -1,0 +1,58 @@
+.servicesWrapper {
+    margin: 0 auto;
+    /* padding: 0 20px; */
+    max-width: 1280px;
+    vertical-align: top;
+}
+
+.servicesHeading {
+    font-size: 2.1rem;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.servicesSubtitle {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 0 0 90px;
+}
+
+.servicesItemListWrapper {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.servicesItemWrapper {
+    margin: 0 0 50px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.servicesItemIcon {
+    font-size: 90px;
+    color: grey;
+}
+
+.servicesItemTitle {
+    font-size: 2.4rem;
+    margin: 14px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.servicesItemDescription {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.servicesLastItemWrapper {
+    text-align: center;
+}
+
+.servicesLearnMoreButton {
+    height: 94px !important;
+    font-size: 1.5rem !important;
+    text-transform: uppercase;
+}

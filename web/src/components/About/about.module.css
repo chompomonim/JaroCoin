@@ -1,0 +1,186 @@
+/* WHO IS JARO? */
+.whoIsJaroWrapper {
+    padding-bottom: 9.8%;
+    position: relative;
+    user-select: none;
+}
+
+.whoIsJaroBackground {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../images/WhoIsJaro.jpg) no-repeat;
+    background-size: 100%;
+    z-index: 1;
+}
+
+.whoIsJaroBackgroundMobile {
+    margin-bottom: 0px;
+    margin-top: -250px;
+    z-index: 1;
+    width: auto !important;
+}
+
+.whoIsJaroColumnLeft {
+    z-index: 2;
+    padding-top: 2%;
+}
+
+.whoIsJaroTextItem {
+    color: #3a3a3a;
+    font-family: 'Proza Libre';
+    font-weight: 100;
+    font-size: 1.55vw;
+    text-align: left;
+    padding: 0 20px 25px 20px;
+}
+
+.whoIsJaroTextItemMobile {
+    color: #3a3a3a;
+    font-weight: 100;
+    font-size: 1.15rem;
+    text-align: left;
+    padding: 0 20px 15px 20px;
+    z-index: 2;
+}
+
+.whoIsJaroColumnRight {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 2;
+    padding-top: 2%;
+}
+
+.whoIsJaroNumbersItem {
+    color: white;
+    font-family: 'Proza Libre';
+    text-align: center;
+    text-shadow: 0px 1px 2px #000000;
+    margin-bottom: 55px;
+}
+
+.whoIsJaroNumbersItemMobile {
+    font-family: 'Proza Libre';
+    text-align: center;
+}
+
+.whoIsJaroNumbersLastItemMobile {
+    font-family: 'Proza Libre';
+    text-align: center;
+}
+
+.whoIsJaroNumberMobile {
+    font-size: 5rem;
+}
+
+.whoIsJaroItemSeparator {
+    color: white;
+    font-size: 8rem;
+    font-size: 7.4vw;
+    font-family: sans;
+    line-height: 6.6rem;
+    text-shadow: 0px 1px 5px #000000;
+    padding: 0 28px;
+}
+
+.whoIsJaroNumber {
+    font-size: 7vw;
+    line-height: 7rem;
+}
+
+.whoIsJaroNumberDescription {
+    font-size: 1.6vw;
+}
+
+/* WHAT IS JARO COIN? */
+.whatIsJaroCoinWrapper {
+    /* padding: 0 20px;
+    margin: 0 auto !important;
+    max-width: 1280px; */
+}
+
+.whatIsJaroCoinTitle {
+    font-size: 2.5rem;
+    margin: 70px 0;
+    text-align: center;
+}
+
+.whatIsJaroCoin1stRow {
+
+}
+.whatIsJaroCoin1stRowColumnLeft {
+    font-size: 1.2rem;
+    padding: 0 25px;
+}
+.whatIsJaroCoin1stRowColumnRight {
+    font-size: 1.2rem;
+    padding: 0 25px;
+    text-align: center;
+}
+
+.whatIsJaroCoinIntro {
+    text-align: left;
+}
+
+.whatIsJaroCoinQuote {
+    font-style: italic;
+    padding-left: 40px
+}
+
+.whatIsJaroCoinImage {
+    width: 80%;
+    height: auto;
+}
+
+.whatIsJaroCoin2ndRow {
+    margin-top: 25px;
+}
+
+.whatIsJaroCoin2ndRowColumnRight {
+    font-size: 1.2rem;
+    padding: 0 20px;
+}
+
+.whatIsJaroCoin2ndRowColumnLeft {
+    font-size: 1.15rem;
+    padding: 0 20px;
+}
+
+.whatIsJaroCoinItem {
+    margin: 10px 0;
+}
+
+/* COMMON */
+
+/* .imageWrapper {
+    text-align: center;
+} */
+
+.description {
+    font-size: 1.3rem;
+}
+
+.buttonSkills {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.divider {
+    width: 40% !important;
+    margin: 80px auto !important;
+    max-width: 1280px;
+}
+
+.whatIsJaroCoinAnchor {
+    position: absolute;
+    bottom: 0;
+}
+
+.underline {
+    text-decoration: none;
+    border-bottom: 1px dashed #000;
+    cursor: default;
+}

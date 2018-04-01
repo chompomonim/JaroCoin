@@ -1,10 +1,10 @@
 /*!
- * 
+ *
  * antd v3.3.0
- * 
+ *
  * Copyright 2015-present, Alipay, Inc.
  * All rights reserved.
- *       
+ *
  */
 
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
@@ -24887,3 +24887,9 @@ li.ant-tree-treenode-disabled>.ant-tree-node-content-wrapper:hover {
 }
 
 /*# sourceMappingURL=antd.css.map*/
+
+.divider {
+    width: 40% !important;
+    margin: 80px auto !important;
+    max-width: 1280px;
+}

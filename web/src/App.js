@@ -4,16 +4,12 @@ import { Layout } from 'antd'
 import { Divider } from 'antd'
 
 import AntDMenu from './components/AntDMenu'
-import HeaderContent from './components/HeaderContent'
+import HeaderContent from './components/Header'
 import About from './components/About'
-import Timeline from './components/Timeline'
+import TokenDistributionModel from './components/TokenDistributionModel'
+
 import Services from './components/Services'
-import Usecases from './components/Usecases'
-import LatestPosts from './components/LatestPosts'
-import Supporters from './components/Supporters'
-import Faq from './components/Faq'
 import Quotes from './components/Quotes'
-import GetJaroButton from './components/GetJaroButton'
 import Footer from './components/Footer'
 
 import './globalStyles.antd-custom.css'
@@ -36,37 +32,19 @@ class App extends Component {
 
           <About />
 
-          <Divider id="timeline" style={{ width: '40%', margin: '80px auto' }} />
+          <Divider id="token-distribution-model" className="divider" />
 
-          <Timeline />
+          <TokenDistributionModel />
 
           <Divider id="services" style={{ width: '90%', margin: '80px auto' }} />
 
           <Services />
-
-          <Divider id="usecases" style={{ width: '90%', margin: '80px auto' }} />
-
-          <Usecases />
-
-          <Divider id="latest-posts" style={{ width: '90%', margin: '80px auto' }} />
-
-          <LatestPosts />
-
-          <Divider id="supporters" style={{ width: '90%', margin: '80px auto' }} />
-
-          <Supporters />
-
-          <Divider id="faq" style={{ width: '90%', margin: '80px auto' }} />
-
-          <Faq />
 
           <Divider id="quotes" style={{ width: '90%', margin: '80px auto' }} />
 
           <Quotes />
 
           <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
-
-          <GetJaroButton />
 
           <Footer />
 
