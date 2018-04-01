@@ -48,7 +48,7 @@ contract JaroCoinToken is Ownable {
     event Transfer(address indexed from, address indexed to, uint value, bytes data);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    uint256 public totalSupply;
+    uint256 public totalSupply = 0;
     uint256 public constant maxSupply = 21000000e8;
 
     /**
@@ -165,6 +165,7 @@ contract JaroCoinToken is Ownable {
     * @return A boolean that indicates if the operation was successful.
     */
     function mint(address _to, uint256 _amount) public onlyOwner returns (bool) {
+        require (totalSupply.add(_amount) <= maxSupply);
         totalSupply = totalSupply.add(_amount);
         balanceOf[_to] = balanceOf[_to].add(_amount);
         Mint(_to, _amount);
