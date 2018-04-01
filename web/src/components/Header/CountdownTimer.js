@@ -2,7 +2,6 @@ import React from 'react'
 import Countdown from 'react-countdown-now'
 import MediaQuery from 'react-responsive'
 
-import { Button } from 'antd'
 import TimeBar from './TimeBar'
 
 import styles from './countdownTimer.module.css'

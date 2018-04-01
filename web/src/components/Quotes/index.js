@@ -1,9 +1,6 @@
 import React from 'react'
 
 import { Carousel } from 'antd'
-import { Row, Col } from 'antd'
-import { Icon } from 'antd'
-
 import MediaQuery from 'react-responsive'
 
 import styles from './quotes.module.css'

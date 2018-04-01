@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 
 import { Steps } from 'antd'
 import { Row, Col } from 'antd'
-import { message } from 'antd'
-import { Button } from 'antd'
-import { Divider } from 'antd'
 
 import MediaQuery from 'react-responsive'
 

@@ -71,7 +71,7 @@ function HeaderContent() {
                 <Col className={styles.videoWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 18 }} lg={{ span: 14 }}>
                     <div className={styles.videoContainer}>
                         {/* Youtube params: ?showinfo=0&rel=0&controls=1&cc_load_policy=1 */}
-                        <iframe className={styles.videoIframe} src="https://www.youtube.com/embed/Y3xsa9k0kb8?color=white&showinfo=0&rel=0&controls=1&cc_load_policy=1" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen>
+                        <iframe title="video" className={styles.videoIframe} src="https://www.youtube.com/embed/Y3xsa9k0kb8?color=white&showinfo=0&rel=0&controls=1&cc_load_policy=1" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen>
                         </iframe>
                     </div>
                 </Col>
