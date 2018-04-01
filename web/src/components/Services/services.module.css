@@ -2,11 +2,13 @@
     margin: 0 auto;
     /* padding: 0 20px; */
     max-width: 1280px;
+    vertical-align: top;
 }
 
 .servicesHeading {
     font-size: 2.1rem;
     text-align: center;
+    margin-bottom: 100px;
 }
 
 .servicesSubtitle {
@@ -29,7 +31,7 @@
 }
 
 .servicesItemIcon {
-    font-size: 120px;
+    font-size: 90px;
     color: grey;
 }
 
@@ -42,6 +44,7 @@
 
 .servicesItemDescription {
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .servicesLastItemWrapper {
