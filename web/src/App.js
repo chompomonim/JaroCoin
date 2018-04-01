@@ -4,7 +4,7 @@ import { Layout } from 'antd'
 import { Divider } from 'antd'
 
 import AntDMenu from './components/AntDMenu'
-import HeaderContent from './components/HeaderContent'
+import HeaderContent from './components/Header'
 import About from './components/About'
 import Timeline from './components/Timeline'
 import Services from './components/Services'

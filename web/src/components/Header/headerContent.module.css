@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
     max-height: 910px;
-    background: url(../images/HeaderClock.jpg) no-repeat;
+    background: url(../../images/HeaderClock.jpg) no-repeat;
     background-position: left 0;
     background-size: contain;
     z-index: 1;
@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     max-height: 910px;
-    background: url(../images/HeaderClock.jpg) no-repeat;
+    background: url(../../images/HeaderClock.jpg) no-repeat;
     background-position: 3% 17%;
     background-size: auto;
     z-index: 1;
@@ -31,7 +31,7 @@
     width: 100%;
     height: 100%;
     height: 844px;
-    background: url(../images/HeaderClock.jpg) no-repeat;
+    background: url(../../images/HeaderClock.jpg) no-repeat;
     background-position: 45% 17%;
     background-size: auto;
     z-index: 1;
@@ -44,7 +44,7 @@
     width: 100%;
     height: 100%;
     max-height: 844px;
-    background: url(../images/HeaderClock.jpg) no-repeat;
+    background: url(../../images/HeaderClock.jpg) no-repeat;
     background-position: 44% 17%;
     background-size: auto;
     z-index: 1;
@@ -166,7 +166,7 @@
     max-width: 1180px;
     margin: 0 auto !important;
     justify-content: flex-start;
-} 
+}
 
 .introColumnLeft {
     text-align: left;

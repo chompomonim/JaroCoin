@@ -25,19 +25,19 @@ class TypistComponent extends Component {
             <div>
                 <Typist
                     className={styles.typistList}
-                    avgTypingSpeed={10}
-                    startDelay={2000}
+                    avgTypingDelay={45}
+                    startDelay={1000}
                     cursor={{ element: ' |𝕁𝔸ℝ𝕆 is typing..', blink: true, hideWhenDone: true }}
                     onTypingDone={this.onHeaderTyped}
                 >
                     {/* <Typist.Delay ms={1250} /> */}
-                    <span className={styles.typistSentence}>JaroCoin is a token fully backed by my most precious asset – <strong>Time</strong>.</span>
+                    <span className={styles.typistSentence}>JaroCoin is a token fully backed by most precious asset – <strong>Time</strong>.</span>
                     <p />
                     {/* <Typist.Delay ms={1250} /> */}
-                    <span className={styles.typistSentence}>JaroCoin is the only way to <strong>get my attention, advice or service.</strong></span>
+                    <span className={styles.typistSentence}>It's the  only way to <strong>get my attention, advice or service.</strong></span>
                     <p />
                     {/* <Typist.Delay ms={1250} /> */}
-                    <span className={styles.typistSentence}>Humanity changes. Money Too.</span>
+                    <span className={styles.typistSentence}>1 JaroCoin = 1 second of Jaro life.</span>
                     <p />
                     {''}
                 </Typist>
@@ -73,7 +73,7 @@ export default TypistComponent
         * Buying precious time;
         <Typist.Delay ms={1250} />
         <br />
-        * Selling 
+        * Selling
         <Typist.Backspace count={7} delay={1000} />
         Trading <Typist.Delay ms={750} />My Time for <Typist.Delay ms={1250} />
         <br />

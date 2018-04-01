@@ -11,7 +11,7 @@ import styles from './countdownTimer.module.css'
 
 const CompletionMessage = () => (
                             <div className={styles.completionMessage}>
-                                The ICO has started <br /> 
+                                The ICO has started <br />
                                 You are ready to go! <br />
                                 <br />
                                 <Button className={styles.buyJaroButton} href="#get-jaro" target="_blank" size="large">
@@ -87,7 +87,7 @@ class CountdownTimer extends Component {
                         <span className={styles.desktopSizeTitleFeatured}> Countdown</span>
                     </h3>
                         <Countdown
-                            date={Date.now() + 5000} // Quick test
+                            date={1525543200} // Quick test
                             // date={'Sat, 04 Apr 2018 12:00:00'}
                             renderer={desktopSizeCountdown}
                         />
@@ -98,7 +98,7 @@ class CountdownTimer extends Component {
                         <span className={styles.mobileSizeTitleFeatured}> Countdown</span>
                     </h3>
                         <Countdown
-                            date={Date.now() + 5000} // Quick test
+                            date={1522843200} // Quick test
                             // date={'Sat, 04 Apr 2018 12:00:00'}
                             renderer={mobileSizeCountdown}
                         />
