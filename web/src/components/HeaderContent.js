@@ -7,7 +7,6 @@ import { Divider } from 'antd'
 import TypistComponent from './TypistComponent'
 import CountdownTimer from './CountdownTimer'
 import TimeBar from './TimeBar'
-import GetJaroButton from './GetJaroButton'
 
 import MediaQuery from 'react-responsive'
 
@@ -76,16 +75,7 @@ class HeaderContent extends Component {
                     </Col>
                 </Row>
 
-                <Row className={styles.timeBarElementsWrapper} gutter={20} type="flex">
-                    <Col className={styles.timeBarColumnLeft} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 20 }} lg={{ span: 20 }}>
-                        <TimeBar />
-                    </Col>
-                    <Col className={styles.timeBarColumnRight} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 4 }} lg={{ span: 4 }}>
-                        <div className={styles.getJaroButtonContainer}>
-                            <GetJaroButton  />
-                        </div>
-                    </Col>
-                </Row>
+                <TimeBar />
 
                 <Divider id="intro" className={styles.divider} />
 

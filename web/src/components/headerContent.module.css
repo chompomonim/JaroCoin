@@ -168,22 +168,6 @@
     justify-content: flex-start;
 } 
 
-.timeBarColumnLeft {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    padding: 0 25px;
-
-}
-
-.timeBarColumnRight {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 0 25px;
-}
-
 .introColumnLeft {
     text-align: left;
     padding: 0 25px;
