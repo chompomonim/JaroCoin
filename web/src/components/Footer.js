@@ -67,7 +67,7 @@ class Footer extends Component {
                         <Col className={styles.footerLastColumn} md={{ span: 8 }} lg={{ span: 8 }}>
                             <a className={styles.footerItemLink} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">Blog</a><br />
                             <a className={styles.footerItemLink} href="#faq" target="_blank" rel="noopener noreferrer">FAQ</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">Telegram group</a><br />
+                            <a className={styles.footerItemLink} href="https://t.me/JaroCoin" target="_blank" rel="noopener noreferrer">Telegram group</a><br />
                             <a className={styles.footerItemLink} href="https://youtube.com/" target="_blank" rel="noopener noreferrer">Youtube Channel</a><br />
                         </Col>
                     </Row>
@@ -89,7 +89,7 @@ class Footer extends Component {
                         <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 12 }}>
                             <a className={styles.footerItemLink} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">Blog</a><br />
                             <a className={styles.footerItemLink} href="#faq" target="_blank" rel="noopener noreferrer">FAQ</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">Telegram group</a><br />
+                            <a className={styles.footerItemLink} href="https://t.me/JaroCoin" target="_blank" rel="noopener noreferrer">Telegram group</a><br />
                             <a className={styles.footerItemLink} href="https://youtube.com/" target="_blank" rel="noopener noreferrer">Youtube Channel</a><br />
                         </Col>
                     </Row>
