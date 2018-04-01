@@ -8,7 +8,7 @@ import { Icon } from 'antd'
 
 import Countdown from 'react-countdown-now';
 
-import GetJaroButton from './GetJaroButton'
+import GetJaroButton from '../GetJaroButton'
 
 import styles from './timeBar.module.css'
 
@@ -52,7 +52,7 @@ const renderer = ({ total, completed }) => {
                     </Col>
                 </Row>
             </div>
-            
+
         );
     }
 };

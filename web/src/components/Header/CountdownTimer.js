@@ -1,23 +1,25 @@
-import React, { Component } from 'react'
-
-import Countdown from 'react-countdown-now';
+import React from 'react'
+import Countdown from 'react-countdown-now'
+import MediaQuery from 'react-responsive'
 
 import { Button } from 'antd'
-
-import MediaQuery from 'react-responsive'
+import TimeBar from './TimeBar'
 
 import styles from './countdownTimer.module.css'
 
-
 const CompletionMessage = () => (
-                            <div className={styles.completionMessage}>
-                                The ICO has started <br />
-                                You are ready to go! <br />
-                                <br />
-                                <Button className={styles.buyJaroButton} href="#get-jaro" target="_blank" size="large">
-                                    GET JARO
-                                </Button>
-                            </div>
+    <div className={styles.completionMessage}>
+        <h3 className={styles.desktopSizeTitle}>Initial Time Offering
+             <span className={styles.desktopSizeTitleFeatured}> Started</span>
+        </h3>
+        <TimeBar />
+    </div>
+)
+
+const CountdownMessage = () => (
+    <h3 className={styles.desktopSizeTitle}>JaroCoin Release
+        <span className={styles.desktopSizeTitleFeatured}> Countdown</span>
+    </h3>
 )
 
 // Renderer callback with condition
@@ -28,6 +30,7 @@ const desktopSizeCountdown = ({ days, hours, minutes, seconds, completed }) => {
         // Render a countdown
         return (
             <div>
+                <CountdownMessage />
                 <div className={styles.timeElement}>
                     <span className={styles.desktopSizeTimeNumber}>{days}</span><br />
                     <span className={styles.timeSizeTitle}>Days</span><br />
@@ -45,17 +48,18 @@ const desktopSizeCountdown = ({ days, hours, minutes, seconds, completed }) => {
                     <span className={styles.desktopSizeTimeTitle}>Seconds</span>
                 </div>
             </div>
-        );
+        )
     }
-};
+}
 
 const mobileSizeCountdown = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-        return <CompletionMessage />;
+        return <CompletionMessage />
     } else {
         // Render a countdown
         return (
             <div>
+                <CountdownMessage />
                 <div className={styles.timeElement}>
                     <span className={styles.mobileSizeTimeNumber}>{days}</span><br />
                     <span className={styles.mobileSizeTimeTitle}>Days</span><br />
@@ -73,42 +77,29 @@ const mobileSizeCountdown = ({ days, hours, minutes, seconds, completed }) => {
                     <span className={styles.mobileSizeTimeTitle}>Seconds</span>
                 </div>
             </div>
-        );
+        )
     }
-};
+}
 
-class CountdownTimer extends Component {
-    render() {
-        return (
-            <div className={styles.timer}>
+function CountdownTimer() {
+    const startDate = 'Sat, 05 Apr 2018 12:00:00'
+    return (
+        <div className={styles.timer}>
+            <MediaQuery query="(min-width: 577px)">
+                <Countdown
+                    date={startDate}
+                    renderer={desktopSizeCountdown}
+                />
+            </MediaQuery>
 
-                <MediaQuery query="(min-width: 577px)">
-                    <h3 className={styles.desktopSizeTitle}>JaroCoin Release
-                        <span className={styles.desktopSizeTitleFeatured}> Countdown</span>
-                    </h3>
-                        <Countdown
-                            date={1525543200} // Quick test
-                            // date={'Sat, 04 Apr 2018 12:00:00'}
-                            renderer={desktopSizeCountdown}
-                        />
-                </MediaQuery>
-
-                <MediaQuery query="(max-width: 576px)">
-                    <h3 className={styles.mobileSizeTitle}>JaroCoin Release
-                        <span className={styles.mobileSizeTitleFeatured}> Countdown</span>
-                    </h3>
-                        <Countdown
-                            date={1522843200} // Quick test
-                            // date={'Sat, 04 Apr 2018 12:00:00'}
-                            renderer={mobileSizeCountdown}
-                        />
-                </MediaQuery>
-
-
-
-            </div>
-        );
-    }
+            <MediaQuery query="(max-width: 576px)">
+                <Countdown
+                    date={startDate}
+                    renderer={mobileSizeCountdown}
+                />
+            </MediaQuery>
+        </div>
+    )
 }
 
 export default CountdownTimer
