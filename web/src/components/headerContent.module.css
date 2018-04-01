@@ -89,6 +89,7 @@
 }
 
 .headlineColumn {
+    width: 72vw;
     z-index: 2;
     user-select: none;
     /* http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+0,1+25 */
