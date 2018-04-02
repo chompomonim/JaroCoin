@@ -27,7 +27,6 @@
     font-weight: 600;
 }
 
-
 @media (min-width: 992px) { 
 
     .tokenDistributionInfographicWrapper {
@@ -80,6 +79,12 @@
         top: 56%;
         text-align: left;
         z-index: 2;
+    }
+}
+
+@media (min-width: 674px) and (max-width: 992px) {
+    .tokenDistributionImage {
+        width: 70% !important;
     }
 }
 
