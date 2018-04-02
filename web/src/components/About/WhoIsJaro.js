@@ -4,6 +4,7 @@ import MediaQuery from 'react-responsive'
 import { Col, Row } from 'antd'
 
 import whoIsJaroBackground from '../../images/WhoIsJaro.jpg'
+import whoIsJaroLinkedInButton from '../../images/LinkedInLogo.svg'
 import styles from './about.module.css'
 import './who-is-jaro.css'
 
@@ -13,7 +14,7 @@ function WhoIsJaro() {
         aboutText: <React.Fragment>
             <div className={styles.whoIsJaroTextItem}>
                 Jaro is experienced software engineer, <br />
-                IT expert, inovator,  blockchain advisor <br />
+                IT expert, inovator, blockchain advisor <br />
                 and visionary.
             </div>
             <div className={styles.whoIsJaroTextItem}>
@@ -32,12 +33,16 @@ function WhoIsJaro() {
         <React.Fragment>
             <MediaQuery query="(min-width: 768px)">
                 <Row type="flex" justify="space-around" align="top">
-                    <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                    <Col md={{ span: 24 }} lg={{ span: 24 }}>
                         {texts.heading}
                     </Col>
                 </Row>
                 <Row className={styles.whoIsJaroWrapper} gutter={20} type="flex" justify="center" align="middle">
                     <div className={styles.whoIsJaroBackground}></div>
+                    <a className={styles.whoIsJaroLinkedInButtonWrapper} href="https://www.linkedin.com/in/jarolt" target="_blank" rel="noopener noreferrer">
+                        <div className={styles.whoIsJaroLinkedInButtonText}>Learn More</div>
+                        <img className={styles.whoIsJaroLinkedInButtonImage} src={whoIsJaroLinkedInButton} alt="" />
+                    </a>
                     <Col className={styles.whoIsJaroColumnLeft} md={{ span: 10 }} lg={{ span: 10 }}>
                         {texts.aboutText}
                     </Col>

@@ -56,19 +56,19 @@ class Footer extends Component {
                     <Row className={styles.footerItemListWrapper} gutter={48} type="flex">
                         <Col className={styles.footerFirstColumn} md={{ span: 8 }} lg={{ span: 8 }}>
                             <a className={styles.footerItemLink} href="#about" rel="noopener noreferrer">Who Is Jaro?</a><br />
-                            <a className={styles.footerItemLink} href="#what-is-jarocoin" rel="noopener noreferrer">What Is JaroCoin?</a><br />
-                            <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">How to use JARO?</a><br />
+                            <a className={styles.footerItemLink} href="#what-is-jaro" rel="noopener noreferrer">What Is JaroCoin?</a><br />
+                            <a className={styles.footerItemLink} href="#services" rel="noopener noreferrer">How to use JARO?</a><br />
                             <a className={styles.footerItemLink} href="#token-distribution-model" rel="noopener noreferrer">Token distribution model</a><br />
                         </Col>
                         <Col className={styles.footerCenterColumn} md={{ span: 8 }} lg={{ span: 8 }}>
                             <a className={styles.footerItemLink} href="https://linkedin.com/in/jarolt" rel="noopener noreferrer" target="_blank">Jaro Skills</a><br />
                             <a className={styles.footerItemLink} href="#services" rel="noopener noreferrer">Services</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">Calendar</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">WhitePaper</a><br />
+                            <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">Calendar</a><br />
+                            <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">WhitePaper</a><br />
                         </Col>
                         <Col className={styles.footerLastColumn} md={{ span: 8 }} lg={{ span: 8 }}>
                             <a className={styles.footerItemLink} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">Blog</a><br />
-                            <a className={styles.footerItemLink} href="#faq" target="_blank" rel="noopener noreferrer">FAQ</a><br />
+                            <a className={styles.footerItemLink} href="#faq" rel="noopener noreferrer">FAQ</a><br />
                             <a className={styles.footerItemLink} href="https://t.me/JaroCoin" target="_blank">Telegram group!</a><br />
                             <a className={styles.footerItemLink} href="https://www.youtube.com/channel/UCv_w5WZCRtyRlPyTymqt8Rw" target="_blank">Youtube Channel</a><br />
                         </Col>
@@ -78,19 +78,19 @@ class Footer extends Component {
                     <Row className={styles.footerItemListMobileWrapper} gutter={48} type="flex">
                         <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 16 }}>
                             <a className={styles.footerItemLink} href="#about" rel="noopener noreferrer">Who Is Jaro?</a><br />
-                            <a className={styles.footerItemLink} href="#what-is-jarocoin" rel="noopener noreferrer">What Is JaroCoin?</a><br />
-                            <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">How to use JARO?</a><br />
+                            <a className={styles.footerItemLink} href="#what-is-jaro" rel="noopener noreferrer">What Is JaroCoin?</a><br />
+                            <a className={styles.footerItemLink} href="#services" rel="noopener noreferrer">How to use JARO?</a><br />
                             <a className={styles.footerItemLink} href="#token-distribution-model" rel="noopener noreferrer">Token distribution model</a><br />
                         </Col>
                         <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 8 }}>
                             <a className={styles.footerItemLink} href="https://linkedin.com/in/jarolt" rel="noopener noreferrer" target="_blank">Jaro Skills</a><br />
                             <a className={styles.footerItemLink} href="#services" rel="noopener noreferrer">Services</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">Calendar</a><br />
-                            <a className={styles.footerItemLink} href="#" target="_blank" rel="noopener noreferrer">WhitePaper</a><br />
+                            <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">Calendar</a><br />
+                            <a className={styles.footerItemLink} href="#" rel="noopener noreferrer">WhitePaper</a><br />
                         </Col>
                         <Col className={styles.footerMobileColumn} xs={{ span: 24 }} sm={{ span: 12 }}>
                             <a className={styles.footerItemLink} href="https://medium.com/@chompomonim/" target="_blank" rel="noopener noreferrer">Blog</a><br />
-                            <a className={styles.footerItemLink} href="#faq" target="_blank" rel="noopener noreferrer">FAQ</a><br />
+                            <a className={styles.footerItemLink} href="#faq" rel="noopener noreferrer">FAQ</a><br />
                             <a className={styles.footerItemLink} href="https://t.me/JaroCoin" target="_blank">Telegram group!</a><br />
                             <a className={styles.footerItemLink} href="https://www.youtube.com/channel/UCv_w5WZCRtyRlPyTymqt8Rw" target="_blank">Youtube Channel</a><br />
                         </Col>
@@ -124,9 +124,12 @@ class Footer extends Component {
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.youtube.com/channel/UCv_w5WZCRtyRlPyTymqt8Rw" target="_blank" rel="noopener noreferrer">
                             <Icon type="youtube" /> {/* color: '#ff0000' */}
                         </a>
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://github.com/chompomonim/JaroCoin/" target="_blank" rel="noopener noreferrer">
+                            <Icon type="github" />
+                        </a>
                     </Col>
                     <Col className={styles.footerCopyrightWrapper} span={24}>
-                        <div>All Right Reserved - ©JaroCoin</div>
+                        <div>All Rights Reserved ©Jaro</div>
                     </Col>
                 </Row>
             </div>
