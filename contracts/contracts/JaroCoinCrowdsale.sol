@@ -171,8 +171,7 @@ contract JaroCoinCrowdsale is Ownable {
         require (_startTime > getNow());
         require (saleStartTime == 0 || _startTime.sub(saleStartTime) > 30 days);   // Minimum one month between token sales
 
-        // TODO Burn unburned sleep, family and personal time.
-        // Burn
+        // Burn unburned sleep, family and personal time.
         sleepContract.burnTokens();
         familyContract.burnTokens();
         personalContract.burnTokens();
