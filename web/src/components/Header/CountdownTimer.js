@@ -81,7 +81,7 @@ const mobileSizeCountdown = ({ days, hours, minutes, seconds, completed }) => {
 }
 
 function CountdownTimer() {
-    const startDate = 'Sat, 05 Apr 2018 12:00:00'
+    const startDate = 'Sat, 08 Apr 2018 12:00:00'
     return (
         <div className={styles.timer}>
             <MediaQuery query="(min-width: 577px)">

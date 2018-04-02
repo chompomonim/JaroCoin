@@ -58,8 +58,8 @@ class TimeBar extends Component {
                 <Countdown
                     intervalDelay={50}
                     precision={3}
-                    date={Date.now() + 8000} // Quick test
-                    // date={'Sat, 04 Apr 2028 12:00:00'}
+                    // date={Date.now() + 8000} // Quick test
+                    date={'Sat, 08 Apr 2028 12:00:00'}
                     renderer={renderer}
                 />
             </div>
