@@ -5,7 +5,7 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "./JaroCoinToken.sol";
 
-contract JaroSleep is Ownable{
+contract JaroSleep is Ownable {
     using SafeMath for uint256;
 
     uint256 public lastBurn;                         // Time of last sleep token burn
@@ -24,13 +24,14 @@ contract JaroSleep is Ownable{
     }
 
     function burnTokens() public {
+        uint256 sec = getNow().sub(lastBurn);
+
         // Burn tokens only once per day
-        if (getNow().sub(lastBurn) > 1 days) {
-            // TODO convert into uint8 for saving gas purposes
-            uint256 sec = getNow() - lastBurn;
+        if (sec >= 1 days) {
+            // TODO convert into uint64 for saving gas purposes
             uint256 d =  sec.div(1 days);
             uint256 tokensToBurn = d.mul(dailyTime);
-            lastBurn = getNow();
+            lastBurn = lastBurn + d.mul(1 days);
             token.burn(tokensToBurn);
         }
     }
@@ -109,6 +110,7 @@ contract JaroCoinCrowdsale is Ownable {
 
     function JaroCoinCrowdsale(address _owner) public {
         token = new JaroCoinToken();
+
         sleepContract = new JaroSleep(address(token), 34560e8);    // 9.6 hours per day
         familyContract = new JaroSleep(address(token), 21600e8);   // 6 hours per day
         personalContract = new JaroSleep(address(token), 12960e8); // 3.6 hours per day
@@ -122,9 +124,8 @@ contract JaroCoinCrowdsale is Ownable {
     }
 
     function buyTokens(address _beneficiary) public canMint payable {
-        require(_beneficiary != address(0));
+        require (_beneficiary != address(0));
         require (msg.value > 0);
-        require (saleStartTime < getNow());
 
         uint256 weiAmount = msg.value;
         uint256 satoshiAmount = weiAmount.div(conversionRate);
@@ -132,7 +133,7 @@ contract JaroCoinCrowdsale is Ownable {
 
         // Mint tokens and refund not used ethers in case when max amount reached during this minting
         uint256 excess = appendContribution(_beneficiary, tokens);
-        uint256 refund = (excess > 0 ? excess.div(rate).mul(conversionRate) : 0);
+        uint256 refund = (excess > 0 ? excess.mul(conversionRate).div(rate) : 0);
         weiAmount = weiAmount.sub(refund);
         satoshiRaised = satoshiRaised.add(weiAmount.mul(conversionRate));
 
@@ -176,8 +177,7 @@ contract JaroCoinCrowdsale is Ownable {
         familyContract.burnTokens();
         personalContract.burnTokens();
 
-        uint256 totalSupply = token.totalSupply();
-        uint256 missingTokens = totalSupply > 0 ? MAX_AMOUNT.div(totalSupply) : MAX_AMOUNT;
+        uint256 missingTokens = MAX_AMOUNT.sub(token.totalSupply());
 
         uint256 sleepTokens = missingTokens.div(100).mul(40);       // sleep and stuff takes 40% of Jaro time
         uint256 familyTokens = missingTokens.div(100).mul(25);      // 25% for family
