@@ -98,7 +98,8 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         })
 
         const currentAccountBalance = web3.eth.getBalance(accounts[3])
-        const expectedTokens = new BigNumber('4187117.648e8')
+        // const expectedTokens = new BigNumber('4187117.648e8')
+        const expectedTokens = new BigNumber('837423.5296e8')
         const actualConversionRate = new BigNumber("7000e3")
         const spendForTokens = expectedTokens.div(tokensPerSatoshi).mul(OneEther.div(actualConversionRate))
         const expectedRefund = amount.sub(spendForTokens)
