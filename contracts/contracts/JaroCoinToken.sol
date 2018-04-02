@@ -78,7 +78,7 @@ contract JaroCoinToken is Ownable {
 
         // Check if signature is valid, get signer's address and mark this cheque as used.
         bytes memory prefix = "\x19Ethereum Signed Message:\n32";
-        bytes32 hash = keccak256(prefix, keccak256(_to, _value, _nonce));
+        bytes32 hash = keccak256(prefix, keccak256(_to, _value, _data, _nonce));
         // bytes32 hash = keccak256(_to, _value, _data, _nonce);
 
         address signer = ecrecover(hash, v, r, s);
