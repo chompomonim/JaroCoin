@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive'
 import { Col, Row } from 'antd'
 
 import whoIsJaroBackground from '../../images/WhoIsJaro.jpg'
-import whoIsJaroLinkedInButton from '../images/LinkedInLogo.svg'
+import whoIsJaroLinkedInButton from '../../images/LinkedInLogo.svg'
 import styles from './about.module.css'
 import './who-is-jaro.css'
 
