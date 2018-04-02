@@ -124,6 +124,9 @@ class Footer extends Component {
                         <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://www.youtube.com/channel/UCv_w5WZCRtyRlPyTymqt8Rw" target="_blank" rel="noopener noreferrer">
                             <Icon type="youtube" /> {/* color: '#ff0000' */}
                         </a>
+                        <a className={styles.footerSocialItem} style={{ color: '#1d1d1d' }} href="https://github.com/chompomonim/JaroCoin/" target="_blank" rel="noopener noreferrer">
+                            <Icon type="github" />
+                        </a>
                     </Col>
                     <Col className={styles.footerCopyrightWrapper} span={24}>
                         <div>All Right Reserved - ©JaroCoin</div>
