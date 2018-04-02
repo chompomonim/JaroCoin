@@ -129,7 +129,7 @@ class Footer extends Component {
                         </a>
                     </Col>
                     <Col className={styles.footerCopyrightWrapper} span={24}>
-                        <div>All Right Reserved - ©JaroCoin</div>
+                        <div>All Rights Reserved ©Jaro</div>
                     </Col>
                 </Row>
             </div>
