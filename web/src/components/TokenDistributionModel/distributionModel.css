@@ -1,0 +1,124 @@
+.tokenDistributionWrapper {
+    text-align: center;
+}
+
+.tokenDistributionTitle {
+    font-size: 2.5rem;
+    margin: 0 0 80px;
+}
+
+.buttonLearnMoreWhitepaper {
+    margin-top: 50px;
+}
+
+.tokenDistributionImage {
+    width: 70%;
+    height: auto;
+    z-index: 1;
+}
+
+.tokenDistributionDescription {
+    font-family: 'Proza Libre', sans-serif;
+    margin: 50px 0 0;
+}
+
+.tokenDistributionTextItemTitle {
+    font-family: 'Proza Libre', sans-serif;
+    font-weight: 600;
+}
+
+@media (min-width: 992px) { 
+
+    .tokenDistributionInfographicWrapper {
+        position: relative;
+    }
+
+    .tokenDistributionDescription {
+        font-size: 1.20vw;
+    }
+
+    .tokenDistributionTextItemTitle {
+        font-size: 1.25vw;
+    }
+
+    .tokenDistributionTextItemDescription {
+        font-size: 1.15vw;
+    }
+
+    .tokenDistributionText1stItem {
+        position: absolute !important;
+        width: auto !important;
+        left: 19.4%;
+        top: 23.5%;
+        text-align: left;
+        z-index: 2;
+    }
+
+    .tokenDistributionText2ndItem {
+        position: absolute !important;
+        width: auto !important;
+        left: 20.6%;
+        top: 47.3%;
+        text-align: right;
+        z-index: 2;
+    }
+
+    .tokenDistributionText3rdItem {
+        position: absolute !important;
+        width: auto !important;
+        right: 19.2%;
+        top: 26%;
+        text-align: left;
+        z-index: 2;
+    }
+
+    .tokenDistributionText4thItem {
+        position: absolute !important;
+        width: auto !important;
+        right: 19.4%;
+        top: 56%;
+        text-align: left;
+        z-index: 2;
+    }
+}
+
+@media (min-width: 674px) and (max-width: 992px) {
+    .tokenDistributionImage {
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 991px) { 
+
+    .tokenDistributionInfographicWrapper {
+        position: relative;
+    }
+
+    .tokenDistributionImage {
+        width: 90%;
+        margin-bottom: 25px;
+    }
+
+    .tokenDistributionDescription {
+        font-size: 1.5rem;
+    }
+
+    .tokenDistributionTextItemTitle {
+        font-size: 1.5rem;
+    }
+
+
+    .tokenDistributionTextItemDescription {
+        font-size: 1.25rem;
+    }
+
+    .tokenDistributionText1stItem,
+    .tokenDistributionText2ndItem,
+    .tokenDistributionText3rdItem,
+    .tokenDistributionText4thItem {
+        margin: 0 0 25px;
+        text-align: center;
+    }
+
+
+}
