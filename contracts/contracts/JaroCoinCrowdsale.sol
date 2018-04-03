@@ -1,50 +1,10 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "./JaroCoinToken.sol";
-
-contract JaroSleep is Ownable {
-    using SafeMath for uint256;
-
-    uint256 public lastBurn;                         // Time of last sleep token burn
-    uint256 public dailyTime;                        // Tokens to burn per day
-    JaroCoinToken public token;
-
-    function JaroSleep(address _token, uint256 _dailyTime) public {
-        token = JaroCoinToken(_token);
-        lastBurn = getNow();
-        dailyTime = _dailyTime;
-    }
-
-    // Reject any ethers send to this address
-    function () external payable {
-        revert();
-    }
-
-    function burnTokens() public {
-        uint256 sec = getNow().sub(lastBurn);
-
-        // Burn tokens only once per day
-        if (sec >= 1 days) {
-            // TODO convert into uint64 for saving gas purposes
-            uint256 d =  sec.div(1 days);
-            uint256 tokensToBurn = d.mul(dailyTime);
-            lastBurn = lastBurn + d.mul(1 days);
-            token.burn(tokensToBurn);
-        }
-    }
-
-    function transfer(address _to, uint256 _value) public onlyOwner {
-        token.transfer(_to, _value);
-    }
-
-    // Function needed for automated testing purposes
-    function getNow() internal view returns (uint256) {
-        return now;
-    }
-}
+import "./SleepContract.sol";
 
 contract JaroCoinCrowdsale is Ownable {
     using SafeMath for uint256;
@@ -111,9 +71,9 @@ contract JaroCoinCrowdsale is Ownable {
     function JaroCoinCrowdsale(address _owner) public {
         token = new JaroCoinToken();
 
-        sleepContract = new JaroSleep(address(token), 34560e8);    // 9.6 hours per day
-        familyContract = new JaroSleep(address(token), 21600e8);   // 6 hours per day
-        personalContract = new JaroSleep(address(token), 12960e8); // 3.6 hours per day
+        sleepContract = createJaroSleep(address(token), 34560e8);    // 9.6 hours per day
+        familyContract = createJaroSleep(address(token), 21600e8);   // 6 hours per day
+        personalContract = createJaroSleep(address(token), 12960e8); // 3.6 hours per day
         startSale(START_TIME);
         transferOwnership(_owner);
     }
@@ -173,18 +133,21 @@ contract JaroCoinCrowdsale is Ownable {
 
         // Burn unburned sleep, family and personal time.
         sleepContract.burnTokens();
+        uint256 sleepTokens = token.balanceOf(address(sleepContract));
+
         familyContract.burnTokens();
+        uint256 familyTokens = token.balanceOf(familyContract);
+
         personalContract.burnTokens();
+        uint256 personalTokens = token.balanceOf(personalContract);
 
-        uint256 missingTokens = MAX_AMOUNT.sub(token.totalSupply());
+        uint256 missingSleep = MAX_AMOUNT.div(100).mul(40).sub(sleepTokens);       // sleep and stuff takes 40% of Jaro time
+        uint256 missingFamily = MAX_AMOUNT.div(100).mul(25).sub(familyTokens);     // 25% for family
+        uint256 missingPersonal = MAX_AMOUNT.div(100).mul(15).sub(personalTokens); // 15% is Jaro personal time
 
-        uint256 sleepTokens = missingTokens.div(100).mul(40);       // sleep and stuff takes 40% of Jaro time
-        uint256 familyTokens = missingTokens.div(100).mul(25);      // 25% for family
-        uint256 personalTokens = missingTokens.div(100).mul(15);    // 15% is Jaro personal time
-
-        mint(address(sleepContract), sleepTokens);
-        mint(address(familyContract), familyTokens);
-        mint(address(personalContract), personalTokens);
+        mint(address(sleepContract), missingSleep);
+        mint(address(familyContract), missingFamily);
+        mint(address(personalContract), missingPersonal);
 
         tokensToMint = MAX_AMOUNT.sub(token.totalSupply());
         saleStartTime = _startTime;
@@ -212,6 +175,11 @@ contract JaroCoinCrowdsale is Ownable {
         if (_amount > 0) {
             token.mint(_beneficiary, _amount);
         }
+    }
+
+    // This function created for easier testing purposes
+    function createJaroSleep(address _token, uint256 _dailyTime) public returns (JaroSleep) {
+        return new JaroSleep(_token, _dailyTime);
     }
 
     function getNow() internal view returns (uint256) {

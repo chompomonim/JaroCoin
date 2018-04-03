@@ -1,4 +1,4 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
@@ -179,6 +179,7 @@ contract JaroCoinToken is Ownable {
     * @return A boolean that indicates if the operation was successful.
     */
     function burn(uint256 _amount) public returns (bool) {
+        require (_amount > 0);
         require (balanceOf[msg.sender] >= _amount);
         totalSupply = totalSupply.sub(_amount);
         balanceOf[msg.sender] = balanceOf[msg.sender].sub(_amount);
