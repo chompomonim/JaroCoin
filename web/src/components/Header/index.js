@@ -84,9 +84,6 @@ function HeaderContent() {
                     <p className={styles.introDescription}>JaroCoin is a token fully backed by my most precious asset – time. JaroCoin is the only way to get my attention, advice or service.</p>
                     <p className={styles.introDescription}>Private crypto currency (token) is a model to play for majority future – oriented professionals from attorneys at law to house – keepers. This project is fully open source, so you can create yours as well!</p>
                     <p className={styles.introDescription}>Humanity changes. Money too.</p>
-                    <div className={styles.buttonWrapper} style={{dislay: 'none'}}>
-                        <Button className={styles.button} type="primary" size="large" icon="book">Read Whitepaper</Button>
-                    </div>
                 </Col>
             </Row>
 
