@@ -1,11 +1,12 @@
 {
-  "main.css": "static/css/main.c44f01ad.css",
-  "main.css.map": "static/css/main.c44f01ad.css.map",
-  "main.js": "static/js/main.50b2c9a9.js",
-  "main.js.map": "static/js/main.50b2c9a9.js.map",
+  "main.css": "static/css/main.010924b7.css",
+  "main.css.map": "static/css/main-cssmodules.11675558.css.map",
+  "main.js": "static/js/main.20ad862d.js",
+  "main.js.map": "static/js/main.20ad862d.js.map",
   "static/media/HeaderClock.jpg": "static/media/HeaderClock.2379ca99.jpg",
   "static/media/JCoin.png": "static/media/JCoin.644b4e54.png",
   "static/media/LinkedInLogo.svg": "static/media/LinkedInLogo.bb3d7f13.svg",
   "static/media/TokenDistributionInfographics.jpg": "static/media/TokenDistributionInfographics.56ebc2fe.jpg",
+  "static/media/TokenDistributionInfographicsMobile.jpg": "static/media/TokenDistributionInfographicsMobile.1f4a451d.jpg",
   "static/media/WhoIsJaro.jpg": "static/media/WhoIsJaro.d5fc566d.jpg"
 }
