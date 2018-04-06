@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactGA from 'react-ga'
 
 import { Layout } from 'antd'
 import { Divider } from 'antd'
@@ -14,10 +15,10 @@ import Footer from './components/Footer'
 
 import './globalStyles.antd-custom.css'
 
-//const { Footer } = Layout;
-
 class App extends Component {
   render() {
+    ReactGA.initialize('UA-117095638-1')
+    ReactGA.pageview(window.location.pathname + window.location.search)
     return (
       <div>
 
