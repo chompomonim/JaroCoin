@@ -20,12 +20,10 @@ class AntDMenu extends Component {
             {key: 'services', value: 'Services', link: '#services', icon: 'tool'},
             {key: 'quotes', value: 'Quotes', link: '#quotes', icon: 'heart-o'},
         ]
-        this.state = {
-            activeLink: 'home' // set active menu item
-        }
 
         this.state = {
             collapsed: true,
+            activeLink: 'home' // set active menu item
         };
         this.toggle = () => {
             this.setState({
