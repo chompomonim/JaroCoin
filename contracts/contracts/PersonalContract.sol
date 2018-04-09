@@ -1,16 +1,18 @@
 pragma solidity ^0.4.21;
 
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
+
 import "./JaroCoinToken.sol";
 
-contract JaroSleep {
+contract PersonalTime is Ownable {
     using SafeMath for uint256;
 
     uint256 public lastBurn;                         // Time of last sleep token burn
     uint256 public dailyTime;                        // Tokens to burn per day
     JaroCoinToken public token;
 
-    function JaroSleep(address _token, uint256 _dailyTime) public {
+    function PersonalTime(address _token, uint256 _dailyTime) public {
         token = JaroCoinToken(_token);
         lastBurn = getNow();
         dailyTime = _dailyTime;
@@ -34,6 +36,10 @@ contract JaroSleep {
         }
 
         return tokensToBurn;
+    }
+
+    function transfer(address _to, uint256 _value) public onlyOwner {
+        token.transfer(_to, _value);
     }
 
     // Function needed for automated testing purposes

@@ -13,6 +13,10 @@ const One = new BigNumber("1")
 const JaroCoin = artifacts.require("../contracts/JaroCoinToken")
 const Crowdsale = artifacts.require("test/TestJaroCoinCrowdsale.sol");
 
+function getTime(date) {
+    return Math.floor(new Date(date).getTime() / 1000)
+}
+
 contract('JaroCoinCrowdsale', async (accounts) => {
     let crowdsale
     let token
@@ -25,17 +29,31 @@ contract('JaroCoinCrowdsale', async (accounts) => {
     const secondBuyTokens = new BigNumber('7000e8')
 
     before(async () => {
-        crowdsale = await Crowdsale.new(owner)
-        token = await JaroCoin.at(await crowdsale.token())
+        token = await JaroCoin.new()
+        crowdsale = await Crowdsale.new(owner, token.address)
 
-        // Set time after ICO start
-        await crowdsale.setNow(1522585000) // TODO set new Date() + 1 hour
+        // Make crowdsale contract owner of token
+        await token.transferOwnership(crowdsale.address)
     })
 
     it('should always work', () => {})
 
     it('should have accounts[2] as owner', async () => {
         expect(await crowdsale.owner()).to.be.equal(accounts[2])
+    })
+
+    it('token should have crowdsale as owner', async () => {
+        expect(await token.owner()).to.be.equal(crowdsale.address)
+    })
+
+    it('should start token sale', async () => {
+        await crowdsale.startSale(getTime('2018-04-11'), {from: owner})
+        expect(await crowdsale.isActive()).to.be.true
+    })
+
+    it('should set date after crowdsale start', async () => {
+        // Set time after ICO start
+        await crowdsale.setNow(getTime('2018-04-12')) // TODO set new Date() + 1 hour
     })
 
     it('accounts[1] must have 0 balance', async () => {
