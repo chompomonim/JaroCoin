@@ -138,10 +138,10 @@ contract JaroCoinCrowdsale is Ownable {
         uint256 sleepTokens = token.balanceOf(address(sleepContract));
 
         familyContract.burnTokens();
-        uint256 familyTokens = token.balanceOf(familyContract);
+        uint256 familyTokens = token.balanceOf(familyContract).add(familyContract.debt());
 
         personalContract.burnTokens();
-        uint256 personalTokens = token.balanceOf(personalContract);
+        uint256 personalTokens = token.balanceOf(personalContract).add(personalContract.debt());
 
         uint256 missingSleep = MAX_AMOUNT.div(100).mul(40).sub(sleepTokens);       // sleep and stuff takes 40% of Jaro time
         uint256 missingFamily = MAX_AMOUNT.div(100).mul(25).sub(familyTokens);     // 25% for family
@@ -154,7 +154,7 @@ contract JaroCoinCrowdsale is Ownable {
         tokensToMint = MAX_AMOUNT.sub(token.totalSupply());
         saleStartTime = _startTime;
         isActive = true;
-        SaleActivated(_startTime, tokensToMint);
+        emit SaleActivated(_startTime, tokensToMint);
     }
 
     function _closeSale() internal {

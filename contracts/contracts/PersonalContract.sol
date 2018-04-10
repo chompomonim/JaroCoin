@@ -10,6 +10,8 @@ contract PersonalTime is Ownable {
 
     uint256 public lastBurn;                         // Time of last sleep token burn
     uint256 public dailyTime;                        // Tokens to burn per day
+    uint256 public debt = 0;                         // Debt which will be not minted during next sale period
+    uint256 public protect = 0;                      // Tokens which were transfered in favor of future days
     JaroCoinToken public token;
 
     function PersonalTime(address _token, uint256 _dailyTime) public {
@@ -31,19 +33,30 @@ contract PersonalTime is Ownable {
         if (sec >= 1 days) {
             uint256 d =  sec.div(86400);
             tokensToBurn = d.mul(dailyTime);
-            token.burn(tokensToBurn);
+
+            if (debt >= tokensToBurn) {
+                debt = debt.sub(tokensToBurn);
+            } else {
+                token.burn(tokensToBurn.sub(debt));
+                protect = 0;
+            }
+
             lastBurn = lastBurn.add(d.mul(86400));
         }
 
         return tokensToBurn;
     }
 
-    function transfer(address _to, uint256 _value) public onlyOwner {
-        token.transfer(_to, _value);
+    function transfer(address _to, uint256 _amount) public onlyOwner {
+        protect = protect.add(_amount);
+        debt = debt.add(_amount);
+        token.transfer(_to, _amount);
     }
 
     // Function needed for automated testing purposes
     function getNow() internal view returns (uint256) {
         return now;
     }
+
+    // TODO subtract debt when receiving tokens
 }

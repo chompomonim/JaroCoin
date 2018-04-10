@@ -11,7 +11,8 @@ const OneToken = new BigNumber("1e8")
 const One = new BigNumber("1")
 
 const JaroCoin = artifacts.require("../contracts/JaroCoinToken")
-const Crowdsale = artifacts.require("test/TestJaroCoinCrowdsale.sol");
+const Crowdsale = artifacts.require("test/TestJaroCoinCrowdsale.sol")
+const Family = artifacts.require("test/TestPersonalContract")
 
 function getTime(date) {
     return Math.floor(new Date(date).getTime() / 1000)
@@ -27,10 +28,11 @@ contract('JaroCoinCrowdsale', async (accounts) => {
     const owner = accounts[2]
     const firstBuyTokens = new BigNumber('5882.352e8')
     const secondBuyTokens = new BigNumber('7000e8')
+    const familyOwner = accounts[4]
 
     before(async () => {
         token = await JaroCoin.new()
-        crowdsale = await Crowdsale.new(owner, token.address)
+        crowdsale = await Crowdsale.new(owner, token.address, familyOwner, '0x3333333333333333333333333333333333333333')
 
         // Make crowdsale contract owner of token
         await token.transferOwnership(crowdsale.address)
@@ -53,7 +55,7 @@ contract('JaroCoinCrowdsale', async (accounts) => {
 
     it('should set date after crowdsale start', async () => {
         // Set time after ICO start
-        await crowdsale.setNow(getTime('2018-04-12')) // TODO set new Date() + 1 hour
+        await crowdsale.setNow(getTime('2018-04-12'))
     })
 
     it('accounts[1] must have 0 balance', async () => {
@@ -148,4 +150,46 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         expect(currentAccountBalance.lte(initialAccountBalance.sub(spendForTokens))).to.be.true
         expect(currentAccountBalance.gte(initialAccountBalance.sub(amount))).to.be.true
     })
+
+    it('should start new sale and mint proper amount of family tokens', async () => {
+        // Family transfers it's time
+        const family = Family.at(await crowdsale.familyContract())
+        const transferAmount = new BigNumber('3600e8')
+
+        // Let's burn tokens from past
+        await family.burnTokens()
+
+        // // Transfer tokens
+        await family.transfer(accounts[1], transferAmount, {from: accounts[4]})
+        const expectedAccountOneBalance = secondBuyTokens.add(transferAmount)
+        expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(expectedAccountOneBalance)
+
+        expect(await family.protect()).to.be.bignumber.equal(transferAmount)
+
+        const initialTokenAmount = await token.balanceOf(family.address)
+        const dailyFamilyTime = new BigNumber('21600e8')
+        const expectedTokenAmount = initialTokenAmount.sub(dailyFamilyTime).add(transferAmount)
+
+        const lastBurn = await family.lastBurn()
+        const oneDay = new BigNumber(60 * 60 * 24)
+        await crowdsale.setNow(lastBurn.add(oneDay))
+        await family.burnTokens()
+
+        expect(await token.balanceOf(family.address)).to.be.bignumber.equal(expectedTokenAmount)
+        expect(await family.protect()).to.be.bignumber.equal(new BigNumber(0))
+
+        // Second transfer and start new sale
+        const lastSaleStart = await crowdsale.saleStartTime()
+        const newNow = lastSaleStart.add(oneDay.mul(31))
+        await crowdsale.setNow(newNow)
+
+        await family.transfer(accounts[1], transferAmount, {from: familyOwner})
+        await family.burnTokens()
+
+        await crowdsale.closeSale({from: owner})
+        await family.burnTokens()
+        await crowdsale.startSale(newNow.add(1), {from : owner})
+        expect(await crowdsale.saleStartTime()).to.be.bignumber.equal(newNow.add(1))
+    })
+
 })
