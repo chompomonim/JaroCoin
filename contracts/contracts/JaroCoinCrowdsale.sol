@@ -11,8 +11,6 @@ contract JaroCoinCrowdsale is Ownable {
     using SafeMath for uint256;
 
     address public constant WALLET = 0x1111111111111111111111111111111111111111;
-    address public constant PERSONAL_WALLET = 0x2222222222222222222222222222222222222222;
-    address public constant FAMILY_WALLET = 0x3333333333333333333333333333333333333333;
 
     // uint256 public constant START_TIME = 1522584000;  // Time for first token sale - 2018/04/01 12:00 UTC +0
     uint256 public constant ONE_MONTH = 2592000;      // One month
@@ -68,15 +66,15 @@ contract JaroCoinCrowdsale is Ownable {
         _;
     }
 
-    function JaroCoinCrowdsale(address _owner, address _token) public {
+    function JaroCoinCrowdsale(address _owner, address _token, address _familyOwner, address _personalOwner) public {
         token = JaroCoinToken(_token);
 
         sleepContract = createJaroSleep(_token, 34560e8);       // 9.6 hours per day
         familyContract = createPersonalTime(_token, 21600e8);   // 6 hours per day
         personalContract = createPersonalTime(_token, 12960e8); // 3.6 hours per day
 
-        familyContract.transferOwnership(FAMILY_WALLET);
-        personalContract.transferOwnership(PERSONAL_WALLET);
+        familyContract.transferOwnership(_familyOwner);
+        personalContract.transferOwnership(_personalOwner);
 
         // startSale(START_TIME);
         transferOwnership(_owner);

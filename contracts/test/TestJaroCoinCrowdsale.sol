@@ -7,7 +7,11 @@ import './TestPersonalContract.sol';
 contract TestJaroCoinCrowdsale is JaroCoinCrowdsale {
     uint256 testNow;
 
-    function TestJaroCoinCrowdsale(address _owner, address _token) JaroCoinCrowdsale(_owner, _token) public {
+    function TestJaroCoinCrowdsale(
+        address _owner,
+        address _token,
+        address _familyOwner,
+        address _personalOwner) JaroCoinCrowdsale(_owner, _token, _familyOwner, _personalOwner) public {
     }
 
     function setNow(uint256 _now) public {
