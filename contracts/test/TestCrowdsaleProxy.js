@@ -10,7 +10,7 @@ const JaroCoin = artifacts.require("../contracts/JaroCoinToken")
 const TestCoin = artifacts.require("test/TestCoin")
 const Proxy = artifacts.require("../contracts/CrowdsaleProxy")
 
-contract.only('CrowdsaleProxy', (accounts) => {
+contract('CrowdsaleProxy', (accounts) => {
     let token
     let proxy
     let proxiedToken
