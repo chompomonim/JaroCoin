@@ -12,38 +12,38 @@ const One = new BigNumber("1")
 const OneDay = 60 * 60 * 24
 
 const JaroCoin = artifacts.require("../contracts/JaroCoinToken")
-const Sleep = artifacts.require("test/TestSleepContract.sol")
+const Personal = artifacts.require("test/TestPersonalContract.sol")
 
-contract('Sleep contract', async (accounts) => {
+contract('Personal contract', async (accounts) => {
     let token
     const owner = accounts[2]
     const dailyTokensToBurn = new BigNumber('9e8')
     before(async () => {
         token = await JaroCoin.new()
-        sleep = await Sleep.new(token.address, dailyTokensToBurn)
+        personal = await Personal.new(token.address, dailyTokensToBurn)
     })
 
     it('should always work', () => {})
 
     it('must have 0 balance', async () => {
-        expect(await token.balanceOf(sleep.address)).to.be.bignumber.equal(0)
+        expect(await token.balanceOf(personal.address)).to.be.bignumber.equal(0)
     })
 
     it('should get new token', async () => {
         const amount = OneToken.mul(777777)
-        await token.mint(sleep.address, amount)
-        expect(await token.balanceOf(sleep.address)).to.be.bignumber.equal(amount)
+        await token.mint(personal.address, amount)
+        expect(await token.balanceOf(personal.address)).to.be.bignumber.equal(amount)
     })
 
     it('should burn tokens for passed 4 days', async () => {
-        const sleepTokens = await token.balanceOf(sleep.address)
+        const personalTokens = await token.balanceOf(personal.address)
         const days = OneDay * 4
 
-        const lastBurn =  await sleep.lastBurn()
-        await sleep.setNow(lastBurn.add(days))
+        const lastBurn =  await personal.lastBurn()
+        await personal.setNow(lastBurn.add(days))
 
-        await sleep.burnTokens()
-        expect(await token.balanceOf(sleep.address)).to.be.bignumber.equal(sleepTokens.sub(dailyTokensToBurn.mul(4)))
+        await personal.burnTokens()
+        expect(await token.balanceOf(personal.address)).to.be.bignumber.equal(personalTokens.sub(dailyTokensToBurn.mul(4)))
     })
 
 })
