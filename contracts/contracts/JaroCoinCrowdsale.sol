@@ -19,8 +19,8 @@ contract JaroCoinCrowdsale is Ownable {
     uint256 public constant PRE_SALE_AMOUNT = 840000; // 4% of first 21 000 000 tokens
 
     // Max tokens which can be in circulation
-    uint256 public constant MAX_AMOUNT = 21000000e8;  // 21 000 000
-    uint256 public rate = 100000;                     // number of tokens buyer gets per satoshi
+    uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
+    uint256 public rate = 100000e10;                  // number of tokens buyer gets per satoshi
     uint256 public conversionRate = 17e10;            // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
 
     JaroCoinToken public token;
@@ -69,9 +69,9 @@ contract JaroCoinCrowdsale is Ownable {
     function JaroCoinCrowdsale(address _owner, address _token, address _familyOwner, address _personalOwner) public {
         token = JaroCoinToken(_token);
 
-        sleepContract = createJaroSleep(_token, 34560e8);       // 9.6 hours per day
-        familyContract = createPersonalTime(_token, 21600e8);   // 6 hours per day
-        personalContract = createPersonalTime(_token, 12960e8); // 3.6 hours per day
+        sleepContract = createJaroSleep(_token, 34560e18);       // 9.6 hours per day
+        familyContract = createPersonalTime(_token, 21600e18);   // 6 hours per day
+        personalContract = createPersonalTime(_token, 12960e18); // 3.6 hours per day
 
         familyContract.transferOwnership(_familyOwner);
         personalContract.transferOwnership(_personalOwner);
@@ -82,31 +82,48 @@ contract JaroCoinCrowdsale is Ownable {
 
     // fallback function can be used to buy tokens or claim refund
     function () external payable {
-        buyTokens(msg.sender);
+        _buyTokens(msg.sender, 0);
+    }
+
+    function coupon(uint256 _timeStamp, uint8 _bonus, uint8 v, bytes32 r, bytes32 s) external payable {
+        require(_timeStamp >= getNow());
+
+        // Check if signature is valid, get signer's address and mark this cheque as used.
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+        bytes32 hash = keccak256(prefix, keccak256(_timeStamp, _bonus));
+
+        address signer = ecrecover(hash, v, r, s);
+        require(signer == owner);
+
+        _buyTokens(msg.sender, _bonus);
     }
 
     function buyTokens(address _beneficiary) public canMint payable {
+        _buyTokens(_beneficiary, 0);
+    }
+
+    function _buyTokens(address _beneficiary, uint8 _bonus) internal {
         require (_beneficiary != address(0));
         require (msg.value > 0);
 
         uint256 weiAmount = msg.value;
         uint256 satoshiAmount = weiAmount.div(conversionRate);
-        uint256 tokens = satoshiAmount.mul(rate);
+        uint256 tokens = satoshiAmount.mul(rate).mul(100+_bonus).div(100);
 
-        // Mint tokens and refund not used ethers in case when max amount reached during this minting
+        // // Mint tokens and refund not used ethers in case when max amount reached during this minting
         uint256 excess = appendContribution(_beneficiary, tokens);
-        uint256 refund = (excess > 0 ? excess.mul(conversionRate).div(rate) : 0);
+        uint256 refund = (excess > 0 ? excess.mul(100).div(100+_bonus).mul(conversionRate).div(rate) : 0);
         weiAmount = weiAmount.sub(refund);
         satoshiRaised = satoshiRaised.add(weiAmount.mul(conversionRate));
 
-        // // if hard cap reached, no more tokens to mint, refund sender not used ethers
+        // if hard cap reached, no more tokens to mint, refund sender not used ethers
         if (refund > 0) {
             msg.sender.transfer(refund);
         }
 
-        TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens.sub(excess));
+        emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens.sub(excess));
 
-        // // Send ethers into WALLET
+        // Send ethers into WALLET
         WALLET.transfer(weiAmount);
     }
 
@@ -160,7 +177,7 @@ contract JaroCoinCrowdsale is Ownable {
     function _closeSale() internal {
         tokensToMint = 0;
         isActive = false;
-        SaleClosed();
+        emit SaleClosed();
     }
 
     function closeSale() public onlyOwner {
@@ -175,7 +192,7 @@ contract JaroCoinCrowdsale is Ownable {
 
     function mint(address _beneficiary, uint256 _amount) internal {
         if (_amount > 0) {
-            token.mint(_beneficiary, _amount);
+            token.mint(_beneficiary, _amount, "");
         }
     }
 
