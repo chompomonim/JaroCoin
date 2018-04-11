@@ -29,7 +29,7 @@ contract JaroSleep {
         if (sec >= 1 days) {
             uint256 d =  sec.div(86400);
             tokensToBurn = d.mul(dailyTime);
-            token.burn(tokensToBurn);
+            token.burn(tokensToBurn, "");
             lastBurn = lastBurn.add(d.mul(86400));
         }
 
