@@ -6,6 +6,7 @@ import './TestPersonalContract.sol';
 
 contract TestJaroCoinCrowdsale is JaroCoinCrowdsale {
     uint256 testNow;
+    string public constant name = "Crowdsale";
 
     function TestJaroCoinCrowdsale(
         address _owner,

@@ -12,16 +12,15 @@ contract JaroCoinCrowdsale is Ownable {
 
     address public constant WALLET = 0x1111111111111111111111111111111111111111;
 
-    // uint256 public constant START_TIME = 1522584000;  // Time for first token sale - 2018/04/01 12:00 UTC +0
-    uint256 public constant ONE_MONTH = 2592000;         // One month
+    uint256 public constant ONE_MONTH = 2592000;      // One month
 
     // Pre sale tokens - my current liabilities + supporters tokens
     uint256 public constant PRE_SALE_AMOUNT = 840000; // 4% of first 21 000 000 tokens
 
     // Max tokens which can be in circulation
     uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
-    uint256 public rate = 100000e10;                  // number of tokens buyer gets per satoshi
-    uint256 public conversionRate = 17e10;            // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
+    uint256 public rate;                              // number of tokens buyer gets per satoshi
+    uint256 public conversionRate;                    // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
 
     JaroCoinToken public token;
     JaroSleep public sleepContract;
@@ -83,13 +82,16 @@ contract JaroCoinCrowdsale is Ownable {
         familyContract.transferOwnership(_familyOwner);
         personalContract.transferOwnership(_personalOwner);
 
+        rate = 100000e10;
+        conversionRate = 17e10;
+
         setOwner(_owner);
         initialized = true;
     }
 
     // fallback function can be used to buy tokens
     function () external payable {
-        _buyTokens(msg.sender, 0);
+        _buyTokens(msg.sender, msg.value, 0);
     }
 
     function coupon(uint256 _timeStamp, uint8 _bonus, uint8 v, bytes32 r, bytes32 s) external payable {
@@ -102,22 +104,22 @@ contract JaroCoinCrowdsale is Ownable {
         address signer = ecrecover(hash, v, r, s);
         require(signer == owner);
 
-        _buyTokens(msg.sender, _bonus);
+        _buyTokens(msg.sender, msg.value, _bonus);
     }
 
     function buyTokens(address _beneficiary) public canMint payable {
-        _buyTokens(_beneficiary, 0);
+        _buyTokens(_beneficiary, msg.value, 0);
     }
 
-    function _buyTokens(address _beneficiary, uint8 _bonus) internal {
+    function _buyTokens(address _beneficiary, uint256 _value, uint8 _bonus) internal {
         require (_beneficiary != address(0));
-        require (msg.value > 0);
+        require (_value > 0);
 
-        uint256 weiAmount = msg.value;
+        uint256 weiAmount = _value;
         uint256 satoshiAmount = weiAmount.div(conversionRate);
         uint256 tokens = satoshiAmount.mul(rate).mul(100+_bonus).div(100);
 
-        // // Mint tokens and refund not used ethers in case when max amount reached during this minting
+        // Mint tokens and refund not used ethers in case when max amount reached during this minting
         uint256 excess = appendContribution(_beneficiary, tokens);
         uint256 refund = (excess > 0 ? excess.mul(100).div(100+_bonus).mul(conversionRate).div(rate) : 0);
         weiAmount = weiAmount.sub(refund);

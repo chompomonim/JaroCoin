@@ -6,18 +6,33 @@ chai.use(require('chai-bignumber')(BigNumber))
 
 const expect = chai.expect
 
-const JaroCoin = artifacts.require("../contracts/JaroCoinToken")
-const TestCoin = artifacts.require("test/TestCoin")
+const OneEther = new BigNumber(web3.toWei(1, 'ether'))
+
+const JaroCoin = artifacts.require("test/TestJaroCoinToken.sol")
+const Crowdsale = artifacts.require("test/TestJaroCoinCrowdsale")
+const TestCrowdsale = artifacts.require("test/TestCrowdsale")
 const Proxy = artifacts.require("../contracts/CrowdsaleProxy")
+
+function getTime(date) {
+    return Math.floor(new Date(date).getTime() / 1000)
+}
 
 contract('CrowdsaleProxy', (accounts) => {
     let token
+    let crowdsale
     let proxy
-    let proxiedToken
+    let proxiedCrowdsale
+    const wallet = '0x1111111111111111111111111111111111111111'      // WALLET where we collect ethereum
+
     before (async () => {
         token = await JaroCoin.new()
-        proxy = await Proxy.new()
-        proxiedToken = JaroCoin.at(proxy.address)
+        crowdsale = await Crowdsale.new(accounts[2], token.address, wallet, wallet)
+
+        proxy = await Proxy.new(crowdsale.address)
+        await proxy.___initialize(token.address, wallet, wallet)
+        proxiedCrowdsale = Crowdsale.at(proxy.address)
+
+        await token.transferOwnership(proxy.address)
     })
 
     it('should always work', () => {})
@@ -37,16 +52,56 @@ contract('CrowdsaleProxy', (accounts) => {
         await expect(proxy.___setProxyOwner(accounts[2], {from: accounts[0]})).to.be.eventually.rejected
     })
 
-    it('should set proper target', async () => {
-        await proxy.___setTarget(token.address, {from: accounts[1]})
-        const expectedName = await proxiedToken.name()
-        expect(expectedName).to.be.equal('JaroCoin')
+    it('should have proper target', async () => {
+        const expectedName = await proxiedCrowdsale.name()
+        expect(expectedName).to.be.equal('Crowdsale')
+
+        const expectedTargetAddress = await proxy.___proxyTarget()
+        expect(expectedTargetAddress).to.be.equal(crowdsale.address)
     })
 
     it('should set new target', async () => {
-        const coin = await TestCoin.new()
-        await proxy.___setTarget(coin.address, {from: accounts[1]})
-        const expectedName = await proxiedToken.name()
-        expect(expectedName).to.be.equal('NewContract')
+        const newCrowdsale = await TestCrowdsale.new(accounts[2])
+        await proxy.___upgradeTo(newCrowdsale.address, {from: accounts[1]})
+        const expectedName = await proxiedCrowdsale.name()
+        expect(expectedName).to.be.equal('NewCrowdsale')
+    })
+
+    it('should fail setting new target when crowdsale is active', async () => {
+        // Make crowdsale active
+        await proxiedCrowdsale.startSale(1, {from: accounts[0]})
+        expect(await proxiedCrowdsale.isActive()).to.be.true
+
+        // Setting target back to Crowdsale should eventually fail
+        await expect(proxy.___upgradeTo(crowdsale.address, {from: accounts[1]})).to.be.eventually.rejected
+    })
+
+    it('should accept funds and mint tokens', async () => {
+        // Move back to proper crowdsale
+        await proxiedCrowdsale.closeSale({from: accounts[0]})
+        await proxy.___upgradeTo(crowdsale.address, {from: accounts[1]})
+        expect(await proxiedCrowdsale.name()).to.be.equal('Crowdsale')
+
+        // Start token sale
+        await proxiedCrowdsale.startSale(getTime('2018-04-11'), {from: accounts[0]})
+        expect(await proxiedCrowdsale.isActive()).to.be.true
+
+        // Set time after ICO start
+        await proxiedCrowdsale.setNow(getTime('2018-04-12'))
+
+        // Account 3 should have 0 balance
+        expect(await token.balanceOf(accounts[3])).to.be.bignumber.equal(0)
+
+        // should accept funds and mint tokens
+        await proxiedCrowdsale.sendTransaction({
+            from: accounts[3],
+            value: OneEther,
+            gas: 2000000
+        })
+        expect(await token.balanceOf(accounts[3])).to.be.bignumber.equal(new BigNumber('5882.352e18'))
+
+        // should transfer funds into proper WALLET
+        const walletBalance = web3.eth.getBalance(wallet)
+        expect(walletBalance).to.be.bignumber.equal(OneEther)
     })
 })

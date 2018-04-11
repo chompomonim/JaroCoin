@@ -1,5 +1,10 @@
 pragma solidity 0.4.21;
 
+interface CrowdsaleProxyTarget {
+    function isActive() public returns(bool);
+    function initialize(address _owner, address _token, address _familyOwner, address _personalOwner) public;
+}
+
 /**
  * The CrowdsaleProxy contract does this and that...
  */
@@ -7,22 +12,27 @@ contract CrowdsaleProxy {
     bytes32 constant TARGET_POSITION = keccak256("CrowdsaleProxy.target");
     bytes32 constant OWNER_POSITION = keccak256("CrowdsaleProxy.owner");
 
+    event Upgraded(address indexed target);
+
     modifier _onlyProxyOwner() {
         require(msg.sender == ___proxyOwner());
         _;
     }
 
-    function CrowdsaleProxy() public {
+    function CrowdsaleProxy(address _target) public {
+        require(_target != 0x0);
         bytes32 position = OWNER_POSITION;
-        assembly {
-            sstore(position, caller)
-        }
+        assembly { sstore(position, caller) }
+        ___setTarget(_target);
+    }
+
+    function ___initialize(address _token, address _familyOwner, address _personalOwner) public {
+        CrowdsaleProxyTarget(this).initialize(msg.sender, _token, _familyOwner, _personalOwner);
     }
 
     function () public payable {
-        bytes32 _storageTargetAddress = TARGET_POSITION;
+        address _target = ___proxyTarget();
         assembly {
-            let _target := sload(_storageTargetAddress)
             calldatacopy(0x0, 0x0, calldatasize)
             let success := delegatecall(sub(gas, 10000), _target, 0x0, calldatasize, 0, 0)
             let retSz := returndatasize
@@ -37,17 +47,14 @@ contract CrowdsaleProxy {
         }
     }
 
+    function ___isActive() internal returns (bool res) {
+        res = CrowdsaleProxyTarget(this).isActive();
+    }
+
     function ___proxyOwner() public view returns (address owner) {
         bytes32 position = OWNER_POSITION;
         assembly {
             owner := sload(position)
-        }
-    }
-
-    function ___setTarget(address newTarget) _onlyProxyOwner public {
-        bytes32 position = TARGET_POSITION;
-        assembly {
-            sstore(position, newTarget)
         }
     }
 
@@ -58,4 +65,29 @@ contract CrowdsaleProxy {
         }
     }
 
+    function ___proxyTarget() public view returns (address target) {
+        bytes32 position = TARGET_POSITION;
+        assembly {
+            target := sload(position)
+        }
+    }
+
+    function ___setTarget(address target) internal {
+        bytes32 position = TARGET_POSITION;
+        assembly {
+            sstore(position, target)
+        }
+    }
+
+    function ___upgradeTo(address newTarget) public _onlyProxyOwner {
+        require(!___isActive());
+        require(___proxyTarget() != newTarget);
+        ___setTarget(newTarget);
+        emit Upgraded(___proxyTarget());
+    }
+
+    function ___upgradeToAndCall(address newTarget, bytes data) payable public _onlyProxyOwner {
+        ___upgradeTo(newTarget);
+        require(this.call.value(msg.value)(data));
+    }
 }
