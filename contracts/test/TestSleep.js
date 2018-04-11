@@ -14,7 +14,7 @@ const OneDay = 60 * 60 * 24
 const JaroCoin = artifacts.require("test/TestJaroCoinToken.sol")
 const Sleep = artifacts.require("test/TestSleepContract.sol")
 
-contract.only('Sleep contract', async (accounts) => {
+contract('Sleep contract', async (accounts) => {
     let token
     const owner = accounts[2]
     const dailyTokensToBurn = new BigNumber('9e18')
