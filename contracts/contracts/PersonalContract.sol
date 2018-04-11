@@ -2,10 +2,11 @@ pragma solidity ^0.4.21;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "erc777/contracts/ERC777TokensRecipient.sol";
 
 import "./JaroCoinToken.sol";
 
-contract PersonalTime is Ownable {
+contract PersonalTime is Ownable, ERC777TokensRecipient {
     using SafeMath for uint256;
 
     uint256 public lastBurn;                         // Time of last sleep token burn
@@ -13,6 +14,8 @@ contract PersonalTime is Ownable {
     uint256 public debt = 0;                         // Debt which will be not minted during next sale period
     uint256 public protect = 0;                      // Tokens which were transfered in favor of future days
     JaroCoinToken public token;
+
+    event ReceivedTokens(address indexed from, uint amount);
 
     function PersonalTime(address _token, uint256 _dailyTime) public {
         token = JaroCoinToken(_token);
@@ -34,10 +37,10 @@ contract PersonalTime is Ownable {
             uint256 d =  sec.div(86400);
             tokensToBurn = d.mul(dailyTime);
 
-            if (debt >= tokensToBurn) {
-                debt = debt.sub(tokensToBurn);
+            if (protect >= tokensToBurn) {
+                protect = protect.sub(tokensToBurn);
             } else {
-                token.burn(tokensToBurn.sub(debt), "");
+                token.burn(tokensToBurn.sub(protect), "");
                 protect = 0;
             }
 
@@ -58,5 +61,9 @@ contract PersonalTime is Ownable {
         return now;
     }
 
-    // TODO subtract debt when receiving tokens
+    // ERC777 tokens receiver callback
+    function tokensReceived(address operator, address from, address to, uint amount, bytes userData, bytes operatorData) public {
+        debt = (debt >= amount ? debt.sub(amount) : 0);
+        emit ReceivedTokens(from, amount);
+    }
 }

@@ -7,17 +7,17 @@ chai.use(require('chai-bignumber')(BigNumber))
 const expect = chai.expect
 
 const OneEther = new BigNumber(web3.toWei(1, 'ether'))
-const OneToken = new BigNumber("1e8")
+const OneToken = new BigNumber("1e18")
 const One = new BigNumber("1")
 const OneDay = 60 * 60 * 24
 
-const JaroCoin = artifacts.require("../contracts/JaroCoinToken")
+const JaroCoin = artifacts.require("test/TestJaroCoinToken.sol")
 const Personal = artifacts.require("test/TestPersonalContract.sol")
 
 contract('Personal contract', async (accounts) => {
     let token
     const owner = accounts[2]
-    const dailyTokensToBurn = new BigNumber('9e8')
+    const dailyTokensToBurn = new BigNumber('9e18')
     before(async () => {
         token = await JaroCoin.new()
         personal = await Personal.new(token.address, dailyTokensToBurn)
@@ -31,7 +31,7 @@ contract('Personal contract', async (accounts) => {
 
     it('should get new token', async () => {
         const amount = OneToken.mul(777777)
-        await token.mint(personal.address, amount)
+        await token.mint(personal.address, amount, '')
         expect(await token.balanceOf(personal.address)).to.be.bignumber.equal(amount)
     })
 
