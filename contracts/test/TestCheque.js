@@ -11,7 +11,7 @@ const OneToken = new BigNumber("1e18");
 
 const JaroCoinToken = artifacts.require("./TestJaroCoinToken.sol");
 
-contract.only('JaroCoin send via cheque', async (accounts) => {
+contract('JaroCoin send via cheque', async (accounts) => {
     let token;
     before(async () => {
         token = await JaroCoinToken.new();

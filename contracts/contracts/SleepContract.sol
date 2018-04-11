@@ -1,14 +1,17 @@
 pragma solidity ^0.4.21;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "erc777/contracts/ERC777TokensRecipient.sol";
 import "./JaroCoinToken.sol";
 
-contract JaroSleep {
+contract JaroSleep is ERC777TokensRecipient {
     using SafeMath for uint256;
 
     uint256 public lastBurn;                         // Time of last sleep token burn
     uint256 public dailyTime;                        // Tokens to burn per day
     JaroCoinToken public token;
+
+    event ReceivedTokens(address indexed from, uint amount);
 
     function JaroSleep(address _token, uint256 _dailyTime) public {
         token = JaroCoinToken(_token);
@@ -39,5 +42,10 @@ contract JaroSleep {
     // Function needed for automated testing purposes
     function getNow() internal view returns (uint256) {
         return now;
+    }
+
+    // ERC777 tokens receiver callback
+    function tokensReceived(address operator, address from, address to, uint amount, bytes userData, bytes operatorData) public {
+        emit ReceivedTokens(from, amount);
     }
 }
