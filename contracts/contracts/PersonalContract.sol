@@ -37,7 +37,7 @@ contract PersonalTime is Ownable {
             if (debt >= tokensToBurn) {
                 debt = debt.sub(tokensToBurn);
             } else {
-                token.burn(tokensToBurn.sub(debt));
+                token.burn(tokensToBurn.sub(debt), "");
                 protect = 0;
             }
 
