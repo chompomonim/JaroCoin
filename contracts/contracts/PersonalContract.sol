@@ -1,9 +1,9 @@
 pragma solidity ^0.4.21;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "erc777/contracts/ERC777TokensRecipient.sol";
 
+import "./Ownable.sol";
 import "./JaroCoinToken.sol";
 
 contract PersonalTime is Ownable, ERC777TokensRecipient {

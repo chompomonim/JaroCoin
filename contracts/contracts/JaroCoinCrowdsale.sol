@@ -1,8 +1,8 @@
 pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
+import "./Ownable.sol";
 import "./JaroCoinToken.sol";
 import "./SleepContract.sol";
 import "./PersonalContract.sol";
@@ -13,7 +13,7 @@ contract JaroCoinCrowdsale is Ownable {
     address public constant WALLET = 0x1111111111111111111111111111111111111111;
 
     // uint256 public constant START_TIME = 1522584000;  // Time for first token sale - 2018/04/01 12:00 UTC +0
-    uint256 public constant ONE_MONTH = 2592000;      // One month
+    uint256 public constant ONE_MONTH = 2592000;         // One month
 
     // Pre sale tokens - my current liabilities + supporters tokens
     uint256 public constant PRE_SALE_AMOUNT = 840000; // 4% of first 21 000 000 tokens
@@ -36,6 +36,7 @@ contract JaroCoinCrowdsale is Ownable {
 
     // Indicator of token sale activity.
     bool public isActive = false;
+    bool internal initialized = false;
 
     /**
     * event for token purchase logging
@@ -67,6 +68,12 @@ contract JaroCoinCrowdsale is Ownable {
     }
 
     function JaroCoinCrowdsale(address _owner, address _token, address _familyOwner, address _personalOwner) public {
+        initialize(_owner, _token, _familyOwner, _personalOwner);
+    }
+
+    function initialize(address _owner, address _token, address _familyOwner, address _personalOwner) public {
+        require (!initialized);
+
         token = JaroCoinToken(_token);
 
         sleepContract = createJaroSleep(_token, 34560e18);       // 9.6 hours per day
@@ -76,11 +83,11 @@ contract JaroCoinCrowdsale is Ownable {
         familyContract.transferOwnership(_familyOwner);
         personalContract.transferOwnership(_personalOwner);
 
-        // startSale(START_TIME);
-        transferOwnership(_owner);
+        setOwner(_owner);
+        initialized = true;
     }
 
-    // fallback function can be used to buy tokens or claim refund
+    // fallback function can be used to buy tokens
     function () external payable {
         _buyTokens(msg.sender, 0);
     }

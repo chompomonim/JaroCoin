@@ -1,10 +1,10 @@
 pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "eip820/contracts/ERC820Implementer.sol";
 import "erc777/contracts/ERC777TokensSender.sol";
 import "erc777/contracts/ERC777TokensRecipient.sol";
+import "./Ownable.sol";
 
 contract JaroCoinToken is Ownable, ERC820Implementer {
     using SafeMath for uint256;
