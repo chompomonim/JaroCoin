@@ -7,11 +7,11 @@ import { Button } from 'antd'
 import styles from './timelineExtended.module.css'
 
 const steps = [{
-    title: '12st of April',
+    title: '16st of April',
     description: 'Start token sale',
     content: 'Initial coin release',
 }, {
-    title: '21st of April',
+    title: '1st of May',
     description: 'Activate Smart Contracts to accept JARO',
     content: 'Second-content',
 }, {
