@@ -16,6 +16,7 @@
     "left-pad": "^1.2.0",
     "secp256k1": "^3.5.0",
     "truffle": "^4.1.5",
+    "truffle-hdwallet-provider": "0.0.3",
     "zeppelin-solidity": "^1.7.0"
   },
   "devDependencies": {},
@@ -23,6 +24,8 @@
     "test": "truffle test",
     "compile": "truffle compile",
     "migrate": "truffle migrate",
+    "reset": "truffle migrate --reset --network=ropsten",
+    "testnet-migrate": "truffle migrate --network=ropsten",
     "rsk-migrate": "truffle migrate --network=rsk"
   },
   "author": "",
