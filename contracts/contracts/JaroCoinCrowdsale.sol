@@ -90,11 +90,11 @@ contract JaroCoinCrowdsale is Ownable {
     }
 
     // fallback function can be used to buy tokens
-    function () external payable {
+    function () external canMint payable {
         _buyTokens(msg.sender, msg.value, 0);
     }
 
-    function coupon(uint256 _timeStamp, uint8 _bonus, uint8 v, bytes32 r, bytes32 s) external payable {
+    function coupon(uint256 _timeStamp, uint8 _bonus, uint8 v, bytes32 r, bytes32 s) external canMint payable {
         require(_timeStamp >= getNow());
 
         // Check if signature is valid, get signer's address and mark this cheque as used.
