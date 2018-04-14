@@ -101,7 +101,7 @@ contract JaroCoinCrowdsale is Ownable {
         uint256 excess = appendContribution(_beneficiary, tokens);
         uint256 refund = (excess > 0 ? excess.mul(100).div(100+_bonus).mul(conversionRate).div(rate) : 0);
         weiAmount = weiAmount.sub(refund);
-        satoshiRaised = satoshiRaised.add(weiAmount.mul(conversionRate));
+        satoshiRaised = satoshiRaised.add(satoshiAmount);
 
         // if hard cap reached, no more tokens to mint, refund sender not used ethers
         if (refund > 0) {
