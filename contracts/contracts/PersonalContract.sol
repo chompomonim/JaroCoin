@@ -1,12 +1,12 @@
 pragma solidity ^0.4.21;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "erc777/contracts/ERC777TokensRecipient.sol";
+import "eip820/contracts/ERC820Implementer.sol";
 
 import "./Ownable.sol";
 import "./JaroCoinToken.sol";
 
-contract PersonalTime is Ownable, ERC777TokensRecipient {
+contract PersonalTime is Ownable, ERC820Implementer, ERC777TokensRecipient {
     using SafeMath for uint256;
 
     uint256 public lastBurn;                         // Time of last sleep token burn
@@ -15,9 +15,10 @@ contract PersonalTime is Ownable, ERC777TokensRecipient {
     uint256 public protect = 0;                      // Tokens which were transfered in favor of future days
     JaroCoinToken public token;
 
-    event ReceivedTokens(address indexed from, uint amount);
+    event ReceivedTokens(address operator, address from, address to, uint amount, bytes userData, bytes operatorData);
 
     function PersonalTime(address _token, uint256 _dailyTime) public {
+        setInterfaceImplementation("ERC777TokensRecipient", this);
         token = JaroCoinToken(_token);
         lastBurn = getNow();
         dailyTime = _dailyTime;
@@ -62,8 +63,9 @@ contract PersonalTime is Ownable, ERC777TokensRecipient {
     }
 
     // ERC777 tokens receiver callback
-    function tokensReceived(address operator, address from, address to, uint amount, bytes userData, bytes operatorData) public {
+    function tokensReceived(address operator, address from, address to, uint amount, bytes userData, bytes operatorData) external {
+        require(msg.sender == address(token));
         debt = (debt >= amount ? debt.sub(amount) : 0);
-        emit ReceivedTokens(from, amount);
+        emit ReceivedTokens(operator, from, to, amount, userData, operatorData);
     }
 }
