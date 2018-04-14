@@ -1,12 +1,16 @@
 pragma solidity 0.4.21;
 
-interface CrowdsaleProxyTarget {
+import "./JaroCoinToken.sol";
+
+contract CrowdsaleProxyTarget {
     function isActive() public returns(bool);
     function initialize(address _owner, address _token, address _familyOwner, address _personalOwner) public;
+    address public token;
 }
 
 /**
- * The CrowdsaleProxy contract does this and that...
+ * The CrowdsaleProxy contract which uses crowdsale implementation deployed at
+ * target address. This constuction helps to make Crowdsale code upgradable.
  */
 contract CrowdsaleProxy {
     bytes32 constant TARGET_POSITION = keccak256("CrowdsaleProxy.target");
@@ -45,6 +49,10 @@ contract CrowdsaleProxy {
                 return(0, retSz)
             }
         }
+    }
+
+    function ___coinAddress() external view returns (address) {
+        return CrowdsaleProxyTarget(this).token();
     }
 
     function ___isActive() internal returns (bool res) {
@@ -88,6 +96,6 @@ contract CrowdsaleProxy {
 
     function ___upgradeToAndCall(address newTarget, bytes data) payable public _onlyProxyOwner {
         ___upgradeTo(newTarget);
-        require(this.call.value(msg.value)(data));
+        require(address(this).call.value(msg.value)(data));
     }
 }
