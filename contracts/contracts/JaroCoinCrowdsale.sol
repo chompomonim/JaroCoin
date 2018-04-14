@@ -14,6 +14,10 @@ contract JaroCoinCrowdsale is Ownable {
 
     // Max tokens which can be in circulation
     uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
+
+    // Amount of raised funds in satoshi
+    uint256 public satoshiRaised;
+
     uint256 public rate;                              // number of tokens buyer gets per satoshi
     uint256 public conversionRate;                    // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
 
@@ -24,9 +28,6 @@ contract JaroCoinCrowdsale is Ownable {
 
     uint256 public tokensToMint;                      // Amount of tokens left to mint in this sale
     uint256 public saleStartTime;                     // Start time of recent token sale
-
-    // Amount of raised funds in satoshi
-    uint256 public satoshiRaised;
 
     // Indicator of token sale activity.
     bool public isActive = false;
