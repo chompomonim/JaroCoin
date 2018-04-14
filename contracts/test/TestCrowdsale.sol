@@ -5,6 +5,7 @@ import "../contracts/Ownable.sol";
 contract TestCrowdsale is Ownable {
     string public constant name = "NewCrowdsale";
     bool public isActive;
+    uint256 startTime;
 
     function TestCrowdsale(address _owner) public {
         transferOwnership(_owner);
@@ -16,5 +17,6 @@ contract TestCrowdsale is Ownable {
 
     function startSale(uint256 _startTime) public onlyOwner {
         isActive = true;
+        startTime = _startTime;
     }
 }

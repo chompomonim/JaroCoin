@@ -8,6 +8,9 @@ contract TestSleepContract is JaroSleep {
     function TestSleepContract(address _token, uint256 _dailyTime) JaroSleep(_token, _dailyTime) public {
     }
 
+    function setInterfaceImplementation(string ifaceLabel, address impl) internal {
+    }
+
     function setNow(uint256 _now) public {
         testNow = _now;
     }

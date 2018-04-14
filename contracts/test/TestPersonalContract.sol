@@ -8,6 +8,10 @@ contract TestPersonalContract is PersonalTime {
     function TestPersonalContract(address _token, uint256 _dailyTime) PersonalTime(_token, _dailyTime) public {
     }
 
+    function setInterfaceImplementation(string ifaceLabel, address impl) internal {
+
+    }
+
     function setNow(uint256 _now) public {
         testNow = _now;
     }
