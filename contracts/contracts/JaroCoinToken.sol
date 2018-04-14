@@ -2,9 +2,16 @@ pragma solidity 0.4.21;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "eip820/contracts/ERC820Implementer.sol";
-import "erc777/contracts/ERC777TokensSender.sol";
-import "erc777/contracts/ERC777TokensRecipient.sol";
 import "./Ownable.sol";
+
+interface ERC777TokensSender {
+    function tokensToSend(address operator, address from, address to, uint amount, bytes userData,bytes operatorData) external;
+}
+
+
+interface ERC777TokensRecipient {
+    function tokensReceived(address operator, address from, address to, uint amount, bytes userData, bytes operatorData) external;
+}
 
 contract JaroCoinToken is Ownable, ERC820Implementer {
     using SafeMath for uint256;
@@ -18,12 +25,13 @@ contract JaroCoinToken is Ownable, ERC820Implementer {
     mapping (address => mapping (address => bool)) public isOperatorFor;
     mapping (address => mapping (uint256 => bool)) private usedNonces;
 
-    event Transfer(address indexed from, address indexed to, uint value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
     event Sent(address indexed operator, address indexed from, address indexed to, uint256 amount, bytes userData, bytes operatorData);
     event Minted(address indexed operator, address indexed to, uint256 amount, bytes operatorData);
     event Burned(address indexed operator, address indexed from, uint256 amount, bytes userData, bytes operatorData);
     event AuthorizedOperator(address indexed operator, address indexed tokenHolder);
     event RevokedOperator(address indexed operator, address indexed tokenHolder);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 
     uint256 public totalSupply = 0;
     uint256 public constant maxSupply = 21000000e18;
@@ -103,7 +111,7 @@ contract JaroCoinToken is Ownable, ERC820Implementer {
     * @notice Internal function that ensures `_amount` is multiple of the granularity
     * @param _amount The quantity that want's to be checked
     */
-    function requireMultiple(uint256 _amount) internal {
+    function requireMultiple(uint256 _amount) internal pure {
         require(_amount.div(granularity).mul(granularity) == _amount);
     }
 
@@ -216,18 +224,73 @@ contract JaroCoinToken is Ownable, ERC820Implementer {
         emit Transfer(_from, _to, _amount);
     }
 
-    // ------- Partial ERC20 Implementation ----------
+    // ------- ERC20 Implementation ----------
 
     /**
-    * @dev transfer token for a specified address
-    * @param _to The address to transfer to.
-    * @param _value The amount to be transferred.
-    */
+     * @dev transfer token for a specified address
+     * @param _to The address to transfer to.
+     * @param _value The amount to be transferred.
+     */
     function transfer(address _to, uint256 _value) public returns (bool) {
         doSend(msg.sender, _to, _value, "", msg.sender, "", false);
         return true;
     }
 
+    /**
+     * @dev Transfer tokens from one address to another. Technically this is not ERC20 transferFrom but more ERC777 operatorSend.
+     * @param _from address The address which you want to send tokens from
+     * @param _to address The address which you want to transfer to
+     * @param _value uint256 the amount of tokens to be transferred
+     */
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {
+        require(isOperatorFor[msg.sender][_from]);
+        doSend(_from, _to, _value, "", msg.sender, "", true);
+        emit Transfer(_from, _to, _value);
+        return true;
+    }
+
+    /**
+
+     * @dev Originally in ERC20 this function to check the amount of tokens that an owner allowed to a spender.
+     *
+     * Function was added purly for backward compatibility with ERC20. Use operator logic from ERC777 instead.
+     * @param _owner address The address which owns the funds.
+     * @param _spender address The address which will spend the funds.
+     * @return A returning uint256 balanceOf _spender if it's active operator and 0 if not.
+     */
+    function allowance(address _owner, address _spender) public view returns (uint256 _amount) {
+        if (isOperatorFor[_spender][_owner]) {
+            _amount = balanceOf[_owner];
+        } else {
+            _amount = 0;
+        }
+    }
+
+    /**
+     * @dev Approve the passed address to spend tokens on behalf of msg.sender.
+     *
+     * This function is more authorizeOperator and revokeOperator from ERC777 that Approve from ERC20.
+     * Approve concept has several issues (e.g. https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729),
+     * so I prefer to use operator concept. If you want to revoke approval, just put 0 into _value.
+     * @param _spender The address which will spend the funds.
+     * @param _value Fake value to be compatible with ERC20 requirements.
+     */
+    function approve(address _spender, uint256 _value) public returns (bool) {
+        require(_spender != msg.sender);
+
+        if (_value > 0) {
+            // Authorizing operator
+            isOperatorFor[_spender][msg.sender] = true;
+            emit AuthorizedOperator(_spender, msg.sender);
+        } else {
+            // Revoking operator
+            isOperatorFor[_spender][msg.sender] = false;
+            emit RevokedOperator(_spender, msg.sender);
+        }
+
+        emit Approval(msg.sender, _spender, _value);
+        return true;
+    }
 
     // ------- Minting and burning ----------
 
