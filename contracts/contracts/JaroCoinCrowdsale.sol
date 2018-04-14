@@ -26,32 +26,13 @@ contract JaroCoinCrowdsale is Ownable {
     uint256 public saleStartTime;                     // Start time of recent token sale
 
     // Amount of raised funds in satoshi
-    uint256 public satoshiRaised = 0;
+    uint256 public satoshiRaised;
 
     // Indicator of token sale activity.
     bool public isActive = false;
     bool internal initialized = false;
 
-    /**
-    * event for token purchase logging
-    * @param purchaser who paid for the tokens
-    * @param beneficiary who got the tokens
-    * @param value satoshi paid for purchase
-    * @param amount amount of tokens purchased
-    */
     event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
-
-    /**
-     * When there no tokens left to mint and token minter tries to manually mint tokens
-     * this event is raised to signal how many tokens we have to charge back to purchaser
-     */
-    event ManualTokenMintRequiresRefund(address indexed purchaser, uint256 value);
-
-    /**
-     * Notifies when new sale stage is setuped.
-     * @param startTime time of token sale begining.
-     * @param amount max amount of tokens to be minted in this sale period.
-     */
     event SaleActivated(uint256 startTime, uint256 amount);
     event SaleClosed();
 
@@ -79,6 +60,7 @@ contract JaroCoinCrowdsale is Ownable {
 
         rate = 100000e10;
         conversionRate = 17e10;
+        satoshiRaised = 0;
 
         setOwner(_owner);
         initialized = true;
