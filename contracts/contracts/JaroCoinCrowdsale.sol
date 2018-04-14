@@ -12,11 +12,6 @@ contract JaroCoinCrowdsale is Ownable {
 
     address public constant WALLET = 0x1111111111111111111111111111111111111111;
 
-    uint256 public constant ONE_MONTH = 2592000;      // One month
-
-    // Pre sale tokens - my current liabilities + supporters tokens
-    uint256 public constant PRE_SALE_AMOUNT = 840000; // 4% of first 21 000 000 tokens
-
     // Max tokens which can be in circulation
     uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
     uint256 public rate;                              // number of tokens buyer gets per satoshi
