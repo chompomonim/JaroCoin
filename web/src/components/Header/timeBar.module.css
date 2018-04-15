@@ -13,12 +13,14 @@
     display: inline-block;
     font-size: 2.2rem;
     font-family: 'Proza Libre';
-    min-width: 200px;
+    min-width: 100px;
+    margin-left: 10px;
 }
 
 .timeBarTitle {
     display: inline-block;
     font-size: 1.9rem;
+    margin-left: 10px;
 }
 
 .timeBar {
