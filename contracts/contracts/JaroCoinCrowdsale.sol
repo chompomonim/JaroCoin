@@ -10,7 +10,7 @@ import "./PersonalContract.sol";
 contract JaroCoinCrowdsale is Ownable {
     using SafeMath for uint256;
 
-    address public constant WALLET = 0x1111111111111111111111111111111111111111;
+    address public constant WALLET = 0xefF42c79c0aBea9958432DC82FebC4d65f3d24A3;
 
     // Max tokens which can be in circulation
     uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
