@@ -32,7 +32,7 @@ if (typeof web3 !== 'undefined') {
 
 // TODO Load smart-contract address from config
 async function getAmount() {
-    const response = await fetch('http://localhost:3000/JaroCoinToken.json')
+    const response = await fetch('http://jarocoin.com/JaroCoinToken.json')
     const contractABI = (await response.json())['abi']
     const contract = new web3.eth.Contract(contractABI, '0x2E5fb91975C3fB6F6D61C5859314E7c53AF07912')
     return await contract.methods.totalSupply().call()
@@ -60,7 +60,7 @@ const ProgressBarBlock = ({completed}) => {
                 </Col>
                 <Col className={styles.timeBarButton} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 7 }} lg={{ span: 4 }}>
                     <div className={styles.getJaroButtonContainer}>
-                        <GetJaroButton onClick={getAmount}/>
+                        <GetJaroButton />
                     </div>
                 </Col>
             </Row>
