@@ -22,7 +22,7 @@ if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider)
 } else {
   // set the provider you want from Web3.providers
-  web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/jPfrhToAbx8f5682NUPz"))
+  web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/jPfrhToAbx8f5682NUPz"))
 }
 
 // Initialize Contract
@@ -34,7 +34,7 @@ if (typeof web3 !== 'undefined') {
 async function getAmount() {
     const response = await fetch('http://localhost:3000/JaroCoinToken.json')
     const contractABI = (await response.json())['abi']
-    const contract = new web3.eth.Contract(contractABI, '0xc34df840f51d8e1e51c7122d298dde2f94590569')
+    const contract = new web3.eth.Contract(contractABI, '0x2E5fb91975C3fB6F6D61C5859314E7c53AF07912')
     return await contract.methods.totalSupply().call()
 }
 
