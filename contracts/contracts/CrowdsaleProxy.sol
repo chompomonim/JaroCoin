@@ -1,7 +1,5 @@
 pragma solidity 0.4.21;
 
-import "./JaroCoinToken.sol";
-
 contract CrowdsaleProxyTarget {
     function isActive() public returns(bool);
     function initialize(address _owner, address _token, address _familyOwner, address _personalOwner) public;
