@@ -28,20 +28,22 @@ contract CrowdsaleProxy {
         ___setTarget(_target);
     }
 
+    function ___initialize(address _token, address _familyOwner, address _personalOwner) public {
+        CrowdsaleProxyTarget(this).initialize(msg.sender, _token, _familyOwner, _personalOwner);
+    }
+
     function () public payable {
         address _target = ___proxyTarget();
         assembly {
-            calldatacopy(0x0, 0x0, calldatasize)
-            let success := delegatecall(sub(gas, 10000), _target, 0x0, calldatasize, 0, 0)
+            let ptr := mload(0x40)
+            calldatacopy(ptr, 0, calldatasize)
+            let success := delegatecall(sub(gas, 10000), _target, ptr, calldatasize, 0, 0)
             let retSz := returndatasize
-            returndatacopy(0, 0, retSz)
+            returndatacopy(ptr, 0, retSz)
+
             switch success
-            case 0 {
-                revert(0, retSz)
-            }
-            default {
-                return(0, retSz)
-            }
+            case 0 { revert(ptr, retSz) }
+            default { return(ptr, retSz) }
         }
     }
 
