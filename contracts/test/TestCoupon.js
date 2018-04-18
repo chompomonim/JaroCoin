@@ -96,7 +96,7 @@ contract('Crowdsale with Coupon', (accounts) => {
     })
 
     it('should mint more tokens when transfer with coupon', async () => {
-        const coupon = generateCoupon(100, getTime('2018-04-15'))
+        const coupon = generateCoupon(250, getTime('2018-04-15'))
 
         await crowdsale.sendTransaction({
             from: accounts[1],
@@ -105,6 +105,6 @@ contract('Crowdsale with Coupon', (accounts) => {
             data: coupon
         })
 
-        expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(firstBuyTokens.mul(2))
-    });
+        expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(firstBuyTokens.mul(3.5))
+    })
 })
