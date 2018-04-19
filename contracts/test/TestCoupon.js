@@ -39,7 +39,7 @@ contract('Crowdsale with Coupon', (accounts) => {
 
         const trueHexData = [
             leftPad((_timeStamp).toString(16), 64, 0),
-            leftPad((_bonus).toString(16), 2, 0)
+            leftPad((_bonus).toString(16), 4, 0)
         ].join('')
 
         const msg = web3.sha3(trueHexData, { encoding: 'hex' }).slice(2)
@@ -53,7 +53,7 @@ contract('Crowdsale with Coupon', (accounts) => {
             0
         )
 
-        const payload = '0x5ec5bed6' + hexData + v + r + s;
+        const payload = '0x3ae9133d' + hexData + v + r + s;
 
         return payload
     }
@@ -96,7 +96,7 @@ contract('Crowdsale with Coupon', (accounts) => {
     })
 
     it('should mint more tokens when transfer with coupon', async () => {
-        const coupon = generateCoupon(250, getTime('2018-04-15'))
+        const coupon = generateCoupon(550, getTime('2018-04-15'))
 
         await crowdsale.sendTransaction({
             from: accounts[1],
@@ -105,6 +105,6 @@ contract('Crowdsale with Coupon', (accounts) => {
             data: coupon
         })
 
-        expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(firstBuyTokens.mul(3.5))
+        expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(firstBuyTokens.mul(6.5))
     })
 })

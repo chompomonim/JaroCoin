@@ -72,7 +72,7 @@ contract JaroCoinCrowdsale is Ownable {
         _buyTokens(msg.sender, msg.value, 0);
     }
 
-    function coupon(uint256 _timeStamp, uint8 _bonus, uint8 v, bytes32 r, bytes32 s) external canMint payable {
+    function coupon(uint256 _timeStamp, uint16 _bonus, uint8 v, bytes32 r, bytes32 s) external canMint payable {
         require(_timeStamp >= getNow());
 
         // Check if signature is valid, get signer's address and mark this cheque as used.
@@ -89,17 +89,17 @@ contract JaroCoinCrowdsale is Ownable {
         _buyTokens(_beneficiary, msg.value, 0);
     }
 
-    function _buyTokens(address _beneficiary, uint256 _value, uint8 _bonus) internal {
+    function _buyTokens(address _beneficiary, uint256 _value, uint16 _bonus) internal {
         require (_beneficiary != address(0));
         require (_value > 0);
 
         uint256 weiAmount = _value;
         uint256 satoshiAmount = weiAmount.div(conversionRate);
-        uint256 tokens = satoshiAmount.mul(rate).mul(uint256(_bonus) + 100).div(100);
+        uint256 tokens = satoshiAmount.mul(rate).mul(_bonus + 100).div(100);
 
         // Mint tokens and refund not used ethers in case when max amount reached during this minting
         uint256 excess = appendContribution(_beneficiary, tokens);
-        uint256 refund = (excess > 0 ? excess.mul(100).div(100+uint256(_bonus)).mul(conversionRate).div(rate) : 0);
+        uint256 refund = (excess > 0 ? excess.mul(100).div(100+_bonus).mul(conversionRate).div(rate) : 0);
         weiAmount = weiAmount.sub(refund);
         satoshiRaised = satoshiRaised.add(satoshiAmount);
 

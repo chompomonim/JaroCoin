@@ -48,7 +48,7 @@ contract('ProxiedCrowdsale', async (accounts) => {
 
         const trueHexData = [
             leftPad((_timeStamp).toString(16), 64, 0),
-            leftPad((_bonus).toString(16), 2, 0)
+            leftPad((_bonus).toString(16), 4, 0)
         ].join('')
 
         const msg = web3.sha3(trueHexData, { encoding: 'hex' }).slice(2)
@@ -62,7 +62,7 @@ contract('ProxiedCrowdsale', async (accounts) => {
             0
         )
 
-        const payload = '0x5ec5bed6' + hexData + v + r + s;
+        const payload = '0x3ae9133d' + hexData + v + r + s;
 
         return payload
     }
