@@ -33,6 +33,40 @@ contract('ProxiedCrowdsale', async (accounts) => {
     const familyOwner = accounts[4]
     const wallet = '0x1111111111111111111111111111111111111111'      // WALLET where we collect ethereum
 
+    function generateCoupon(bonus, timeStamp) {
+        const leftPad = require('left-pad')
+        const secp256k1 = require('secp256k1')
+        const ethUtil = require('ethereumjs-util')
+
+        const _timeStamp = timeStamp
+        const _bonus = bonus
+
+        const hexData = [
+            leftPad((_timeStamp).toString(16), 64, 0),
+            leftPad((_bonus).toString(16), 64, 0)
+        ].join('')
+
+        const trueHexData = [
+            leftPad((_timeStamp).toString(16), 64, 0),
+            leftPad((_bonus).toString(16), 2, 0)
+        ].join('')
+
+        const msg = web3.sha3(trueHexData, { encoding: 'hex' }).slice(2)
+        const signature = web3.eth.sign(owner, msg).slice(2);
+
+        const r = signature.slice(0, 64)
+        const s = signature.slice(64, 128)
+        const v = leftPad(
+            (Number.parseInt(signature.slice(128, 130), 16) + 27).toString(16),
+            64,
+            0
+        )
+
+        const payload = '0x5ec5bed6' + hexData + v + r + s;
+
+        return payload
+    }
+
     before (async () => {
         token = await JaroCoin.new()
         crowdsale = await Crowdsale.new(owner, token.address, familyOwner, wallet)
@@ -65,8 +99,8 @@ contract('ProxiedCrowdsale', async (accounts) => {
         await proxiedCrowdsale.setNow(getTime('2018-04-12'))
     })
 
-    it('accounts[1] must have 0 balance', async () => {
-        expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(0)
+    it('accounts[0] must have 0 balance', async () => {
+        expect(await token.balanceOf(accounts[0])).to.be.bignumber.equal(0)
     })
 
     it('should accept funds and mint 5882 tokens for 1 eth', async () => {
@@ -163,6 +197,15 @@ contract('ProxiedCrowdsale', async (accounts) => {
         expect(currentAccountBalance.gte(initialAccountBalance.sub(amount))).to.be.true
     })
 
+    it('should burn a lot of accounts[3] tokens', async () => {
+        const amount = new BigNumber('50000e18')
+        const currentTokenAmount = await token.balanceOf(accounts[3])
+        const expectedTokenAmount = currentTokenAmount.sub(amount)
+
+        await token.burn(amount, '', {from: accounts[3]})
+        expect(await token.balanceOf(accounts[3])).to.be.bignumber.equal(expectedTokenAmount)
+    })
+
     it('should start new sale and mint proper amount of family tokens', async () => {
         // Family transfers it's time
         const family = Family.at(await proxiedCrowdsale.familyContract())
@@ -171,7 +214,7 @@ contract('ProxiedCrowdsale', async (accounts) => {
         // Let's burn tokens from past
         await family.burnTokens()
 
-        // // Transfer tokens
+        // Transfer tokens
         await family.transfer(accounts[1], transferAmount, {from: accounts[4]})
         const expectedAccountOneBalance = secondBuyTokens.add(transferAmount)
         expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(expectedAccountOneBalance)
@@ -190,7 +233,7 @@ contract('ProxiedCrowdsale', async (accounts) => {
         expect(await token.balanceOf(family.address)).to.be.bignumber.equal(expectedTokenAmount)
         expect(await family.protect()).to.be.bignumber.equal(new BigNumber(0))
 
-        // // Second transfer and start new sale
+        // Second transfer and start new sale
         const lastSaleStart = await proxiedCrowdsale.saleStartTime()
         const newNow = lastSaleStart.add(oneDay.mul(31))
         await proxiedCrowdsale.setNow(newNow)
@@ -202,6 +245,40 @@ contract('ProxiedCrowdsale', async (accounts) => {
         await family.burnTokens()
         await proxiedCrowdsale.startSale(newNow.add(1), {from : owner})
         expect(await proxiedCrowdsale.saleStartTime()).to.be.bignumber.equal(newNow.add(1))
+    })
+
+    it('should still have 5882 in accounts[0]', async () => {
+        expect(await token.balanceOf(accounts[0])).to.be.bignumber.equal(firstBuyTokens)
+    })
+
+    it('should accept funds and mint additioanl 7000 tokens for 1 eth', async () => {
+        expect(await proxiedCrowdsale.isActive()).to.be.true
+
+        const lastSaleStart = await proxiedCrowdsale.saleStartTime()
+        await proxiedCrowdsale.setNow(lastSaleStart.add(1))
+
+        await proxiedCrowdsale.sendTransaction({
+            from: accounts[0],
+            value: OneEther,
+            gas: 2000000
+        })
+
+        const expectedTokens = firstBuyTokens.add(secondBuyTokens)
+        expect(await token.balanceOf(accounts[0])).to.be.bignumber.equal(expectedTokens)
+    })
+
+    it('should mint more tokens when send transaction with coupon', async () => {
+        const coupon = generateCoupon(50, getTime('2018-09-15'))
+
+        await proxiedCrowdsale.sendTransaction({
+            from: accounts[0],
+            value: OneEther,
+            gas: 2000000,
+            data: coupon
+        })
+
+        const expectedTokens = firstBuyTokens.add(secondBuyTokens).add(secondBuyTokens.mul(1.5))
+        expect(await token.balanceOf(accounts[0])).to.be.bignumber.equal(expectedTokens)
     })
 
 })
