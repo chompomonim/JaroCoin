@@ -12,6 +12,7 @@ import TokenDistributionModel from './components/TokenDistributionModel'
 import Services from './components/Services'
 import Quotes from './components/Quotes'
 import Footer from './components/Footer'
+import TelegramButton from './components/TelegramButton'
 
 import './globalStyles.antd-custom.css'
 
@@ -48,6 +49,8 @@ class App extends Component {
           <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
 
           <Footer />
+
+          <TelegramButton />
 
         </Layout>
       </div>
