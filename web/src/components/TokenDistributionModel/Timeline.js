@@ -8,15 +8,15 @@ import MediaQuery from 'react-responsive'
 import styles from './timeline.module.css'
 
 const steps = [{
-    title: '5th of April',
+    title: '16th of April',
     description: 'Start token sale',
     content: 'Initial coin release',
 }, {
-    title: '14th of April',
+    title: '1st of May',
     description: 'Activate Smart Contracts to accept JARO',
     content: 'Second Content',
 }, {
-    title: '1st of July',
+    title: '1st of August',
     description: 'First token rebalance',
     content: 'Once in a while I will put more tokens into circulation, but never more that 21 million',
 }, {
@@ -31,14 +31,12 @@ class Timeline extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                current: 0, //set current Timeline step
+            current: 0, //set current Timeline step
         };
     }
 
     render() {
-
         const { current } = this.state;
-
         return (
             <Row justify="space-around" align="center" gutter={20} type="flex" className={styles.timelineWrapper}>
                 <Col span={24} className={styles.timelineTitle}>
