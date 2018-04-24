@@ -49,14 +49,19 @@ const ProgressBarBlock = ({completed}) => {
             <Row gutter={20} type="flex" justify="start" align="middle">
             <Col className={styles.timeHeadingWrapper} xs={{ span: 22 }} sm={{ span: 22, offset: 1 }} md={{ span: 16, pull: 1 }} lg={{ span: 23 }}>
                 <div className={styles.timeBarHeading}>
-                    <div className={styles.timeBarNumber}>{coinsLeft}</div>
-                    <div className={styles.timeBarTitle}> coins left</div><br />
+                    <div className={styles.timeBarNumber}>{`${coinsLeft} (${100 - percent}%)`}</div>
+                    <div className={styles.timeBarTitle}>coins left</div><br />
                 </div>
              </Col>
             </Row>
             <Row gutter={20} type="flex" justify="center" align="middle">
                 <Col className={styles.timeBar} xs={{ span: 22 }} sm={{ span: 20 }} md={{ span: 16 }} lg={{ span: 16 }}>
-                    <Progress className={styles.progressBar} percent={percent} showInfo={true} strokeWidth={68} />
+                    <Progress
+                        className={styles.progressBar}
+                        percent={percent}
+                        format={percent => `${percent}% distributed`}
+                        showInfo={true}
+                        strokeWidth={68} />
                 </Col>
                 <Col className={styles.timeBarButton} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 7 }} lg={{ span: 4 }}>
                     <div className={styles.getJaroButtonContainer}>
