@@ -32,18 +32,21 @@ if (typeof web3 !== 'undefined') {
 
 // TODO Load smart-contract address from config
 async function getAmount() {
-    const response = await fetch('http://jarocoin.com/JaroCoinToken.json')
+    const response = await fetch('http://jarocoin.com/JaroCoinCrowdsale.json')
     const contractABI = (await response.json())['abi']
-    const contract = new web3.eth.Contract(contractABI, '0x2E5fb91975C3fB6F6D61C5859314E7c53AF07912')
-    return await contract.methods.totalSupply().call()
+    const contract = new web3.eth.Contract(contractABI, '0x85aC27E4124863492DB18EAFBb358102Cad8fc96')
+    return await contract.methods.tokensToMint().call()
 }
 
 const ProgressBarBlock = ({completed}) => {
     const granularity = new BigNumber('1e18')
     const total = new BigNumber('21000000e18')
-    const amount = new BigNumber(completed)
+
+    completed = new BigNumber(completed)
+    const coinsLeft = completed.div(granularity).toFormat(0)
+    const amount = total.minus(completed)
     const percent = Math.floor((amount.div(total).toNumber()) * 100)
-    const coinsLeft = total.minus(amount).div(granularity).toFormat(0)
+
     return (
         <div className={styles.timeBarWrapper}>
             <Row gutter={20} type="flex" justify="start" align="middle">
