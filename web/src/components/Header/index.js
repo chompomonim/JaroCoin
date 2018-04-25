@@ -71,7 +71,7 @@ function HeaderContent() {
                 <Col className={styles.videoWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 18 }} lg={{ span: 14 }}>
                     <div className={styles.videoContainer}>
                         {/* Youtube params: ?showinfo=0&rel=0&controls=1&cc_load_policy=1 */}
-                        <iframe title="video" className={styles.videoIframe} src="https://www.youtube.com/embed/pwXju_wx7O4?color=white&showinfo=0&rel=0&controls=1&cc_load_policy=1" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen>
+                        <iframe title="video" className={styles.videoIframe} src="https://www.youtube.com/embed/moid_x2ZL80?color=white&showinfo=0&rel=0&controls=1&cc_load_policy=1" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen>
                         </iframe>
                     </div>
                 </Col>
@@ -84,9 +84,6 @@ function HeaderContent() {
                     <p className={styles.introDescription}>JaroCoin is a token fully backed by my most precious asset – time. JaroCoin is the only way to get my attention, advice or service.</p>
                     <p className={styles.introDescription}>Private crypto currency (token) is a model to play for majority future – oriented professionals from attorneys at law to house – keepers. This project is fully open source, so you can create yours as well!</p>
                     <p className={styles.introDescription}>Humanity changes. Money too.</p>
-                    <div className={styles.buttonWrapper} style={{dislay: 'none'}}>
-                        <Button className={styles.button} type="primary" size="large" icon="book">Read Whitepaper</Button>
-                    </div>
                 </Col>
             </Row>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactGA from 'react-ga'
 
 import { Layout } from 'antd'
 import { Divider } from 'antd'
@@ -11,13 +12,14 @@ import TokenDistributionModel from './components/TokenDistributionModel'
 import Services from './components/Services'
 import Quotes from './components/Quotes'
 import Footer from './components/Footer'
+import TelegramButton from './components/TelegramButton'
 
 import './globalStyles.antd-custom.css'
 
-//const { Footer } = Layout;
-
 class App extends Component {
   render() {
+    ReactGA.initialize('UA-117095638-1')
+    ReactGA.pageview(window.location.pathname + window.location.search)
     return (
       <div>
 
@@ -47,6 +49,8 @@ class App extends Component {
           <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
 
           <Footer />
+
+          <TelegramButton />
 
         </Layout>
       </div>
