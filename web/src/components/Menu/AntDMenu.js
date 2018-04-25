@@ -41,6 +41,8 @@ class AntDMenu extends Component {
         this.setState({
             activeLink: this.getCurrentAnchor(currentTop).key
         })
+        console.log("currentTop:" + currentTop)
+        console.log("setState:" + this.state.activeLink)
     }
 
     getCurrentAnchor(currentOffsetTop) {
@@ -50,12 +52,15 @@ class AntDMenu extends Component {
             if (document.getElementById(el.key)) {
                 const element = document.getElementById(el.key)
                 const elementOffset = element.offsetTop
+                console.log("elementOffset:" + selections.elementOffset)
 
                 if (elementOffset > currentOffsetTop) {
                     selections.push({key: el.key, offset: elementOffset})
+                    console.log("selections.elementOffset:" + selections.elementOffset)
                 }
             }
         }
+
 
         const bestElement = selections.reduce((acc, el) => acc.offset < el.offset ? el : acc, {offset: 0})
 
