@@ -4,7 +4,7 @@ import ReactGA from 'react-ga'
 import { Layout } from 'antd'
 import { Divider } from 'antd'
 
-import AntDMenu from './components/AntDMenu'
+import AntDMenu from './components/Menu/AntDMenu'
 import HeaderContent from './components/Header'
 import About from './components/About'
 import TokenDistributionModel from './components/TokenDistributionModel'
