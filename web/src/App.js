@@ -16,6 +16,14 @@ import TelegramButton from './components/TelegramButton'
 
 import './globalStyles.antd-custom.css'
 
+//Components disabled in master branch
+import Usecases from './components/Usecases'
+import LatestPosts from './components/LatestPosts'
+import Supporters from './components/Supporters'
+import Faq from './components/Faq'
+
+import GetJaroButton from './components/GetJaroButton'
+
 class App extends Component {
   render() {
     ReactGA.initialize('UA-117095638-1')
@@ -42,11 +50,29 @@ class App extends Component {
 
           <Services />
 
+          <Divider id="usecases" style={{ width: '90%', margin: '80px auto' }} />
+
+          <Usecases />
+
+          <Divider id="latest-posts" style={{ width: '90%', margin: '80px auto' }} />
+
+          <LatestPosts />
+
+          <Divider id="supporters" style={{ width: '90%', margin: '80px auto' }} />
+
+          <Supporters />
+
+          <Divider id="faq" style={{ width: '90%', margin: '80px auto' }} />
+
+          <Faq />
+
           <Divider id="quotes" style={{ width: '90%', margin: '80px auto' }} />
 
           <Quotes />
 
           <Divider id="contact" style={{ width: '60%', margin: '80px auto' }} />
+
+          <GetJaroButton />
 
           <Footer />
 
