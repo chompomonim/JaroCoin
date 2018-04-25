@@ -36,6 +36,19 @@ function termsOfUseModal() {
 
 class Footer extends Component {
 
+    state = {
+        modal1Visible: false,
+        modal2Visible: false,
+    }
+
+    setModal1Visible(modal1Visible) {
+        this.setState({ modal1Visible });
+    }
+
+    setModal2Visible(modal2Visible) {
+        this.setState({ modal2Visible });
+    }
+
     render() {
         return (
             <div id="contact" className={styles.footerWrapper}>

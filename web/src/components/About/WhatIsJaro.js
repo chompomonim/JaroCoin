@@ -22,7 +22,7 @@ function WhatIsJaroCoin() {
                 <Col className={styles.whatIsJaroCoin1stRowColumnLeft} xs={{ span: 20 }} sm={{ span: 22 }} md={{ span: 12 }} lg={{ span: 12 }}>
                     <p className={styles.whatIsJaroCoinIntro}>JaroCoin (JARO) is
                     <Tooltip placement="topLeft" title={TooltipText}> <span className={styles.underline}>ERC777</span> </Tooltip>
-                    token on Ethereum and is 100% backed by Jaro Time! </p>
+                    token on Rootstock (bitcoin sidechain) and is 100% backed by Jaro Time! </p>
                     <p className={styles.whatIsJaroCoinQuote}>“I am selling my time for the better, more technologically advanced
                     and more educated world. This coin is the only way to get my attention, advice and services.” </p>
                     <p className={styles.whatIsJaroCoinQuote}>Jaro Šatkevič, founder of JaroCoin</p>

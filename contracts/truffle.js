@@ -1,6 +1,3 @@
-const HDWalletProvider = require("truffle-hdwallet-provider")
-const provider = new HDWalletProvider(mnemonic, "https://ropsten.infura.io/jPfrhToAbx8f5682NUPz")
-
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
@@ -17,12 +14,6 @@ module.exports = {
         network_id: "*",
         gas: 6713094
       },
-      ropsten: {
-        provider,
-        network_id: 3,
-        gas: 4500000,
-        gasPrice: 4e9
-      },
       rsk: {
         host: "localhost",
         port: 4444,
@@ -34,11 +25,5 @@ module.exports = {
         network_id: "1",
         gas: 6713094
       }
-  },
-  solc: {
-    optimizer: {
-      enabled: true,
-      runs: 200
-    }
   }
 };
