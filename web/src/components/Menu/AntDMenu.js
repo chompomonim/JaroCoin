@@ -83,7 +83,7 @@ class AntDMenu extends Component {
                         </Button>
                         <Menu
                             className={styles.mobileMenu}
-                            defaultSelectedKeys={['1']}
+                            selectedKeys={[this.state.activeLink]}
                             mode="inline"
                             theme="light"
                             inlineCollapsed={this.state.collapsed}
