@@ -16,7 +16,7 @@ class AntDMenu extends Component {
         this.menuElements = [
             {key: 'home', value: 'Home', link: '#home', icon: 'home'},
             {key: 'about', value: 'About', link: '#intro', icon: 'info-circle-o'},
-            {key: 'token', value: 'Token', link: '#what-is-jaro', icon: 'info-circle-o'},
+            {key: 'what-is-jaro', value: 'Token', link: '#what-is-jaro', icon: 'info-circle-o'},
             {key: 'services', value: 'Services', link: '#services', icon: 'tool'},
             {key: 'quotes', value: 'Quotes', link: '#quotes', icon: 'heart-o'},
         ]
@@ -24,11 +24,11 @@ class AntDMenu extends Component {
         this.state = {
             collapsed: true,
             activeLink: 'home' // set active menu item
-        };
+        }
         this.toggle = () => {
             this.setState({
                 collapsed: !this.state.collapsed,
-            });
+            })
         }
     }
 
@@ -46,20 +46,17 @@ class AntDMenu extends Component {
     getCurrentAnchor(currentOffsetTop) {
         let selections = []
 
-        for (let el of this.menuElements) {
-            if (document.getElementById(el.key)) {
-                const element = document.getElementById(el.key)
+        this.menuElements.map(el => {
+            const element = document.getElementById(el.key)
+            if (element) {
                 const elementOffset = element.offsetTop
-
                 if (elementOffset > currentOffsetTop) {
                     selections.push({key: el.key, offset: elementOffset})
                 }
             }
-        }
+        })
 
-        const bestElement = selections.reduce((acc, el) => acc.offset < el.offset ? el : acc, {offset: 0})
-
-        return bestElement
+        return selections.reduce((acc, el) => (!acc.offset || acc.offset >= el.offset) ? el : acc, {})
     }
 
     render() {
@@ -70,7 +67,7 @@ class AntDMenu extends Component {
                         <Menu className={styles.menu}
                             theme="light"
                             mode="horizontal"
-                            defaultSelectedKeys={[this.state.activeLink]}
+                            selectedKeys={[this.state.activeLink]}
                         >
                             {this.menuElements.map(el => <Menu.Item className={styles.menuItem} key={el.key}><a href={el.link}>{el.value}</a></Menu.Item>)}
                         </Menu>
