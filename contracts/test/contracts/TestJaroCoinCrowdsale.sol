@@ -1,6 +1,6 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
-import '../contracts/JaroCoinCrowdsale.sol';
+import 'contracts/JaroCoinCrowdsale.sol';
 import './TestSleepContract.sol';
 import './TestPersonalContract.sol';
 
@@ -8,7 +8,7 @@ contract TestJaroCoinCrowdsale is JaroCoinCrowdsale {
     uint256 testNow;
     string public constant name = "Crowdsale";
 
-    function TestJaroCoinCrowdsale(
+    constructor(
         address _owner,
         address _token,
         address _familyOwner,

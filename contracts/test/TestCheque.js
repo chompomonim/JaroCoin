@@ -9,7 +9,7 @@ const expect = chai.expect;
 const OneEther = new BigNumber(web3.toWei(1, 'ether'));
 const OneToken = new BigNumber("1e18");
 
-const JaroCoinToken = artifacts.require("./TestJaroCoinToken.sol");
+const JaroCoinToken = artifacts.require("./contracts/TestJaroCoinToken.sol");
 
 contract('JaroCoin send via cheque', async (accounts) => {
     let token;

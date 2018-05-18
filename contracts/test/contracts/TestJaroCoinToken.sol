@@ -1,6 +1,6 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
-import '../contracts/JaroCoinToken.sol';
+import 'contracts/JaroCoinToken.sol';
 
 contract TestJaroCoinToken is JaroCoinToken {
     function interfaceAddr(address addr, string ifaceLabel) internal constant returns(address) {

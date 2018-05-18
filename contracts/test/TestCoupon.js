@@ -9,8 +9,8 @@ const expect = chai.expect;
 const OneEther = new BigNumber(web3.toWei(1, 'ether'))
 
 
-const JaroCoin = artifacts.require("test/TestJaroCoinToken.sol")
-const Crowdsale = artifacts.require("test/TestJaroCoinCrowdsale.sol")
+const JaroCoin = artifacts.require("test/contracts/TestJaroCoinToken.sol")
+const Crowdsale = artifacts.require("test/contracts/TestJaroCoinCrowdsale.sol")
 
 function getTime(date) {
     return Math.floor(new Date(date).getTime() / 1000)

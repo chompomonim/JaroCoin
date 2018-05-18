@@ -1,15 +1,14 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
-import '../contracts/PersonalContract.sol';
+import 'contracts/SleepContract.sol';
 
-contract TestPersonalContract is PersonalTime {
+contract TestSleepContract is JaroSleep {
     uint256 testNow = now;
 
-    function TestPersonalContract(address _token, uint256 _dailyTime) PersonalTime(_token, _dailyTime) public {
+    constructor(address _token, uint256 _dailyTime) JaroSleep(_token, _dailyTime) public {
     }
 
     function setInterfaceImplementation(string ifaceLabel, address impl) internal {
-
     }
 
     function setNow(uint256 _now) public {

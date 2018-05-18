@@ -1,13 +1,13 @@
-pragma solidity 0.4.21;
+pragma solidity ^0.4.23;
 
-import "../contracts/Ownable.sol";
+import "contracts/Ownable.sol";
 
 contract TestCrowdsale is Ownable {
     string public constant name = "NewCrowdsale";
     bool public isActive;
     uint256 startTime;
 
-    function TestCrowdsale(address _owner) public {
+    constructor(address _owner) public {
         transferOwnership(_owner);
     }
 

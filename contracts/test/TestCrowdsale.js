@@ -10,9 +10,9 @@ const OneEther = new BigNumber(web3.toWei(1, 'ether'))
 const OneToken = new BigNumber("1e8")
 const One = new BigNumber("1")
 
-const JaroCoin = artifacts.require("test/TestJaroCoinToken.sol")
-const Crowdsale = artifacts.require("test/TestJaroCoinCrowdsale.sol")
-const Family = artifacts.require("test/TestPersonalContract")
+const JaroCoin = artifacts.require("test/contracts/TestJaroCoinToken.sol")
+const Crowdsale = artifacts.require("test/contracts/TestJaroCoinCrowdsale.sol")
+const Family = artifacts.require("test/contracts/TestPersonalContract")
 
 function getTime(date) {
     return Math.floor(new Date(date).getTime() / 1000)
