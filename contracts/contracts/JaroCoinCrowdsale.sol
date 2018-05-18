@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity ^0.4.23;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
@@ -43,7 +43,7 @@ contract JaroCoinCrowdsale is Ownable {
         _;
     }
 
-    function JaroCoinCrowdsale(address _owner, address _token, address _familyOwner, address _personalOwner) public {
+    constructor(address _owner, address _token, address _familyOwner, address _personalOwner) public {
         initialize(_owner, _token, _familyOwner, _personalOwner);
     }
 

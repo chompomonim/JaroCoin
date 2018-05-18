@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "eip820/contracts/ERC820Implementer.sol";
@@ -17,7 +17,7 @@ contract PersonalTime is Ownable, ERC820Implementer, ERC777TokensRecipient {
 
     event ReceivedTokens(address operator, address from, address to, uint amount, bytes userData, bytes operatorData);
 
-    function PersonalTime(address _token, uint256 _dailyTime) public {
+    constructor(address _token, uint256 _dailyTime) public {
         setInterfaceImplementation("ERC777TokensRecipient", this);
         token = JaroCoinToken(_token);
         lastBurn = getNow();

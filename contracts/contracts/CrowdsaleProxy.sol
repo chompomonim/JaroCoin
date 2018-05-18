@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity ^0.4.23;
 
 contract CrowdsaleProxyTarget {
     function isActive() public returns(bool);
@@ -21,7 +21,7 @@ contract CrowdsaleProxy {
         _;
     }
 
-    function CrowdsaleProxy(address _target) public {
+    constructor(address _target) public {
         require(_target != 0x0);
         bytes32 position = OWNER_POSITION;
         assembly { sstore(position, caller) }
