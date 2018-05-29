@@ -15,7 +15,7 @@
     "ethereumjs-util": "^5.1.5",
     "left-pad": "^1.2.0",
     "secp256k1": "^3.5.0",
-    "truffle": "^4.1.8",
+    "truffle": "^4.1.11",
     "truffle-hdwallet-provider": "0.0.5",
     "zeppelin-solidity": "^1.7.0"
   },

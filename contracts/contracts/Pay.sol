@@ -1,4 +1,4 @@
-pragma solidity 0.4.23;
+pragma solidity ^0.4.23;
 
 import "eip820/contracts/ERC820Implementer.sol";
 import "./JaroCoinToken.sol";
