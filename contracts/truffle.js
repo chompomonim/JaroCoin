@@ -1,4 +1,5 @@
 const HDWalletProvider = require("truffle-hdwallet-provider")
+const mnemonic = "hello world"
 const provider = new HDWalletProvider(mnemonic, "https://ropsten.infura.io/jPfrhToAbx8f5682NUPz")
 
 module.exports = {
