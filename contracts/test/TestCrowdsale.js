@@ -18,7 +18,7 @@ function getTime(date) {
     return Math.floor(new Date(date).getTime() / 1000)
 }
 
-contract('JaroCoinCrowdsale', async (accounts) => {
+contract.only('JaroCoinCrowdsale', async (accounts) => {
     let crowdsale
     let token
     const satoshiPrice = new BigNumber("1000")                       // 0.00001 BTC = 1000 satoshi
@@ -29,11 +29,13 @@ contract('JaroCoinCrowdsale', async (accounts) => {
     const firstBuyTokens = new BigNumber('5882.352e18')
     const secondBuyTokens = new BigNumber('7000e18')
     const familyOwner = accounts[4]
-    const wallet = '0x1111111111111111111111111111111111111111'      // WALLET where we collect ethereum
+    const wallet = '0xefF42c79c0aBea9958432DC82FebC4d65f3d24A3'      // WALLET where we collect ethereum
 
     before(async () => {
         token = await JaroCoin.new()
-        crowdsale = await Crowdsale.new(owner, token.address, familyOwner, wallet)
+        crowdsale = await Crowdsale.new()
+        await crowdsale.testInitialize(owner, token.address, familyOwner, wallet, getTime('2018-04-10'))
+        await crowdsale.setNow(getTime('2018-04-10'))
 
         // Make crowdsale contract owner of token
         await token.transferOwnership(crowdsale.address)
@@ -63,6 +65,11 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         expect(await token.balanceOf(accounts[1])).to.be.bignumber.equal(0)
     })
 
+    it('wallet should have 0 eth on its balance', async () => {
+        const walletBalance = web3.eth.getBalance(wallet)
+        expect(walletBalance).to.be.bignumber.equal(0)
+    })
+
     it('should accept funds and mint 5882 tokens for 1 eth', async () => {
         await crowdsale.sendTransaction({
             from: accounts[0],
@@ -72,14 +79,14 @@ contract('JaroCoinCrowdsale', async (accounts) => {
         expect(await token.balanceOf(accounts[0])).to.be.bignumber.equal(firstBuyTokens)
     })
 
-    it.skip('wallet should have 1 eth on its balance', async () => {
+    it('wallet should have 1 eth on its balance', async () => {
         const walletBalance = web3.eth.getBalance(wallet)
         expect(walletBalance).to.be.bignumber.equal(OneEther)
     })
 
     it('should set new conversionRate', async () => {
         const newConversionRate = new BigNumber("7000e3")   // satoshi/eth, 0.07 BTC/ETH
-        await crowdsale.updateConvertionRate(newConversionRate, {from: owner})
+        await crowdsale.setExchangeRate(newConversionRate, {from: owner})
         expect(await crowdsale.conversionRate()).to.be.bignumber.equal(OneEther.div(newConversionRate).floor())
     })
 

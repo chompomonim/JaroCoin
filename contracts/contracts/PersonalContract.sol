@@ -17,10 +17,10 @@ contract PersonalTime is Ownable, ERC820Implementer, ERC777TokensRecipient {
 
     event ReceivedTokens(address operator, address from, address to, uint amount, bytes userData, bytes operatorData);
 
-    constructor(address _token, uint256 _dailyTime) public {
+    constructor(address _token, uint256 _dailyTime, uint256 _lastBurn) public {
         setInterfaceImplementation("ERC777TokensRecipient", this);
         token = JaroCoinToken(_token);
-        lastBurn = getNow();
+        lastBurn = _lastBurn;
         dailyTime = _dailyTime;
     }
 

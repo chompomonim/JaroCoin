@@ -320,7 +320,7 @@ contract JaroCoinToken is Ownable, ERC820Implementer {
     */
     function burn(uint256 _amount, bytes _userData) public {
         require (_amount > 0);
-        require (balanceOf[msg.sender] >= _amount);
+        require (balanceOf[msg.sender] >= _amount, "Burning more than balance");
         requireMultiple(_amount);
 
         callSender(msg.sender, msg.sender, 0x0, _amount, _userData, "");

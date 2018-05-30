@@ -19,7 +19,7 @@ function getTime(date) {
 contract('Crowdsale with Coupon', (accounts) => {
     let crowdsale
     let token
-    const owner = accounts[2]
+    const owner = accounts[0]
     const familyOwner = accounts[4]
     const wallet = '0x1111111111111111111111111111111111111111'      // WALLET where we collect ethereum
     const firstBuyTokens = new BigNumber('5882.352e18')
@@ -96,8 +96,8 @@ contract('Crowdsale with Coupon', (accounts) => {
     })
 
     it('should mint more tokens when transfer with coupon', async () => {
-        const coupon = generateCoupon(550, getTime('2018-04-15'))
-
+        const coupon = generateCoupon(100, getTime('2018-05-11'))
+        console.log('BONUST: ', coupon)
         await crowdsale.sendTransaction({
             from: accounts[1],
             value: OneEther,

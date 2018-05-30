@@ -8,11 +8,9 @@ contract TestJaroCoinCrowdsale is JaroCoinCrowdsale {
     uint256 testNow;
     string public constant name = "Crowdsale";
 
-    constructor(
-        address _owner,
-        address _token,
-        address _familyOwner,
-        address _personalOwner) JaroCoinCrowdsale(_owner, _token, _familyOwner, _personalOwner) public {
+    function testInitialize(address _owner, address _token, address _familyOwner, address _personalOwner, uint256 _now) public {
+        testNow = _now;
+        initialize(_owner, _token, _familyOwner, _personalOwner);
     }
 
     function setNow(uint256 _now) public {
@@ -32,11 +30,11 @@ contract TestJaroCoinCrowdsale is JaroCoinCrowdsale {
     }
 
     function createJaroSleep(address _token, uint256 _dailyTime) internal returns (JaroSleep) {
-        return new TestSleepContract(_token, _dailyTime);
+        return new TestSleepContract(_token, _dailyTime, getNow());
     }
 
     function  createPersonalTime(address _token, uint256 _dailyTime) internal returns(PersonalTime) {
-        return new TestPersonalContract(_token, _dailyTime);
+        return new TestPersonalContract(_token, _dailyTime, getNow());
     }
 
 }

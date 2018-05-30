@@ -1,20 +1,30 @@
 pragma solidity ^0.4.23;
 
 import "eip820/contracts/ERC820Implementer.sol";
-import "./JaroCoinToken.sol";
+
+interface ERC777TokensRecipient {
+    function tokensReceived(address operator, address from, address to, uint amount, bytes userData, bytes operatorData) external;
+}
+
+contract BurnableToken {
+    event Burned(address indexed operator, address indexed from, uint256 amount, bytes userData, bytes operatorData);
+    function burn(uint256 _amount, bytes _userData) public {
+        emit Burned(msg.sender, msg.sender, _amount, _userData, "");
+    }
+}
 
 /**
  * The Pay contract helps people to burn JaroCoin tokens (pay for Jaro services)
  * without knowing how to touch `burn` function from JaroCoin Token smart contract.
  */
 contract Pay is ERC820Implementer, ERC777TokensRecipient {
-    JaroCoinToken public token;
+    BurnableToken public token;
 
     event Payed(address operator, address from, address to, uint amount, bytes userData, bytes operatorData);
 
     constructor(address _token) public {
         setInterfaceImplementation("ERC777TokensRecipient", this);
-        token = JaroCoinToken(_token);
+        token = BurnableToken(_token);
     }
 
     // ERC777 tokens receiver callback
@@ -22,5 +32,4 @@ contract Pay is ERC820Implementer, ERC777TokensRecipient {
         token.burn(amount, userData);
         emit Payed(operator, from, to, amount, userData, operatorData);
     }
-
 }

@@ -11,7 +11,7 @@ const OneToken = new BigNumber("1e18");
 const Pay = artifacts.require("./contracts/TestPayContract.sol")
 const JaroCoinToken = artifacts.require("./contracts/TestJaroCoinToken.sol");
 
-contract.only('Pay for services', (accounts) => {
+contract('Pay for services', (accounts) => {
     let token;
     let pay;
     before(async () => {

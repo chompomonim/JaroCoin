@@ -66,6 +66,7 @@ contract ERC820Implementer {
         erc820Registry.setManager(this, newManager);
     }
 }
+
 interface ERC777TokensSender {
     function tokensToSend(address operator, address from, address to, uint amount, bytes userData,bytes operatorData) external;
 }

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
@@ -12,14 +12,15 @@ contract JaroCoinCrowdsale is Ownable {
 
     address public constant WALLET = 0xefF42c79c0aBea9958432DC82FebC4d65f3d24A3;
 
+    // digits of precision for exchange rate
+    uint8 public constant EXCHANGE_RATE_DECIMALS = 8;
+
     // Max tokens which can be in circulation
     uint256 public constant MAX_AMOUNT = 21000000e18; // 21 000 000
 
-    // Amount of raised funds in satoshi
-    uint256 public satoshiRaised;
-
+    uint256 public satoshiRaised;                     // Amount of raised funds in satoshi
     uint256 public rate;                              // number of tokens buyer gets per satoshi
-    uint256 public conversionRate;                    // wei per satoshi - per ETH => 0.056 ETH/BTC ? wei per satoshi?
+    uint256 public conversionRate;                    // 17e10 wei per satoshi => 0.056 ETH/BTC
 
     JaroCoinToken public token;
     JaroSleep public sleepContract;
@@ -33,6 +34,8 @@ contract JaroCoinCrowdsale is Ownable {
     bool public isActive = false;
     bool internal initialized = false;
 
+    address public exchangeRateOracle;
+
     event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
     event SaleActivated(uint256 startTime, uint256 amount);
     event SaleClosed();
@@ -41,10 +44,6 @@ contract JaroCoinCrowdsale is Ownable {
         require (isActive);
         require (getNow() > saleStartTime);
         _;
-    }
-
-    constructor(address _owner, address _token, address _familyOwner, address _personalOwner) public {
-        initialize(_owner, _token, _familyOwner, _personalOwner);
     }
 
     function initialize(address _owner, address _token, address _familyOwner, address _personalOwner) public {
@@ -171,10 +170,16 @@ contract JaroCoinCrowdsale is Ownable {
         _closeSale();
     }
 
-    function updateConvertionRate(uint256 _rate) public onlyOwner {
-        require (_rate > 0);
+    function setExchangeRateOracle(address _exchangeRateOracle) public onlyOwner {
+        require(_exchangeRateOracle != address(0));
+        exchangeRateOracle = _exchangeRateOracle;
+    }
+
+    function setExchangeRate(uint256 _exchangeRate) public {
+        require(msg.sender == exchangeRateOracle || msg.sender == owner);
+        require(_exchangeRate > 0);
         uint256 one = 1e18;
-        conversionRate = one.div(_rate);
+        conversionRate = one.div(_exchangeRate);
     }
 
     function mint(address _beneficiary, uint256 _amount) internal {
@@ -185,11 +190,11 @@ contract JaroCoinCrowdsale is Ownable {
 
     // This function created for easier testing purposes
     function createJaroSleep(address _token, uint256 _dailyTime) internal returns (JaroSleep) {
-        return new JaroSleep(_token, _dailyTime);
+        return new JaroSleep(_token, _dailyTime, getNow());
     }
 
     function createPersonalTime(address _token, uint256 _dailyTime) internal returns (PersonalTime) {
-        return new PersonalTime(_token, _dailyTime);
+        return new PersonalTime(_token, _dailyTime, getNow());
     }
 
     // This function created for easier testing purposes

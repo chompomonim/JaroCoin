@@ -14,10 +14,10 @@ contract JaroSleep is ERC820Implementer, ERC777TokensRecipient {
 
     event ReceivedTokens(address operator, address from, address to, uint amount, bytes userData, bytes operatorData);
 
-    constructor(address _token, uint256 _dailyTime) public {
+    constructor(address _token, uint256 _dailyTime, uint256 _lastBurn) public {
         setInterfaceImplementation("ERC777TokensRecipient", this);
         token = JaroCoinToken(_token);
-        lastBurn = getNow();
+        lastBurn = _lastBurn;
         dailyTime = _dailyTime;
     }
 
@@ -30,7 +30,7 @@ contract JaroSleep is ERC820Implementer, ERC777TokensRecipient {
         uint256 sec = getNow().sub(lastBurn);
         uint256 tokensToBurn = 0;
 
-        // // TODO convert into uint64 for saving gas purposes
+        // TODO convert into uint64 for saving gas purposes
         if (sec >= 1 days) {
             uint256 d =  sec.div(86400);
             tokensToBurn = d.mul(dailyTime);
