@@ -14,8 +14,6 @@ import Quotes from './components/Quotes'
 import Footer from './components/Footer'
 import TelegramButton from './components/TelegramButton'
 
-import './globalStyles.antd-custom.css'
-
 class App extends Component {
   render() {
     ReactGA.initialize('UA-117095638-1')

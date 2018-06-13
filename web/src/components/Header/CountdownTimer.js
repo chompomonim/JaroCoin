@@ -8,8 +8,8 @@ import styles from './countdownTimer.module.css'
 
 const CompletionMessage = () => (
     <div className={styles.completionMessage}>
-        <h3 className={styles.desktopSizeTitle}>Initial Time Offering
-             <span className={styles.desktopSizeTitleFeatured}> Started</span>
+        <h3 className={styles.desktopSizeTitle}>Time Offering
+             <span className={styles.desktopSizeTitleFeatured}> is Active</span>
         </h3>
         <TimeBar />
     </div>

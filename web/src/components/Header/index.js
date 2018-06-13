@@ -26,7 +26,7 @@ function HeaderContent() {
 
             <MediaQuery query="(min-width: 1200px)">
                 <Row className={styles.headingWrapper} gutter={20} type="flex">
-                    <Col className={styles.headlineColumn} sm={{ span: 19 }} md={{ span: 15 }} lg={{ span: 14 }} xl={{ span: 10 }} xxl={{ span: 9 }}>
+                    <Col className={styles.headlineColumn} span={9}>
                         <h1 className={styles.heading}>Jaro Coin</h1>
                             <div className={styles.headline}>
                                 <TypistComponent />
@@ -36,7 +36,7 @@ function HeaderContent() {
             </MediaQuery>
                 <MediaQuery query="(min-width: 577px) and (max-width: 1199px)">
                 <Row className={styles.headingWrapper} gutter={20} type="flex">
-                        <Col className={styles.headlineColumn} md={{ span: 15 }} lg={{ span: 14 }}>
+                        <Col className={styles.headlineColumn} span={15}>
                         <h1 className={styles.headingMobileLG}>Jaro Coin</h1>
                             <div className={styles.headlineMobileLG}>
                                 <TypistComponent />
@@ -46,7 +46,7 @@ function HeaderContent() {
             </MediaQuery>
             <MediaQuery query="(max-width: 576px)">
                 <Row className={styles.headingWrapper} gutter={20} type="flex">
-                    <Col className={styles.headlineColumn} xs={{ span: 24 }}>
+                    <Col className={styles.headlineColumn} span={24}>
                         <h1 className={styles.headingMobileXS}>Jaro Coin</h1>
                             <div className={styles.headlineMobileXS}>
                                 <TypistComponent />
@@ -68,14 +68,14 @@ function HeaderContent() {
             <Divider id="intro" className={styles.divider} />
 
             <Row className={styles.introWrapper} gutter={40} type="flex">
-                <Col className={styles.videoWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 18 }} lg={{ span: 14 }}>
+                <Col className={styles.videoWrapper} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 14 }} lg={{ span: 14 }}>
                     <div className={styles.videoContainer}>
                         {/* Youtube params: ?showinfo=0&rel=0&controls=1&cc_load_policy=1 */}
                         <iframe title="video" className={styles.videoIframe} src="https://www.youtube.com/embed/moid_x2ZL80?color=white&showinfo=0&rel=0&controls=1&cc_load_policy=1" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen>
                         </iframe>
                     </div>
                 </Col>
-                <Col className={styles.introColumnCenter} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 18 }} lg={{ span: 10 }}>
+                <Col className={styles.introColumnCenter} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 10 }} lg={{ span: 10 }}>
 
                     <MediaQuery query="(min-width: 992px)">
                         <h3 className={styles.introSectionTitle}>INTRO</h3>

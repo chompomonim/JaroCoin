@@ -16,7 +16,7 @@ const steps = [{
     description: 'Activate Smart Contracts to accept JARO',
     content: 'Second Content',
 }, {
-    title: '1st of August',
+    title: '1st of June',
     description: 'First token rebalance',
     content: 'Once in a while I will put more tokens into circulation, but never more that 21 million',
 }, {
@@ -31,7 +31,7 @@ class Timeline extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: 0, //set current Timeline step
+            current: 2, //set current Timeline step
         };
     }
 

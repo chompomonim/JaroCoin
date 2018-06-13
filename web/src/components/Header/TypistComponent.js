@@ -41,12 +41,14 @@ class TypistComponent extends Component {
                     <p />
                     {''}
                 </Typist>
-                {this.state.renderMsg ? (
+                {this.state.renderMsg
+                    ? (
                         <div>
                             <p />
                             <Button type="primary" size="large"><a href="#intro">TELL ME MORE</a></Button>
                         </div>
-                    ) : null
+                    )
+                    : null
                 }
             </div>
             );

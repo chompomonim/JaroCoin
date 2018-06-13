@@ -6,11 +6,10 @@ import { Col, Row } from 'antd'
 import whoIsJaroBackground from '../../images/WhoIsJaro.jpg'
 import whoIsJaroLinkedInButton from '../../images/LinkedInLogo.svg'
 import styles from './about.module.css'
-import './who-is-jaro.css'
 
 function WhoIsJaro() {
     const texts = {
-        heading: <h2 className="who-is-jaro-title">Who is Jaro?</h2>,
+        heading: <h2 className={styles.whoHeading}>Who is Jaro?</h2>,
         aboutText: <React.Fragment>
             <div className={styles.whoIsJaroTextItem}>
                 Jaro is experienced software engineer, <br />
