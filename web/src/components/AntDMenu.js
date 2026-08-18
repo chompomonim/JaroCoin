@@ -21,12 +21,9 @@ class AntDMenu extends Component {
             {key: 'quotes', value: 'Quotes', link: '#quotes', icon: 'heart-o'},
         ]
         this.state = {
-            activeLink: 'home' // set active menu item
+            activeLink: 'home', // set active menu item
+            collapsed: true
         }
-
-        this.state = {
-            collapsed: true,
-        };
         this.toggle = () => {
             this.setState({
                 collapsed: !this.state.collapsed,
@@ -46,22 +43,22 @@ class AntDMenu extends Component {
     }
 
     getCurrentAnchor(currentOffsetTop) {
-        let selections = []
+        let activeLink = this.menuElements[0].key
+        let maxOffset = -1
 
         for (let el of this.menuElements) {
-            if (document.getElementById(el.key)) {
-                const element = document.getElementById(el.key)
+            const element = document.getElementById(el.link.slice(1))
+            if (element) {
                 const elementOffset = element.offsetTop
 
-                if (elementOffset > currentOffsetTop) {
-                    selections.push({key: el.key, offset: elementOffset})
+                if (elementOffset <= currentOffsetTop && elementOffset > maxOffset) {
+                    maxOffset = elementOffset
+                    activeLink = el.key
                 }
             }
         }
 
-        const bestElement = selections.reduce((acc, el) => acc.offset < el.offset ? el : acc, {offset: 0})
-
-        return bestElement
+        return {key: activeLink, offset: maxOffset}
     }
 
     render() {
@@ -72,7 +69,7 @@ class AntDMenu extends Component {
                         <Menu className={styles.menu}
                             theme="light"
                             mode="horizontal"
-                            defaultSelectedKeys={[this.state.activeLink]}
+                            selectedKeys={[this.state.activeLink]}
                         >
                             {this.menuElements.map(el => <Menu.Item className={styles.menuItem} key={el.key}><a href={el.link}>{el.value}</a></Menu.Item>)}
                         </Menu>
@@ -88,7 +85,7 @@ class AntDMenu extends Component {
                         </Button>
                         <Menu
                             className={styles.mobileMenu}
-                            defaultSelectedKeys={['1']}
+                            selectedKeys={[this.state.activeLink]}
                             mode="inline"
                             theme="light"
                             inlineCollapsed={this.state.collapsed}
